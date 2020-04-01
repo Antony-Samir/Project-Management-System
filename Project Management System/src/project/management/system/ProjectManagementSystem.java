@@ -16,7 +16,8 @@ public class ProjectManagementSystem
 {
     public static void main(String[] args)
     {
-        Forms.LoginForm Login =new  Forms.LoginForm();
+        // Test
+        Forms.LoginForm Login = new  Forms.LoginForm();
         Login.setVisible(true);
         
     }
