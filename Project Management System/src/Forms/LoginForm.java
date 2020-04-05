@@ -1,10 +1,15 @@
 package Forms;
 import Forms.SignUpForm;
+import Forms.MainMenuForm;
+import javax.swing.JOptionPane;
 
 public class LoginForm extends javax.swing.JFrame
 {
 
+    int passwordChances = 2;
     static SignUpForm SignObj = new SignUpForm();
+    static MainMenuForm mainMenu = new MainMenuForm();
+    
     public LoginForm()
     {
         initComponents();
@@ -93,6 +98,30 @@ public class LoginForm extends javax.swing.JFrame
     private void SignInBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SignInBtnActionPerformed
     {//GEN-HEADEREND:event_SignInBtnActionPerformed
          
+        String Name = emailText.getText();
+        String Password = PasswordText.getPassword().toString();
+        
+
+        
+        if (Name.isEmpty() || Password.isEmpty())
+        {
+            if (passwordChances > 0)
+            {
+                JOptionPane.showMessageDialog(this, "Enter Username OR Password", "Field Not Entered", JOptionPane.WARNING_MESSAGE);
+                passwordChances--;
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "You Used All Your Chances. Sorry!!", "Closing Program", JOptionPane.WARNING_MESSAGE);
+                System.exit(0);
+            }
+            
+        }
+        else
+        {
+            mainMenu.setVisible(true);
+            this.setVisible(false);  
+        }
     }//GEN-LAST:event_SignInBtnActionPerformed
 
     private void PasswordTextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_PasswordTextActionPerformed

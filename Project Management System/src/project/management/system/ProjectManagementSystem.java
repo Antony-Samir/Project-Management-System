@@ -22,6 +22,8 @@ public class ProjectManagementSystem
         Login.setVisible(true);
         Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         
+        //JOptionPane.showMessageDialog(null, "Thank you using our system", "Logout Successfully", JOptionPane.INFORMATION_MESSAGE);
+        
         
     }
     
