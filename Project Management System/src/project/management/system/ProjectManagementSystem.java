@@ -16,10 +16,12 @@ public class ProjectManagementSystem
 {
     public static void main(String[] args)
     {
-        // Test
-        //Eshta sha3'al
+        JOptionPane.showMessageDialog(null, "Just to check", "Main", JOptionPane.INFORMATION_MESSAGE);
+        
         Forms.LoginForm Login = new  Forms.LoginForm();
         Login.setVisible(true);
+        Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        
         
     }
     
