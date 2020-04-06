@@ -1,12 +1,14 @@
 package project.management.system;
 
-public class TeamMembers
+public class TeamMember
 {
     private int Id;
     private String Name;
     private String Address;
     private String Phone; //Numbers Only
     private String Email; //Mail Format Only
+    private String Password;
+    private String Title;
 
     public int getId()
     {
@@ -56,6 +58,26 @@ public class TeamMembers
     public void setEmail(String Email)
     {
         this.Email = Email;
+    }
+
+    public String getPassword()
+    {
+        return Password;
+    }
+
+    public void setPassword(String Password)
+    {
+        this.Password = Password;
+    }
+
+    public String getTitle()
+    {
+        return Title;
+    }
+
+    public void setTitle(String Title)
+    {
+        this.Title = Title;
     }
     
     

@@ -1,6 +1,6 @@
 package project.management.system;
 
-public class Departments
+public class Department
 {
     private int Id;
     private String Name;
@@ -14,12 +14,12 @@ public class Departments
     
     
     
-    public int getID()
+    public int getId()
     {
         return Id;
     }
 
-    public void setID(int ID)
+    public void setId(int ID)
     {
         this.Id = ID;
     }

@@ -3,11 +3,11 @@ package project.management.system;
 public class Tasks
 {
     private int Id;
-    public Projects Proj;
+    public Project Proj;
     private String Title;
     private String FromDate;
     private String ToDate;
-    public TeamMembers Member;
+    public TeamMember Member;
     public Resources Resource;
     private String Status;
 

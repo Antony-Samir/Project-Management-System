@@ -1,10 +1,10 @@
 package project.management.system;
 
-public class Projects
+public class Project
 {
-    public Departments dep;
+    public Department dep;
     private int Id;
-    private String ProjectName;
+    private String Name;
 
     
     
@@ -25,14 +25,14 @@ public class Projects
         this.Id = Id;
     }
     
-    public String getProjectName()
+    public String getName()
     {
-        return ProjectName;
+        return Name;
     }
 
-    public void setProjectName(String ProjectName)
+    public void setName(String ProjectName)
     {
-        this.ProjectName = ProjectName;
+        this.Name = ProjectName;
     }
     
     

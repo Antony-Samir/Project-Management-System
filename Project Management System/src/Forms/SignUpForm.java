@@ -48,6 +48,7 @@ public class SignUpForm extends javax.swing.JFrame
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -114,6 +115,10 @@ public class SignUpForm extends javax.swing.JFrame
         jButton2.setBounds(14, 17, 140, 32);
         getContentPane().add(jTextField4);
         jTextField4.setBounds(397, 167, 100, 24);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manager m", "Employee e", " " }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(570, 70, 100, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +210,7 @@ public class SignUpForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

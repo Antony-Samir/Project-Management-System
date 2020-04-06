@@ -32,7 +32,6 @@ public class MainMenuForm extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
-        setPreferredSize(new java.awt.Dimension(720, 480));
 
         jButton3.setText("jButton3");
         jButton3.setPreferredSize(new java.awt.Dimension(90, 40));
