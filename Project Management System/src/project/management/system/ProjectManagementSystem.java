@@ -16,10 +16,16 @@ public class ProjectManagementSystem
 {
     public static void main(String[] args)
     {
-        
-        
-        
-        
+        try
+        {
+            WriteFile WF = new WriteFile();
+            String test = Integer.toString(456);
+            WF.writeTask("ab", "cd", "ef", "gh", "ij", "kl", "mn", "op");
+        }
+        catch(IOException e)
+        {
+            System.out.println("File Doesn't exist!");
+        }
         
         
         //JOptionPane.showMessageDialog(null, "Just to check", "Main", JOptionPane.INFORMATION_MESSAGE);

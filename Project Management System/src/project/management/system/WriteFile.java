@@ -9,7 +9,7 @@ public class WriteFile
     
     
     //static Department newDep;
-    public static void writeDepartment(int ID, String Name) throws IOException
+    public static void writeDepartment(String ID, String Name) throws IOException
     {
         
         FileWriter FWDepartment = null;
@@ -44,7 +44,7 @@ public class WriteFile
     
     
     //static Project newProject;
-    public static void writeProject(int ID, String Name, int DepID) throws IOException
+    public static void writeProject(String ID, String Name, String DepID) throws IOException
     {
         
         FileWriter FWProject = null;
@@ -57,7 +57,7 @@ public class WriteFile
             
             PWProject.write(ID);
             PWProject.write(" | ");
-            PWProject.println(Name);
+            PWProject.write(Name);
             PWProject.write(" | ");
             PWProject.println(DepID);
             
@@ -81,7 +81,7 @@ public class WriteFile
         
     
     //static TeamMember newMember;    
-    public static void writeMember(int ID, String Name, String Address, String Phone, String Email, String Password) throws IOException
+    public static void writeMember(String ID, String Name, String Address, String Phone, String Email, String Password) throws IOException
     {
             
         FileWriter FWMember = null;
@@ -124,7 +124,7 @@ public class WriteFile
     
     
     //static Resources newResource;
-    public static void writeResources(int ID, String Name) throws IOException
+    public static void writeResources(String ID, String Name) throws IOException
     {
 
         FileWriter FWDepartment = null;
@@ -159,7 +159,7 @@ public class WriteFile
 
     
     //static Tasks newTask;
-    public static void writeTask(int taskID,int projectID, String Title, String fromDate, String toDate, int memberID, String Name) throws IOException
+    public static void writeTask(String taskID, String projectID, String Title, String fromDate, String toDate, String memberID, String Resources, String Status) throws IOException
     {
     
         FileWriter FWDepartment = null;
@@ -178,7 +178,13 @@ public class WriteFile
             PWDepartment.write(" | ");
             PWDepartment.write(fromDate);
             PWDepartment.write(" | ");
-            PWDepartment.println(toDate);
+            PWDepartment.write(toDate);
+            PWDepartment.write(" | ");
+            PWDepartment.write(memberID);
+            PWDepartment.write(" | ");
+            PWDepartment.write(Resources);
+            PWDepartment.write(" | ");
+            PWDepartment.println(Status);
             
             PWDepartment.close();
             

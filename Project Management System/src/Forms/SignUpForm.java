@@ -44,11 +44,11 @@ public class SignUpForm extends javax.swing.JFrame
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -89,8 +89,6 @@ public class SignUpForm extends javax.swing.JFrame
         });
         getContentPane().add(jTextField2);
         jTextField2.setBounds(397, 91, 100, 24);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(223, 167, 100, 24);
 
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener()
@@ -119,6 +117,8 @@ public class SignUpForm extends javax.swing.JFrame
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manager m", "Employee e", " " }));
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(570, 70, 100, 26);
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(220, 170, 110, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,7 +127,7 @@ public class SignUpForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButton1ActionPerformed
         String Name = jTextField1.getText();
         String Address = jTextField2.getText();
-        String Password = jTextField3.getText();
+        String Password = jPasswordField1.getPassword().toString();
         String Email = jTextField4.getText();
 
         
@@ -154,7 +154,7 @@ public class SignUpForm extends javax.swing.JFrame
             jButton1.setVisible(false);
             jTextField1.setEditable(false);
             jTextField2.setEditable(false);
-            jTextField3.setEditable(false);
+            jPasswordField1.setEditable(false);
             jTextField4.setEditable(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -215,9 +215,9 @@ public class SignUpForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
