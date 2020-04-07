@@ -8,12 +8,10 @@ public class WriteFile
     //test this
     
     
-    static Department newDep;
-    public static void writeDepartment(String ID, String Name) throws IOException
+    //static Department newDep;
+    public static void writeDepartment(int ID, String Name) throws IOException
     {
-        ID = null;
-        Name = null;
-    
+        
         FileWriter FWDepartment = null;
         PrintWriter PWDepartment = null;
         
@@ -22,9 +20,9 @@ public class WriteFile
             FWDepartment = new FileWriter("Department.txt", true);
             PWDepartment = new PrintWriter(FWDepartment);
             
-            PWDepartment.write(newDep.getId());
+            PWDepartment.write(ID);
             PWDepartment.write(" | ");
-            PWDepartment.println(newDep.getName());
+            PWDepartment.println(Name);
             
             PWDepartment.close();
             
@@ -45,12 +43,9 @@ public class WriteFile
     
     
     
-    static Project newProject;
-    public static void writeProject(String ID, String Name, String DepID) throws IOException
+    //static Project newProject;
+    public static void writeProject(int ID, String Name, int DepID) throws IOException
     {
-        ID = null;
-        Name = null;
-        DepID = null;
         
         FileWriter FWProject = null;
         PrintWriter PWProject = null;
@@ -60,11 +55,11 @@ public class WriteFile
             FWProject = new FileWriter("Project.txt", true);
             PWProject = new PrintWriter(FWProject);
             
-            PWProject.write(newProject.getId());
+            PWProject.write(ID);
             PWProject.write(" | ");
-            PWProject.println(newProject.getName());
+            PWProject.println(Name);
             PWProject.write(" | ");
-            PWProject.println(newProject.dep.getId());
+            PWProject.println(DepID);
             
             PWProject.close();
             
@@ -85,14 +80,10 @@ public class WriteFile
     
         
     
-    static TeamMember newMember;    
-    public static void writeMember(String Name, String Address, String Password, String Email) throws IOException
+    //static TeamMember newMember;    
+    public static void writeMember(int ID, String Name, String Address, String Phone, String Email, String Password) throws IOException
     {
-        Name = null;
-        Address = null;
-        Password = null;
-        Email = null;
-    
+            
         FileWriter FWMember = null;
         PrintWriter PWMember = null;
         
@@ -101,15 +92,17 @@ public class WriteFile
             FWMember = new FileWriter("Members.txt", true);
             PWMember = new PrintWriter(FWMember);
             
-            PWMember.write(newMember.getId());
+            PWMember.write(ID);
             PWMember.write(" | ");
-            PWMember.write(newMember.getName());
+            PWMember.write(Name);
             PWMember.write(" | ");
-            PWMember.write(newMember.getPassword());
+            PWMember.write(Address);
             PWMember.write(" | ");
-            PWMember.write(newMember.getEmail());
+            PWMember.write(Phone);
             PWMember.write(" | ");
-            PWMember.println(newMember.getAddress());
+            PWMember.write(Email);
+            PWMember.write(" | ");
+            PWMember.println(Password);
             
             PWMember.close();
             
@@ -130,12 +123,10 @@ public class WriteFile
     
     
     
-    static Resources newResource;
-    public static void writeResources(String ID, String Name) throws IOException
+    //static Resources newResource;
+    public static void writeResources(int ID, String Name) throws IOException
     {
-        ID = null;
-        Name = null;
-    
+
         FileWriter FWDepartment = null;
         PrintWriter PWDepartment = null;
         
@@ -144,9 +135,9 @@ public class WriteFile
             FWDepartment = new FileWriter("Resources.txt", true);
             PWDepartment = new PrintWriter(FWDepartment);
             
-            PWDepartment.write(newResource.getId());
+            PWDepartment.write(ID);
             PWDepartment.write(" | ");
-            PWDepartment.println(newResource.getName());
+            PWDepartment.println(Name);
             
             PWDepartment.close();
             
@@ -165,12 +156,11 @@ public class WriteFile
         }
     }
     
-    //need to be checked
-    static Tasks newTask;
-    public static void writeTask(String ID, String Name) throws IOException
+
+    
+    //static Tasks newTask;
+    public static void writeTask(int taskID,int projectID, String Title, String fromDate, String toDate, int memberID, String Name) throws IOException
     {
-        ID = null;
-        Name = null;
     
         FileWriter FWDepartment = null;
         PrintWriter PWDepartment = null;
@@ -180,9 +170,15 @@ public class WriteFile
             FWDepartment = new FileWriter("Tasks.txt", true);
             PWDepartment = new PrintWriter(FWDepartment);
             
-            PWDepartment.write(newResource.getId());
+            PWDepartment.write(taskID);
             PWDepartment.write(" | ");
-            PWDepartment.println(newResource.getName());
+            PWDepartment.write(projectID);
+            PWDepartment.write(" | ");
+            PWDepartment.write(Title);
+            PWDepartment.write(" | ");
+            PWDepartment.write(fromDate);
+            PWDepartment.write(" | ");
+            PWDepartment.println(toDate);
             
             PWDepartment.close();
             
