@@ -7,32 +7,30 @@ public class WriteFile
     static SignUpForm SignObj = new SignUpForm();
     //test this
     
-    
+    static private  FileWriter FW;
+    static private PrintWriter PW;
+
     //static Department newDep;
     public static void writeDepartment(String ID, String Name) throws IOException
-    {
-        
-        FileWriter FWDepartment = null;
-        PrintWriter PWDepartment = null;
-        
+    {        
         try 
         {
-            FWDepartment = new FileWriter("Department.txt", true);
-            PWDepartment = new PrintWriter(FWDepartment);
+            FW = new FileWriter("Department.txt", true);
+            PW = new PrintWriter(FW);
             
-            PWDepartment.write(ID);
-            PWDepartment.write(" | ");
-            PWDepartment.println(Name);
+            PW.write(ID);
+            PW.write(" | ");
+            PW.println(Name);
             
-            PWDepartment.close();
+            PW.close();
             
-            if (PWDepartment != null)
+            if (PW != null)
             {
-                PWDepartment.close();
+                PW.close();
             }
-            if (FWDepartment != null)
+            if (FW != null)
             {
-                FWDepartment.close();
+                FW.close();
             }
         }
         catch (IOException e)
@@ -46,30 +44,26 @@ public class WriteFile
     //static Project newProject;
     public static void writeProject(String ID, String Name, String DepID) throws IOException
     {
-        
-        FileWriter FWProject = null;
-        PrintWriter PWProject = null;
-        
         try 
         {
-            FWProject = new FileWriter("Project.txt", true);
-            PWProject = new PrintWriter(FWProject);
+            FW = new FileWriter("Project.txt", true);
+            PW = new PrintWriter(FW);
             
-            PWProject.write(ID);
-            PWProject.write(" | ");
-            PWProject.write(Name);
-            PWProject.write(" | ");
-            PWProject.println(DepID);
+            PW.write(ID);
+            PW.write(" | ");
+            PW.write(Name);
+            PW.write(" | ");
+            PW.println(DepID);
             
-            PWProject.close();
+            PW.close();
             
-            if (PWProject != null)
+            if (PW != null)
             {
-                PWProject.close();
+                PW.close();
             }
-            if (FWProject != null)
+            if (FW != null)
             {
-                FWProject.close();
+                FW.close();
             }
         }
         catch (IOException e)
@@ -83,36 +77,32 @@ public class WriteFile
     //static TeamMember newMember;    
     public static void writeMember(String ID, String Name, String Address, String Phone, String Email, String Password) throws IOException
     {
-            
-        FileWriter FWMember = null;
-        PrintWriter PWMember = null;
-        
         try 
         {
-            FWMember = new FileWriter("Members.txt", true);
-            PWMember = new PrintWriter(FWMember);
+            FW = new FileWriter("Members.txt", true);
+            PW = new PrintWriter(FW);
             
-            PWMember.write(ID);
-            PWMember.write(" | ");
-            PWMember.write(Name);
-            PWMember.write(" | ");
-            PWMember.write(Address);
-            PWMember.write(" | ");
-            PWMember.write(Phone);
-            PWMember.write(" | ");
-            PWMember.write(Email);
-            PWMember.write(" | ");
-            PWMember.println(Password);
+            PW.write(ID);
+            PW.write(" | ");
+            PW.write(Name);
+            PW.write(" | ");
+            PW.write(Address);
+            PW.write(" | ");
+            PW.write(Phone);
+            PW.write(" | ");
+            PW.write(Email);
+            PW.write(" | ");
+            PW.println(Password);
             
-            PWMember.close();
+            PW.close();
             
-            if (PWMember != null)
+            if (PW != null)
             {
-                PWMember.close();
+                PW.close();
             }
-            if (FWMember != null)
+            if (FW != null)
             {
-                FWMember.close();
+                FW.close();
             }
         }
         catch (IOException e)
@@ -126,28 +116,24 @@ public class WriteFile
     //static Resources newResource;
     public static void writeResources(String ID, String Name) throws IOException
     {
-
-        FileWriter FWDepartment = null;
-        PrintWriter PWDepartment = null;
-        
         try 
         {
-            FWDepartment = new FileWriter("Resources.txt", true);
-            PWDepartment = new PrintWriter(FWDepartment);
+            FW = new FileWriter("Resources.txt", true);
+            PW = new PrintWriter(FW);
             
-            PWDepartment.write(ID);
-            PWDepartment.write(" | ");
-            PWDepartment.println(Name);
+            PW.write(ID);
+            PW.write(" | ");
+            PW.println(Name);
             
-            PWDepartment.close();
+            PW.close();
             
-            if (PWDepartment != null)
+            if (PW != null)
             {
-                PWDepartment.close();
+                PW.close();
             }
-            if (FWDepartment != null)
+            if (FW != null)
             {
-                FWDepartment.close();
+                FW.close();
             }
         }
         catch (IOException e)
@@ -161,40 +147,36 @@ public class WriteFile
     //static Tasks newTask;
     public static void writeTask(String taskID, String projectID, String Title, String fromDate, String toDate, String memberID, String Resources, String Status) throws IOException
     {
-    
-        FileWriter FWDepartment = null;
-        PrintWriter PWDepartment = null;
-        
         try 
         {
-            FWDepartment = new FileWriter("Tasks.txt", true);
-            PWDepartment = new PrintWriter(FWDepartment);
+            FW = new FileWriter("Tasks.txt", true);
+            PW = new PrintWriter(FW);
             
-            PWDepartment.write(taskID);
-            PWDepartment.write(" | ");
-            PWDepartment.write(projectID);
-            PWDepartment.write(" | ");
-            PWDepartment.write(Title);
-            PWDepartment.write(" | ");
-            PWDepartment.write(fromDate);
-            PWDepartment.write(" | ");
-            PWDepartment.write(toDate);
-            PWDepartment.write(" | ");
-            PWDepartment.write(memberID);
-            PWDepartment.write(" | ");
-            PWDepartment.write(Resources);
-            PWDepartment.write(" | ");
-            PWDepartment.println(Status);
+            PW.write(taskID);
+            PW.write(" | ");
+            PW.write(projectID);
+            PW.write(" | ");
+            PW.write(Title);
+            PW.write(" | ");
+            PW.write(fromDate);
+            PW.write(" | ");
+            PW.write(toDate);
+            PW.write(" | ");
+            PW.write(memberID);
+            PW.write(" | ");
+            PW.write(Resources);
+            PW.write(" | ");
+            PW.println(Status);
             
-            PWDepartment.close();
+            PW.close();
             
-            if (PWDepartment != null)
+            if (PW != null)
             {
-                PWDepartment.close();
+                PW.close();
             }
-            if (FWDepartment != null)
+            if (FW != null)
             {
-                FWDepartment.close();
+                FW.close();
             }
         }
         catch (IOException e)
@@ -202,4 +184,6 @@ public class WriteFile
             System.out.println("File Doesn't exist!");
         }
     }
+    
+    
 }
