@@ -6,11 +6,11 @@ import javax.swing.JOptionPane;
  *
  * @author Dr Toni
  */
-public class PrintReportsForm extends javax.swing.JFrame
+public class PrintAnyTaskForm extends javax.swing.JFrame
 {
 
    
-    public PrintReportsForm()
+    public PrintAnyTaskForm()
     {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -27,7 +27,6 @@ public class PrintReportsForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        CustInfoBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
 
@@ -35,17 +34,6 @@ public class PrintReportsForm extends javax.swing.JFrame
         setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
-
-        CustInfoBtn.setText("Print All Unfinished Projects");
-        CustInfoBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                CustInfoBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CustInfoBtn);
-        CustInfoBtn.setBounds(70, 120, 210, 32);
 
         jButton1.setText("Print Project");
         jButton1.addActionListener(new java.awt.event.ActionListener()
@@ -56,11 +44,11 @@ public class PrintReportsForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(550, 120, 120, 32);
+        jButton1.setBounds(390, 110, 120, 32);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(410, 120, 110, 26);
+        jComboBox1.setBounds(250, 110, 110, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -69,11 +57,6 @@ public class PrintReportsForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButton1ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void CustInfoBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_CustInfoBtnActionPerformed
-    {//GEN-HEADEREND:event_CustInfoBtnActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_CustInfoBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,17 +80,21 @@ public class PrintReportsForm extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(PrintReportsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintAnyTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(PrintReportsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintAnyTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(PrintReportsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintAnyTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(PrintReportsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintAnyTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -118,13 +105,12 @@ public class PrintReportsForm extends javax.swing.JFrame
         {
             public void run()
             {
-                new PrintReportsForm().setVisible(true);
+                new PrintAnyTaskForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CustInfoBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     // End of variables declaration//GEN-END:variables
