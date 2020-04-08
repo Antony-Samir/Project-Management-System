@@ -5,7 +5,6 @@ import java.io.*;
 public class WriteFile
 {
     static SignUpForm SignObj = new SignUpForm();
-    //test this
     
     static private  FileWriter FW;
     static private PrintWriter PW;

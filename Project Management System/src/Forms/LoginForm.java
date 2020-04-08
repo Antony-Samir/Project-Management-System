@@ -2,6 +2,7 @@ package Forms;
 import Forms.SignUpForm;
 import Forms.MainMenuForm;
 import javax.swing.JOptionPane;
+import project.management.system.InvalidPasswordException;
 
 public class LoginForm extends javax.swing.JFrame
 {
@@ -9,6 +10,7 @@ public class LoginForm extends javax.swing.JFrame
     int passwordChances = 2;
     static SignUpForm SignObj = new SignUpForm();
     static MainMenuForm mainMenu = new MainMenuForm();
+    static ManagerMenu managerMenu = new ManagerMenu();
     
     public LoginForm()
     {
@@ -92,7 +94,8 @@ public class LoginForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_SignUpBtnActionPerformed
         
         SignObj.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
+        //this.setVisible(false);
     }//GEN-LAST:event_SignUpBtnActionPerformed
 
     private void SignInBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SignInBtnActionPerformed
@@ -104,23 +107,37 @@ public class LoginForm extends javax.swing.JFrame
 
         
         if (Name.isEmpty() || Password.isEmpty())
-        {
-            if (passwordChances > 0)
-            {
-                JOptionPane.showMessageDialog(this, "Enter Username OR Password", "Field Not Entered", JOptionPane.WARNING_MESSAGE);
-                passwordChances--;
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "You Used All Your Chances. Sorry!!", "Closing Program", JOptionPane.WARNING_MESSAGE);
-                System.exit(0);
-            }
-            
+        {//Check If Empty
+            JOptionPane.showMessageDialog(this, "Enter Username OR Password", "Field Not Entered", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (Name.equals("Admin") && Password.equals("123"))
+        {//Check If Admin || Manager
+            managerMenu.setVisible(true);
+            this.dispose();
+            //this.setVisible(false);  
+        }
+        else if (Name.equals("test") && Password.equals("test"))
+        {//Check If Employee
+            mainMenu.setVisible(true);
+            this.dispose();
+            //this.setVisible(false);  
         }
         else
         {
-            mainMenu.setVisible(true);
-            this.setVisible(false);  
+            InvalidPasswordException.InvalidCount--;
+            if (InvalidPasswordException.getInvalidCount() >= 1)
+            {
+                //throw new InvalidPasswordException("Username or Password Invalid");
+                JOptionPane.showMessageDialog(this, "Please Try Again", "Username or Password Invalid", JOptionPane.WARNING_MESSAGE);
+            }
+            else if (InvalidPasswordException.getInvalidCount() == 0)
+            {
+                JOptionPane.showMessageDialog(this, "You exceeded the allowed limit, Program will terminate", "Invalid Email or Password", JOptionPane.WARNING_MESSAGE);
+                this.dispose();
+                System.exit(0);
+            }        
+            
+              
         }
     }//GEN-LAST:event_SignInBtnActionPerformed
 

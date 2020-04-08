@@ -30,7 +30,6 @@ public class ManagerMenu extends javax.swing.JFrame
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -46,7 +45,7 @@ public class ManagerMenu extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        this.dispose();
+        //this.dispose();
         //this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
