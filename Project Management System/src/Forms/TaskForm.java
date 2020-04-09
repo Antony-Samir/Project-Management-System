@@ -1,5 +1,7 @@
 package Forms;
 
+import javax.swing.JOptionPane;
+
 
 public class TaskForm extends javax.swing.JFrame
 {
@@ -23,7 +25,7 @@ public class TaskForm extends javax.swing.JFrame
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
@@ -44,7 +46,6 @@ public class TaskForm extends javax.swing.JFrame
         setMaximumSize(null);
         setMinimumSize(new java.awt.Dimension(720, 480));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -53,7 +54,14 @@ public class TaskForm extends javax.swing.JFrame
             }
         });
 
-        jButton2.setText("jButton2");
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Task Id:");
 
@@ -61,15 +69,15 @@ public class TaskForm extends javax.swing.JFrame
 
         jLabel3.setText("Title:");
 
-        jLabel4.setText("Members");
+        jLabel4.setText("Members:");
 
         jLabel5.setText("Project Id:");
 
         jLabel6.setText("To Date:");
 
-        jLabel7.setText("Status");
+        jLabel7.setText("Status:");
 
-        jLabel8.setText("Resources");
+        jLabel8.setText("Resources:");
 
         jLabel9.setText("//Members and resources may be more than 1");
 
@@ -118,7 +126,7 @@ public class TaskForm extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(119, 119, 119)
-                .addComponent(jButton2)
+                .addComponent(saveBtn)
                 .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
@@ -152,7 +160,7 @@ public class TaskForm extends javax.swing.JFrame
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(saveBtn)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74))
         );
@@ -162,8 +170,37 @@ public class TaskForm extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        this.setVisible(false);
+        //this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
+    {//GEN-HEADEREND:event_saveBtnActionPerformed
+        String TaskId = jTextField1.getText();
+        String FromDate = jTextField2.getText();
+        String Title = jTextField3.getText();
+        String Members = jTextField4.getText();
+        String ProjectId = jTextField5.getText();
+        String ToDate = jTextField6.getText();
+        String Status = jTextField7.getText();
+        String Resources = jTextField8.getText();
+
+        
+        if (TaskId.isEmpty() || FromDate.isEmpty() || Title.isEmpty() || Members.isEmpty() || ProjectId.isEmpty() || ToDate.isEmpty() || Status.isEmpty() || Resources.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
+        } 
+        else
+        {
+            jTextField1.setEditable(false);
+            jTextField2.setEditable(false);
+            jTextField3.setEditable(false);
+            jTextField4.setEditable(false);
+            jTextField5.setEditable(false);
+            jTextField6.setEditable(false);
+            jTextField7.setEditable(false);
+            jTextField8.setEditable(false);
+        }
+    }//GEN-LAST:event_saveBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,7 +243,6 @@ public class TaskForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -224,5 +260,6 @@ public class TaskForm extends javax.swing.JFrame
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

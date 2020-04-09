@@ -108,6 +108,8 @@ public class LoginForm extends javax.swing.JFrame
         
         if (Name.isEmpty() || Password.isEmpty())
         {//Check If Empty
+            mainMenu.setVisible(true);
+            this.dispose();
             JOptionPane.showMessageDialog(this, "Enter Username OR Password", "Field Not Entered", JOptionPane.WARNING_MESSAGE);
         }
         else if (Name.equals("Admin") && Password.equals("123"))
@@ -121,7 +123,7 @@ public class LoginForm extends javax.swing.JFrame
             mainMenu.setVisible(true);
             this.dispose();
             //this.setVisible(false);  
-        }
+        }/*
         else
         {
             InvalidPasswordException.InvalidCount--;
@@ -138,7 +140,7 @@ public class LoginForm extends javax.swing.JFrame
             }        
             
               
-        }
+        }*/
     }//GEN-LAST:event_SignInBtnActionPerformed
 
     private void PasswordTextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_PasswordTextActionPerformed
