@@ -1,16 +1,22 @@
 package Forms;
 
-import Forms.LoginForm;
+import project.management.system.Manager;
+import project.management.system.Employee;
+import project.management.system.ReadFile;
+import project.management.system.WriteFile;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+
  
 public class SignUpForm extends javax.swing.JFrame 
 {
 
     static LoginForm LG = new LoginForm();
+    WriteFile WF = new WriteFile();
     
 
     /**
@@ -20,6 +26,7 @@ public class SignUpForm extends javax.swing.JFrame
     {
         initComponents();
         this.setLocationRelativeTo(null);
+        IdTxt.setEditable(false);
         jButton2.setVisible(false);
     }
 
@@ -42,13 +49,17 @@ public class SignUpForm extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        NameTxt = new javax.swing.JTextField();
+        AddTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        EmailTxt = new javax.swing.JTextField();
+        TitleTxt = new javax.swing.JComboBox();
+        IdTxt = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        PasswordTxt = new javax.swing.JTextField();
+        PhoneTxt = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -70,25 +81,25 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(jLabel4);
         jLabel4.setBounds(391, 142, 80, 16);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener()
+        NameTxt.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jTextField1ActionPerformed(evt);
+                NameTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(223, 91, 100, 24);
+        getContentPane().add(NameTxt);
+        NameTxt.setBounds(223, 91, 100, 24);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener()
+        AddTxt.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jTextField2ActionPerformed(evt);
+                AddTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(397, 91, 100, 24);
+        getContentPane().add(AddTxt);
+        AddTxt.setBounds(397, 91, 100, 24);
 
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener()
@@ -111,37 +122,83 @@ public class SignUpForm extends javax.swing.JFrame
         });
         getContentPane().add(jButton2);
         jButton2.setBounds(14, 17, 140, 32);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(397, 167, 100, 24);
+        getContentPane().add(EmailTxt);
+        EmailTxt.setBounds(397, 167, 100, 24);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manager", "Employee" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(570, 70, 100, 26);
-        getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(220, 170, 110, 22);
+        TitleTxt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manager", "Employee" }));
+        getContentPane().add(TitleTxt);
+        TitleTxt.setBounds(570, 70, 100, 26);
+        getContentPane().add(IdTxt);
+        IdTxt.setBounds(80, 290, 110, 24);
+
+        jLabel5.setText("Your ID will Show Up Here");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(50, 260, 150, 16);
+        getContentPane().add(PasswordTxt);
+        PasswordTxt.setBounds(230, 170, 100, 24);
+        getContentPane().add(PhoneTxt);
+        PhoneTxt.setBounds(580, 170, 90, 24);
+
+        jLabel6.setText("Phone");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(560, 130, 36, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        String Name = jTextField1.getText();
-        String Address = jTextField2.getText();
-        String Password = jPasswordField1.getPassword().toString();
-        String Email = jTextField4.getText();
-
+        String ID = null;
         
-        if (Name.isEmpty() || Address.isEmpty() || Password.isEmpty() || Email.isEmpty())
+        String Name = NameTxt.getText().toString();
+        String Address = AddTxt.getText().toString();
+        String Phone = PhoneTxt.getText().toString();
+        String Password = PasswordTxt.getText().toString();
+        String Email = EmailTxt.getText().toString();
+        String Title = TitleTxt.getSelectedItem().toString();
+        
+        if (Name.isEmpty() || Address.isEmpty() || Phone.isEmpty() || Password.isEmpty() || Email.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
         else
         {
-            /*Customer c = new Customer(Name, Address, Password, Email, 0);
-            String account = c.getName() + "#" + c.getAddress() + "#" + c.getMail() + "#" + c.getPassword() +"#" + c.getTotalDollars() ;
-            WF.writeAcount(account);
-
+            if (Title == "Manager")
+            {
+                Manager Mng = new Manager();
+                
+                Mng.setName(Name);
+                Mng.setAddress(Address);
+                Mng.setPhone(Phone);
+                Mng.setPassword(Password);
+                Mng.setEmail(Email);
+                Mng.setTitle(Title);
+                
+            }//writeMember(String ID, String Name, String Address, String Phone, String Email, String Password)
+            else
+            {
+                Employee Emp = new Employee();
+                
+                Emp.setName(Name);
+                Emp.setAddress(Address);
+                Emp.setPhone(Phone);
+                Emp.setPassword(Password);
+                Emp.setEmail(Email);
+                Emp.setTitle(Title);
+                
+            
+            }
             try
+            {
+                WF.writeMember("4", Name, Address, Phone, Email, Password);
+                //WF.writeAcount(account);
+            } 
+            catch (IOException ex)
+            {
+                //Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            /*try
             {
                 ReadFile.readCust();
             } 
@@ -152,10 +209,13 @@ public class SignUpForm extends javax.swing.JFrame
 
             jButton2.setVisible(true);
             jButton1.setVisible(false);
-            jTextField1.setEditable(false);
-            jTextField2.setEditable(false);
-            jPasswordField1.setEditable(false);
-            jTextField4.setEditable(false);
+            
+            NameTxt.setEditable(false);
+            AddTxt.setEditable(false);
+            PhoneTxt.setEditable(false);
+            PasswordTxt.setEditable(false);
+            EmailTxt.setEditable(false);
+            TitleTxt.setEditable(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -165,14 +225,14 @@ public class SignUpForm extends javax.swing.JFrame
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void AddTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_AddTxtActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1ActionPerformed
-    {//GEN-HEADEREND:event_jTextField1ActionPerformed
+    private void NameTxtActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_NameTxtActionPerformed
+    {//GEN-HEADEREND:event_NameTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_NameTxtActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -208,16 +268,20 @@ public class SignUpForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AddTxt;
+    private javax.swing.JTextField EmailTxt;
+    private javax.swing.JTextField IdTxt;
+    private javax.swing.JTextField NameTxt;
+    private javax.swing.JTextField PasswordTxt;
+    private javax.swing.JTextField PhoneTxt;
+    private javax.swing.JComboBox TitleTxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

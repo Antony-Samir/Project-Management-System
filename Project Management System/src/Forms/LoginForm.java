@@ -6,8 +6,8 @@ import project.management.system.InvalidPasswordException;
 public class LoginForm extends javax.swing.JFrame
 {
     static SignUpForm SignObj = new SignUpForm();
-    static MainMenuForm mainMenu = new MainMenuForm();
-    static ManagerMenu managerMenu = new ManagerMenu();
+    static EmployeeForm mainMenu = new EmployeeForm();
+    static ManagerForm managerMenu = new ManagerForm();
     
     
     public LoginForm()
@@ -95,17 +95,17 @@ public class LoginForm extends javax.swing.JFrame
         //String Password = PasswordTxt.getPassword().toString();
         //System.out.println(Pass);
         
-        if (Password.isEmpty() || Password.isEmpty())
+        if (Name.isEmpty() || Password.isEmpty())
         {//Check If Empty
             JOptionPane.showMessageDialog(this, "Enter Username OR Password", "Field Not Entered", JOptionPane.WARNING_MESSAGE);
         }
-        else if (Password.equals("Admin") && Password.equals("123"))
+        else if (Name.equals("Admin") && Password.equals("123"))
         {//Check If Admin || Manager
             managerMenu.setVisible(true);
             this.dispose();
             //this.setVisible(false);  
         }
-        else if (Password.equals("test") && Password.equals("test"))
+        else if (Name.equals("test") && Password.equals("test"))
         {//Check If Employee
             mainMenu.setVisible(true);
             this.dispose();
