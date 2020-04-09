@@ -6,11 +6,11 @@ import javax.swing.JOptionPane;
  *
  * @author Dr Toni
  */
-public class PrintAnyTaskForm extends javax.swing.JFrame
+public class PrintTaskForm extends javax.swing.JFrame
 {
 
    
-    public PrintAnyTaskForm()
+    public PrintTaskForm()
     {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,6 +29,8 @@ public class PrintAnyTaskForm extends javax.swing.JFrame
 
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -44,11 +46,19 @@ public class PrintAnyTaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(390, 110, 120, 32);
+        jButton1.setBounds(380, 240, 120, 32);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(250, 110, 110, 26);
+        jComboBox1.setBounds(240, 240, 110, 26);
+
+        jLabel1.setText("OR, Select A Specific Project?");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(280, 180, 170, 16);
+
+        jButton2.setText("Print All Delayed Projects?");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(260, 80, 200, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,17 +90,25 @@ public class PrintAnyTaskForm extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(PrintAnyTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(PrintAnyTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(PrintAnyTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(PrintAnyTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrintTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -105,13 +123,15 @@ public class PrintAnyTaskForm extends javax.swing.JFrame
         {
             public void run()
             {
-                new PrintAnyTaskForm().setVisible(true);
+                new PrintTaskForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

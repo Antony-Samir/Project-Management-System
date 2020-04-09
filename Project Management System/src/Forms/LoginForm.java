@@ -1,16 +1,14 @@
 package Forms;
-import Forms.SignUpForm;
-import Forms.MainMenuForm;
+
 import javax.swing.JOptionPane;
 import project.management.system.InvalidPasswordException;
 
 public class LoginForm extends javax.swing.JFrame
 {
-
-    int passwordChances = 2;
     static SignUpForm SignObj = new SignUpForm();
     static MainMenuForm mainMenu = new MainMenuForm();
     static ManagerMenu managerMenu = new ManagerMenu();
+    
     
     public LoginForm()
     {
@@ -30,10 +28,10 @@ public class LoginForm extends javax.swing.JFrame
 
         email = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
-        emailText = new javax.swing.JTextField();
         SignInBtn = new javax.swing.JButton();
         SignUpBtn = new javax.swing.JButton();
-        PasswordText = new javax.swing.JPasswordField();
+        emailTxt = new javax.swing.JTextField();
+        passwordTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -50,8 +48,6 @@ public class LoginForm extends javax.swing.JFrame
         password.setText("Password:");
         getContentPane().add(password);
         password.setBounds(161, 159, 72, 19);
-        getContentPane().add(emailText);
-        emailText.setBounds(310, 110, 140, 24);
 
         SignInBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         SignInBtn.setText("Log In");
@@ -76,54 +72,45 @@ public class LoginForm extends javax.swing.JFrame
         });
         getContentPane().add(SignUpBtn);
         SignUpBtn.setBounds(570, 20, 110, 35);
-
-        PasswordText.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                PasswordTextActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PasswordText);
-        PasswordText.setBounds(310, 160, 140, 22);
+        getContentPane().add(emailTxt);
+        emailTxt.setBounds(300, 120, 140, 24);
+        getContentPane().add(passwordTxt);
+        passwordTxt.setBounds(300, 160, 140, 24);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SignUpBtnActionPerformed
     {//GEN-HEADEREND:event_SignUpBtnActionPerformed
-        
         SignObj.setVisible(true);
-        this.dispose();
-        //this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_SignUpBtnActionPerformed
 
     private void SignInBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SignInBtnActionPerformed
     {//GEN-HEADEREND:event_SignInBtnActionPerformed
-         
-        String Name = emailText.getText();
-        String Password = PasswordText.getPassword().toString();
         
-
+        String Name = emailTxt.getText().toString();
+        String Password = passwordTxt.getText().toString();
         
-        if (Name.isEmpty() || Password.isEmpty())
+        //String Password = PasswordTxt.getPassword().toString();
+        //System.out.println(Pass);
+        
+        if (Password.isEmpty() || Password.isEmpty())
         {//Check If Empty
-            mainMenu.setVisible(true);
-            this.dispose();
             JOptionPane.showMessageDialog(this, "Enter Username OR Password", "Field Not Entered", JOptionPane.WARNING_MESSAGE);
         }
-        else if (Name.equals("Admin") && Password.equals("123"))
+        else if (Password.equals("Admin") && Password.equals("123"))
         {//Check If Admin || Manager
             managerMenu.setVisible(true);
             this.dispose();
             //this.setVisible(false);  
         }
-        else if (Name.equals("test") && Password.equals("test"))
+        else if (Password.equals("test") && Password.equals("test"))
         {//Check If Employee
             mainMenu.setVisible(true);
             this.dispose();
             //this.setVisible(false);  
-        }/*
+        }
         else
         {
             InvalidPasswordException.InvalidCount--;
@@ -140,13 +127,10 @@ public class LoginForm extends javax.swing.JFrame
             }        
             
               
-        }*/
+        }
+        
+        
     }//GEN-LAST:event_SignInBtnActionPerformed
-
-    private void PasswordTextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_PasswordTextActionPerformed
-    {//GEN-HEADEREND:event_PasswordTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PasswordTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,11 +183,11 @@ public class LoginForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField PasswordText;
     private javax.swing.JButton SignInBtn;
     private javax.swing.JButton SignUpBtn;
     private javax.swing.JLabel email;
-    private javax.swing.JTextField emailText;
+    private javax.swing.JTextField emailTxt;
     private javax.swing.JLabel password;
+    private javax.swing.JTextField passwordTxt;
     // End of variables declaration//GEN-END:variables
 }

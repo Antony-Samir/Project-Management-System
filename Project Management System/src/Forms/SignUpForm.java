@@ -114,7 +114,7 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(jTextField4);
         jTextField4.setBounds(397, 167, 100, 24);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manager m", "Employee e", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manager", "Employee" }));
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(570, 70, 100, 26);
         getContentPane().add(jPasswordField1);
