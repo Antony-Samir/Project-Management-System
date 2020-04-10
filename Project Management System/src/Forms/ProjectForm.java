@@ -84,7 +84,7 @@ public class ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(550, 340, 58, 32);
+        jButton2.setBounds(550, 340, 80, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,14 +101,15 @@ public class ProjectForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButton2ActionPerformed
         String ID = ProjId.getText().toString();
         String Name = ProjName.getText().toString();
-        
+        String DepartmentID;
+        DepartmentID = jComboBox1.getSelectedItem().toString();
         
         Project proj = new Project();
         proj.setName(Name);
         //proj.setId(ID); ID is int
         try
         {
-            WF.writeResources(ID, Name);
+            WF.writeProject(ID, Name, DepartmentID);
         } catch (IOException ex)
         {
             Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);

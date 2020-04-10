@@ -7,6 +7,7 @@ public class ManagerForm extends javax.swing.JFrame
     static DepartmentForm DF = new DepartmentForm();
     static ResourcesForm RF = new ResourcesForm();
     static LogProgressForm LPF = new LogProgressForm();
+    static ProjectForm PF = new ProjectForm();
 
     public ManagerForm()
     {
@@ -185,7 +186,8 @@ public class ManagerForm extends javax.swing.JFrame
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton15ActionPerformed
     {//GEN-HEADEREND:event_jButton15ActionPerformed
-        // TODO add your handling code here:
+        PF.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton15ActionPerformed
 
     /**

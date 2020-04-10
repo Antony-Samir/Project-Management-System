@@ -66,19 +66,19 @@ public class SignUpForm extends javax.swing.JFrame
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(223, 66, 60, 16);
+        jLabel1.setBounds(50, 90, 60, 16);
 
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(590, 100, 90, 16);
+        jLabel2.setBounds(420, 130, 70, 16);
 
         jLabel3.setText("Address");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(391, 66, 70, 16);
+        jLabel3.setBounds(220, 90, 70, 16);
 
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(400, 140, 80, 16);
+        jLabel4.setBounds(220, 180, 80, 16);
 
         NameTxt.addActionListener(new java.awt.event.ActionListener()
         {
@@ -88,7 +88,7 @@ public class SignUpForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(NameTxt);
-        NameTxt.setBounds(223, 91, 100, 24);
+        NameTxt.setBounds(70, 120, 100, 24);
 
         AddTxt.addActionListener(new java.awt.event.ActionListener()
         {
@@ -98,7 +98,7 @@ public class SignUpForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(AddTxt);
-        AddTxt.setBounds(397, 91, 100, 24);
+        AddTxt.setBounds(240, 120, 100, 24);
 
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener()
@@ -122,21 +122,21 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(BackBtn);
         BackBtn.setBounds(14, 17, 140, 32);
         getContentPane().add(EmailTxt);
-        EmailTxt.setBounds(400, 170, 100, 24);
+        EmailTxt.setBounds(240, 210, 100, 24);
         getContentPane().add(IdTxt);
-        IdTxt.setBounds(300, 280, 110, 24);
+        IdTxt.setBounds(570, 160, 110, 24);
 
         jLabel5.setText("Your ID will Show Up Here");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(280, 250, 150, 16);
+        jLabel5.setBounds(550, 130, 150, 16);
         getContentPane().add(PasswordTxt);
-        PasswordTxt.setBounds(580, 140, 100, 24);
+        PasswordTxt.setBounds(400, 160, 100, 24);
         getContentPane().add(PhoneTxt);
-        PhoneTxt.setBounds(230, 180, 90, 24);
+        PhoneTxt.setBounds(70, 210, 90, 24);
 
         jLabel6.setText("Phone");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(220, 150, 36, 16);
+        jLabel6.setBounds(50, 180, 36, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
