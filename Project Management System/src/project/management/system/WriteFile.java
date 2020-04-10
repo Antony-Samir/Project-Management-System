@@ -122,7 +122,10 @@ public class WriteFile
             
             PW.write(ID);
             PW.write(" | ");
-            PW.println(Name);
+            PW.write(Name);
+            PW.write(" | ");
+            PW.println(0); // used or not
+
             
             PW.close();
             

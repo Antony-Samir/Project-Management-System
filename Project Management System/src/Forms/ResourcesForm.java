@@ -1,19 +1,24 @@
 package Forms;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import project.management.system.Resources;
+import project.management.system.WriteFile;
 
-import javax.swing.JOptionPane;
-
-/**
- *
- * @author Dr Toni
- */
-public class PrintTaskForm extends javax.swing.JFrame
+public class ResourcesForm extends javax.swing.JFrame
 {
 
-   
-    public PrintTaskForm()
+    static ManagerForm MF = new ManagerForm();
+    WriteFile WF = new WriteFile();
+    
+    public ResourcesForm()
     {
         initComponents();
+        
+        
         this.setLocationRelativeTo(null);
+        
+        
         
     }
 
@@ -27,18 +32,31 @@ public class PrintTaskForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ResName = new javax.swing.JTextField();
+        ResId = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton1.setText("Print Project");
+        jLabel1.setText("Name:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(440, 100, 36, 16);
+
+        jLabel2.setText("ID:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(230, 100, 14, 16);
+        getContentPane().add(ResName);
+        ResName.setBounds(430, 150, 90, 24);
+        getContentPane().add(ResId);
+        ResId.setBounds(230, 150, 90, 24);
+
+        jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -47,31 +65,54 @@ public class PrintTaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(380, 240, 120, 32);
+        jButton1.setBounds(530, 260, 90, 32);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(240, 240, 110, 26);
-
-        jLabel1.setText("OR, Select A Specific Project?");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(280, 180, 170, 16);
-
-        jButton2.setText("Print All Delayed Projects?");
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
-        jButton2.setBounds(260, 80, 200, 32);
-
-        jButton3.setText("Back");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(50, 30, 59, 32);
+        jButton2.setBounds(40, 30, 90, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        this.setVisible(false);
+        String ID = ResId.getText().toString();
+        String Name = ResName.getText().toString();
+        
+        
+        Resources res = new Resources();
+        res.setName(Name);
+        //res.setId(ID); ID is int
+        try
+        {
+            WF.writeResources(ID, Name);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        ResName.setEditable(false);
+        ResId.setEditable(false);
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
+    {//GEN-HEADEREND:event_jButton2ActionPerformed
+        MF.setVisible(true);
+        ResName.setEditable(true);
+        ResId.setEditable(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,29 +136,17 @@ public class PrintTaskForm extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(PrintTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(PrintTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(PrintTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(PrintTaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -128,16 +157,17 @@ public class PrintTaskForm extends javax.swing.JFrame
         {
             public void run()
             {
-                new PrintTaskForm().setVisible(true);
+                new ResourcesForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ResId;
+    private javax.swing.JTextField ResName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

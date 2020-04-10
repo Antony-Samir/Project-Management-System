@@ -1,10 +1,16 @@
 package Forms;
 
+import java.io.IOException;
 import javax.swing.JOptionPane;
+import project.management.system.Tasks;
+import project.management.system.WriteFile;
 
 
 public class TaskForm extends javax.swing.JFrame
 {
+    static ManagerForm MF = new ManagerForm();
+    WriteFile WF = new WriteFile();
+    
     public TaskForm()
     {
         initComponents();
@@ -46,6 +52,7 @@ public class TaskForm extends javax.swing.JFrame
         setMaximumSize(null);
         setMinimumSize(new java.awt.Dimension(720, 480));
 
+        jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -85,11 +92,14 @@ public class TaskForm extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119)
+                .addComponent(saveBtn)
+                .addGap(72, 72, 72))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -120,21 +130,18 @@ public class TaskForm extends javax.swing.JFrame
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(saveBtn)
-                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(19, 19, 19)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -170,19 +177,20 @@ public class TaskForm extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        //this.setVisible(false);
+        MF.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
     {//GEN-HEADEREND:event_saveBtnActionPerformed
-        String TaskId = jTextField1.getText();
-        String FromDate = jTextField2.getText();
-        String Title = jTextField3.getText();
-        String Members = jTextField4.getText();
-        String ProjectId = jTextField5.getText();
-        String ToDate = jTextField6.getText();
-        String Status = jTextField7.getText();
-        String Resources = jTextField8.getText();
+        String TaskId = jTextField1.getText().toString();
+        String FromDate = jTextField2.getText().toString();
+        String Title = jTextField3.getText().toString();
+        String Members = jTextField4.getText().toString();
+        String ProjectId = jTextField5.getText().toString();
+        String ToDate = jTextField6.getText().toString();
+        String Status = jTextField7.getText().toString();
+        String Resources = jTextField8.getText().toString();
 
         
         if (TaskId.isEmpty() || FromDate.isEmpty() || Title.isEmpty() || Members.isEmpty() || ProjectId.isEmpty() || ToDate.isEmpty() || Status.isEmpty() || Resources.isEmpty())
@@ -191,6 +199,28 @@ public class TaskForm extends javax.swing.JFrame
         } 
         else
         {
+            Tasks task = new Tasks();
+
+            //task.setId(TaskId);
+            task.setFromDate(FromDate);
+            task.setTitle(Title);
+            //members
+            //projectId          
+            task.setToDate(ToDate);
+            task.setStatus(Status);
+            //resources
+            
+          /*try
+            {
+                WF.writeTask("4", Name, Address, Phone, Email, Password);
+                //WF.writeAcount(account);
+            } 
+            catch (IOExceptionption ex)
+            {
+                //Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
+            
+            
             jTextField1.setEditable(false);
             jTextField2.setEditable(false);
             jTextField3.setEditable(false);
