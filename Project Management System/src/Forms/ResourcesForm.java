@@ -37,7 +37,7 @@ public class ResourcesForm extends javax.swing.JFrame
         ResName = new javax.swing.JTextField();
         ResId = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -67,16 +67,16 @@ public class ResourcesForm extends javax.swing.JFrame
         getContentPane().add(jButton1);
         jButton1.setBounds(530, 260, 90, 32);
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
+        BackBtn.setText("Back");
+        BackBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton2ActionPerformed(evt);
+                BackBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(40, 30, 90, 32);
+        getContentPane().add(BackBtn);
+        BackBtn.setBounds(40, 30, 90, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,20 +99,17 @@ public class ResourcesForm extends javax.swing.JFrame
         }
         
         
-        ResName.setEditable(false);
         ResId.setEditable(false);
-        
-        
-        
+        ResName.setEditable(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
-    {//GEN-HEADEREND:event_jButton2ActionPerformed
-        MF.setVisible(true);
-        ResName.setEditable(true);
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
+    {//GEN-HEADEREND:event_BackBtnActionPerformed
         ResId.setEditable(true);
+        ResName.setEditable(true);
+        MF.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BackBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,10 +160,10 @@ public class ResourcesForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
     private javax.swing.JTextField ResId;
     private javax.swing.JTextField ResName;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

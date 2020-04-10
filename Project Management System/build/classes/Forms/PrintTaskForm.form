@@ -81,7 +81,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="BackBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>

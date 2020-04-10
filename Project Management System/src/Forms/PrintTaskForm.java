@@ -31,7 +31,7 @@ public class PrintTaskForm extends javax.swing.JFrame
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -61,9 +61,9 @@ public class PrintTaskForm extends javax.swing.JFrame
         getContentPane().add(jButton2);
         jButton2.setBounds(260, 80, 200, 32);
 
-        jButton3.setText("Back");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(50, 30, 59, 32);
+        BackBtn.setText("Back");
+        getContentPane().add(BackBtn);
+        BackBtn.setBounds(50, 30, 59, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,9 +134,9 @@ public class PrintTaskForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

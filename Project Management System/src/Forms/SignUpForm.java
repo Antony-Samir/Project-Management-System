@@ -27,7 +27,7 @@ public class SignUpForm extends javax.swing.JFrame
         initComponents();
         this.setLocationRelativeTo(null);
         IdTxt.setEditable(false);
-        jButton2.setVisible(false);
+        BackBtn.setVisible(false);
     }
 
     SignUpForm(LoginForm aThis) 
@@ -52,7 +52,7 @@ public class SignUpForm extends javax.swing.JFrame
         NameTxt = new javax.swing.JTextField();
         AddTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
         EmailTxt = new javax.swing.JTextField();
         IdTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -111,16 +111,16 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(jButton1);
         jButton1.setBounds(550, 290, 90, 40);
 
-        jButton2.setText("Back To Main Menu");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
+        BackBtn.setText("Back To Main Menu");
+        BackBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton2ActionPerformed(evt);
+                BackBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(14, 17, 140, 32);
+        getContentPane().add(BackBtn);
+        BackBtn.setBounds(14, 17, 140, 32);
         getContentPane().add(EmailTxt);
         EmailTxt.setBounds(400, 170, 100, 24);
         getContentPane().add(IdTxt);
@@ -185,7 +185,7 @@ public class SignUpForm extends javax.swing.JFrame
                 Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
             }*/
 
-            jButton2.setVisible(true);
+            BackBtn.setVisible(true);
             jButton1.setVisible(false);
             
             NameTxt.setEditable(false);
@@ -196,11 +196,11 @@ public class SignUpForm extends javax.swing.JFrame
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
-    {//GEN-HEADEREND:event_jButton2ActionPerformed
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
+    {//GEN-HEADEREND:event_BackBtnActionPerformed
         LG.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BackBtnActionPerformed
 
     private void AddTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTxtActionPerformed
         // TODO add your handling code here:
@@ -246,13 +246,13 @@ public class SignUpForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddTxt;
+    private javax.swing.JButton BackBtn;
     private javax.swing.JTextField EmailTxt;
     private javax.swing.JTextField IdTxt;
     private javax.swing.JTextField NameTxt;
     private javax.swing.JTextField PasswordTxt;
     private javax.swing.JTextField PhoneTxt;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

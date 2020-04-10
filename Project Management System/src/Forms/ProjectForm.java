@@ -3,6 +3,7 @@ package Forms;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import project.management.system.Project;
 import project.management.system.WriteFile;
 
 public class ProjectForm extends javax.swing.JFrame 
@@ -28,7 +29,7 @@ public class ProjectForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jButton1 = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -43,16 +44,16 @@ public class ProjectForm extends javax.swing.JFrame
         setPreferredSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        BackBtn.setText("Back");
+        BackBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                BackBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(6, 6, 79, 39);
+        getContentPane().add(BackBtn);
+        BackBtn.setBounds(6, 6, 79, 39);
 
         jLabel1.setText("Project ID:");
         getContentPane().add(jLabel1);
@@ -88,13 +89,13 @@ public class ProjectForm extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        MF.setVisible(true);
-        ProjName.setEditable(true);
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
+    {//GEN-HEADEREND:event_BackBtnActionPerformed
         ProjId.setEditable(true);
+        ProjName.setEditable(true);
+        MF.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
@@ -116,9 +117,6 @@ public class ProjectForm extends javax.swing.JFrame
         
         ProjId.setEditable(false);
         ProjName.setEditable(false);
-        
-        
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -163,9 +161,9 @@ public class ProjectForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
     private javax.swing.JTextField ProjId;
     private javax.swing.JTextField ProjName;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;

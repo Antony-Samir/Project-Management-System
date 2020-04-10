@@ -26,7 +26,7 @@ public class DepartmentForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jButton1 = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -37,16 +37,16 @@ public class DepartmentForm extends javax.swing.JFrame
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        BackBtn.setText("Back");
+        BackBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                BackBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(40, 20, 90, 32);
+        getContentPane().add(BackBtn);
+        BackBtn.setBounds(40, 20, 90, 32);
 
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener()
@@ -74,13 +74,13 @@ public class DepartmentForm extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        MF.setVisible(true);
-        DepName.setEditable(true);
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
+    {//GEN-HEADEREND:event_BackBtnActionPerformed
         DepId.setEditable(true);
+        DepName.setEditable(true);
+        MF.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
@@ -100,8 +100,9 @@ public class DepartmentForm extends javax.swing.JFrame
         }
         
         
-        DepName.setEditable(false);
+        
         DepId.setEditable(false);
+        DepName.setEditable(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -143,9 +144,9 @@ public class DepartmentForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
     private javax.swing.JTextField DepId;
     private javax.swing.JTextField DepName;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
