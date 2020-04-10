@@ -54,7 +54,6 @@ public class SignUpForm extends javax.swing.JFrame
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         EmailTxt = new javax.swing.JTextField();
-        TitleTxt = new javax.swing.JComboBox();
         IdTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         PasswordTxt = new javax.swing.JTextField();
@@ -71,7 +70,7 @@ public class SignUpForm extends javax.swing.JFrame
 
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(223, 142, 90, 16);
+        jLabel2.setBounds(590, 100, 90, 16);
 
         jLabel3.setText("Address");
         getContentPane().add(jLabel3);
@@ -79,7 +78,7 @@ public class SignUpForm extends javax.swing.JFrame
 
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(391, 142, 80, 16);
+        jLabel4.setBounds(400, 140, 80, 16);
 
         NameTxt.addActionListener(new java.awt.event.ActionListener()
         {
@@ -123,25 +122,21 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(jButton2);
         jButton2.setBounds(14, 17, 140, 32);
         getContentPane().add(EmailTxt);
-        EmailTxt.setBounds(397, 167, 100, 24);
-
-        TitleTxt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manager", "Employee" }));
-        getContentPane().add(TitleTxt);
-        TitleTxt.setBounds(570, 70, 100, 26);
+        EmailTxt.setBounds(400, 170, 100, 24);
         getContentPane().add(IdTxt);
-        IdTxt.setBounds(80, 290, 110, 24);
+        IdTxt.setBounds(300, 280, 110, 24);
 
         jLabel5.setText("Your ID will Show Up Here");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(50, 260, 150, 16);
+        jLabel5.setBounds(280, 250, 150, 16);
         getContentPane().add(PasswordTxt);
-        PasswordTxt.setBounds(230, 170, 100, 24);
+        PasswordTxt.setBounds(580, 140, 100, 24);
         getContentPane().add(PhoneTxt);
-        PhoneTxt.setBounds(580, 170, 90, 24);
+        PhoneTxt.setBounds(230, 180, 90, 24);
 
         jLabel6.setText("Phone");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(560, 130, 36, 16);
+        jLabel6.setBounds(220, 150, 36, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,9 +148,9 @@ public class SignUpForm extends javax.swing.JFrame
         String Name = NameTxt.getText().toString();
         String Address = AddTxt.getText().toString();
         String Phone = PhoneTxt.getText().toString();
-        String Password = PasswordTxt.getText().toString();
         String Email = EmailTxt.getText().toString();
-        String Title = TitleTxt.getSelectedItem().toString();
+        String Password = PasswordTxt.getText().toString();
+        
         
         if (Name.isEmpty() || Address.isEmpty() || Phone.isEmpty() || Password.isEmpty() || Email.isEmpty())
         {
@@ -163,31 +158,14 @@ public class SignUpForm extends javax.swing.JFrame
         } 
         else
         {
-            if (Title == "Manager")
-            {
-                Manager Mng = new Manager();
-                
-                Mng.setName(Name);
-                Mng.setAddress(Address);
-                Mng.setPhone(Phone);
-                Mng.setPassword(Password);
-                Mng.setEmail(Email);
-                Mng.setTitle(Title);
-                
-            }//writeMember(String ID, String Name, String Address, String Phone, String Email, String Password)
-            else
-            {
-                Employee Emp = new Employee();
-                
-                Emp.setName(Name);
-                Emp.setAddress(Address);
-                Emp.setPhone(Phone);
-                Emp.setPassword(Password);
-                Emp.setEmail(Email);
-                Emp.setTitle(Title);
-                
-            
-            }
+           //writeMember(String ID, String Name, String Address, String Phone, String Email, String Password)
+            Employee Emp = new Employee();
+
+            Emp.setName(Name);
+            Emp.setAddress(Address);
+            Emp.setPhone(Phone);
+            Emp.setEmail(Email);
+            Emp.setPassword(Password);
             try
             {
                 WF.writeMember("4", Name, Address, Phone, Email, Password);
@@ -215,7 +193,6 @@ public class SignUpForm extends javax.swing.JFrame
             PhoneTxt.setEditable(false);
             PasswordTxt.setEditable(false);
             EmailTxt.setEditable(false);
-            TitleTxt.setEditable(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -274,7 +251,6 @@ public class SignUpForm extends javax.swing.JFrame
     private javax.swing.JTextField NameTxt;
     private javax.swing.JTextField PasswordTxt;
     private javax.swing.JTextField PhoneTxt;
-    private javax.swing.JComboBox TitleTxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
