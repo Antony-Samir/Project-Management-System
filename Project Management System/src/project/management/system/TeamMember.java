@@ -2,6 +2,12 @@ package project.management.system;
 
 public class TeamMember
 {    
+    
+    ReadFile RF = new ReadFile();
+    static public int IdCount = 0;
+    //For checking the last ID number in file
+    //Giving the new member the last ID in file + 1  
+    
     private int Id;
     private String Name;
     private String Address;
@@ -9,6 +15,10 @@ public class TeamMember
     private String Email; //Mail Format Only
     private String Password;
     private String Title;
+
+    public TeamMember()
+    {
+    }
 
     public int getId()
     {
