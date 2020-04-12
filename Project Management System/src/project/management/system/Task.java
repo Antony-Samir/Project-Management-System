@@ -1,6 +1,6 @@
 package project.management.system;
 
-public class Tasks
+public class Task
 {
     private int Id;
     public Project Proj;
@@ -8,7 +8,7 @@ public class Tasks
     private String FromDate;
     private String ToDate;
     public TeamMember Member;
-    public Resources Resource;
+    public Resource Resource;
     private String Status;
 
     public int getId()

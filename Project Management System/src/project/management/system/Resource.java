@@ -1,6 +1,6 @@
 package project.management.system;
 
-public class Resources
+public class Resource
 {
     private int Id;
     private String Name;

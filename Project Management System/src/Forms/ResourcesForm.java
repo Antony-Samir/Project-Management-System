@@ -2,7 +2,7 @@ package Forms;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import project.management.system.Resources;
+import project.management.system.Resource;
 import project.management.system.WriteFile;
 
 public class ResourcesForm extends javax.swing.JFrame
@@ -87,12 +87,12 @@ public class ResourcesForm extends javax.swing.JFrame
         String Name = ResName.getText().toString();
         
         
-        Resources res = new Resources();
+        Resource res = new Resource();
         res.setName(Name);
         //res.setId(ID); ID is int
         try
         {
-            WF.writeResources(ID, Name);
+            WF.writeResource(ID, Name);
         } catch (IOException ex)
         {
             Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);

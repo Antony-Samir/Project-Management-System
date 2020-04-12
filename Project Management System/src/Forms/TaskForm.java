@@ -2,7 +2,7 @@ package Forms;
 
 import java.io.IOException;
 import javax.swing.JOptionPane;
-import project.management.system.Tasks;
+import project.management.system.Task;
 import project.management.system.WriteFile;
 
 
@@ -207,7 +207,7 @@ public class TaskForm extends javax.swing.JFrame
         } 
         else
         {
-            Tasks task = new Tasks();
+            Task task = new Task();
 
             //task.setId(TaskId);
             task.setFromDate(FromDate);

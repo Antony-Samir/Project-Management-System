@@ -14,21 +14,20 @@ import javax.swing.*;
  */
 public class ProjectManagementSystem
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        /*try
-        {
-            WriteFile WF = new WriteFile();
-            String test = Integer.toString(456);
-            WF.writeTask("ab", "cd", "ef", "gh", "ij", "kl", "mn", "op");
-        }
-        catch(IOException e)
-        {
-            System.out.println("File Doesn't exist!");
-        }*/
+        
+        ReadFile RF = new ReadFile();
+        RF.fileLines();
+        RF.readDepartments();
         
         
-        //JOptionPane.showMessageDialog(null, "Just to check", "Main", JOptionPane.INFORMATION_MESSAGE);
+        /*Department dep[] = new Department[5];
+        dep[0] = new Department();
+        dep[0].setId(12);
+        dep[0].setName("asd");
+        System.out.println(dep[0].getId());
+        System.out.println(dep[0].getName());*/
         
         Forms.LoginForm Login = new  Forms.LoginForm();
         Login.setVisible(true);

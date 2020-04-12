@@ -18,7 +18,7 @@ public class WriteFile
             PW = new PrintWriter(FW);
             
             PW.write(ID);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.println(Name);
             
             PW.close();
@@ -49,9 +49,9 @@ public class WriteFile
             PW = new PrintWriter(FW);
             
             PW.write(ID);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(Name);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.println(DepID);
             
             PW.close();
@@ -82,15 +82,15 @@ public class WriteFile
             PW = new PrintWriter(FW);
             
             PW.write(ID);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(Name);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(Address);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(Phone);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(Email);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.println(Password);
             
             PW.close();
@@ -113,7 +113,7 @@ public class WriteFile
     
     
     //static Resources newResource;
-    public static void writeResources(String ID, String Name) throws IOException
+    public static void writeResource(String ID, String Name) throws IOException
     {
         try 
         {
@@ -121,9 +121,9 @@ public class WriteFile
             PW = new PrintWriter(FW);
             
             PW.write(ID);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(Name);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.println(0); // used or not
 
             
@@ -155,19 +155,19 @@ public class WriteFile
             PW = new PrintWriter(FW);
             
             PW.write(taskID);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(projectID);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(Title);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(fromDate);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(toDate);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(memberID);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.write(Resources);
-            PW.write(" | ");
+            PW.write(" # ");
             PW.println(Status);
             
             PW.close();
