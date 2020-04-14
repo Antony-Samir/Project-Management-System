@@ -4,6 +4,7 @@ public class Resource
 {
     private int Id;
     private String Name;
+    private int Used;
 
     public int getId()
     {
@@ -23,6 +24,16 @@ public class Resource
     public void setName(String Name)
     {
         this.Name = Name;
+    }
+
+    public int getUsed()
+    {
+        return Used;
+    }
+
+    public void setUsed(int Used)
+    {
+        this.Used = Used;
     }
     
     

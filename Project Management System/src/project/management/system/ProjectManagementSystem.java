@@ -19,7 +19,7 @@ public class ProjectManagementSystem
         
         ReadFile RF = new ReadFile();
         RF.fileLines();
-        RF.readDepartments();
+        RF.readMembers();
         
         
         /*Department dep[] = new Department[5];

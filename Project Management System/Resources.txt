@@ -1,2 +1,4 @@
 RESOURCE ID # NAME
-
+1 # lap # 0
+2 # mic # 0
+3 # screen # 0

@@ -96,7 +96,7 @@ public class ReadFile
             department[i] = new Department();
             sentence = BR.readLine();
                                    
-            parts = sentence.split("#");  
+            parts = sentence.split(" # ");  
             
             department[i].setId(Integer.parseInt(parts[0].toString()));
             department[i].setName(parts[1].toString());            
@@ -106,7 +106,7 @@ public class ReadFile
         FR.close();
         
         //Check the input data
-        if (DepartmentNums == 1)
+        if (DepartmentNums == 0)
         {
             return;
         }
@@ -136,6 +136,57 @@ public class ReadFile
     {//Read All Members
         member = new TeamMember[MemberNums];
         
+        try
+        {
+            FR = new FileReader("Members.txt");
+            BR = new BufferedReader(FR);
+        }
+        catch (Exception ex)
+        {
+            System.out.println("File Not Found!!");
+        }
+        
+        
+        
+        String sentence;
+        String[] parts = new String[6]; //for splitting by delameter
+        sentence = BR.readLine(); //for skipping first line in file
+        
+        for (int i = 0; i < MemberNums; i++)
+        {
+            member[i] = new TeamMember();
+            sentence = BR.readLine();
+                                   
+            parts = sentence.split(" # ");  
+            
+            member[i].setId(Integer.parseInt(parts[0].toString()));
+            member[i].setName(parts[1].toString());
+            member[i].setAddress(parts[2].toString());
+            member[i].setPhone(parts[3].toString());
+            member[i].setEmail(parts[4].toString());
+            member[i].setPassword(parts[5].toString());
+        }
+        
+        BR.close();
+        FR.close();
+        
+        //Check the input data
+        if (MemberNums == 0)
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < MemberNums; i++)
+            {
+                System.out.println(member[i].getId());
+                System.out.println(member[i].getName());
+                System.out.println(member[i].getAddress());
+                System.out.println(member[i].getPhone());
+                System.out.println(member[i].getEmail());
+                System.out.println(member[i].getPassword());
+            }
+        }
         
     }
     
@@ -143,7 +194,51 @@ public class ReadFile
     {//Read All Resources
         resource = new Resource[ResourceNums];
         
+        try
+        {
+            FR = new FileReader("Resources.txt");
+            BR = new BufferedReader(FR);
+        }
+        catch (Exception ex)
+        {
+            System.out.println("File Not Found!!");
+        }
         
+        
+        
+        String sentence;
+        String[] parts = new String[3]; //for splitting by delameter
+        sentence = BR.readLine(); //for skipping first line in file
+        
+        for (int i = 0; i < ResourceNums; i++)
+        {
+            resource[i] = new Resource();
+            sentence = BR.readLine();
+                                   
+            parts = sentence.split(" # ");  
+            
+            resource[i].setId(Integer.parseInt(parts[0].toString()));
+            resource[i].setName(parts[1].toString());
+            resource[i].setUsed(Integer.parseInt(parts[2].toString()));
+        }
+        
+        BR.close();
+        FR.close();
+        
+        //Check the input data
+        if (ResourceNums == 0)
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < ResourceNums; i++)
+            {
+                System.out.println(resource[i].getId());
+                System.out.println(resource[i].getName());
+                System.out.println(resource[i].getUsed());
+            }
+        }
         
         
     }
