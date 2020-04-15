@@ -1,18 +1,19 @@
-package Forms;
+package UpdateDeleteForm;
 
+import Forms.ManagerForm;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import project.management.system.Project;
 import project.management.system.WriteFile;
 
-public class ProjectForm extends javax.swing.JFrame 
+public class UD_ProjectForm extends javax.swing.JFrame 
 {
 
     static ManagerForm MF = new ManagerForm();
     WriteFile WF = new WriteFile();
     
-    public ProjectForm() 
+    public UD_ProjectForm() 
     {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -37,11 +38,10 @@ public class ProjectForm extends javax.swing.JFrame
         ProjId = new javax.swing.JTextField();
         ProjName = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
-        setPreferredSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
         BackBtn.setText("Back");
@@ -53,27 +53,27 @@ public class ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(20, 20, 70, 40);
+        BackBtn.setBounds(6, 6, 79, 39);
 
         jLabel1.setText("Project ID:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(140, 120, 90, 16);
+        jLabel1.setBounds(110, 160, 90, 16);
 
         jLabel2.setText("Project Name:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(320, 120, 90, 16);
+        jLabel2.setBounds(290, 160, 90, 16);
 
         jLabel3.setText("Department ID:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(490, 120, 90, 16);
+        jLabel3.setBounds(460, 160, 90, 16);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(520, 160, 65, 26);
+        jComboBox1.setBounds(490, 200, 65, 26);
         getContentPane().add(ProjId);
-        ProjId.setBounds(140, 160, 100, 24);
+        ProjId.setBounds(110, 200, 100, 24);
         getContentPane().add(ProjName);
-        ProjName.setBounds(330, 160, 100, 24);
+        ProjName.setBounds(300, 200, 100, 24);
 
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener()
@@ -85,6 +85,10 @@ public class ProjectForm extends javax.swing.JFrame
         });
         getContentPane().add(jButton2);
         jButton2.setBounds(550, 340, 80, 32);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(610, 100, 65, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,7 +116,7 @@ public class ProjectForm extends javax.swing.JFrame
             WF.writeProject(ID, Name, DepartmentID);
         } catch (IOException ex)
         {
-            Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -138,14 +142,18 @@ public class ProjectForm extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -156,7 +164,7 @@ public class ProjectForm extends javax.swing.JFrame
         {
             public void run() 
             {
-                new ProjectForm().setVisible(true);
+                new UD_ProjectForm().setVisible(true);
             }
         });
     }
@@ -167,6 +175,7 @@ public class ProjectForm extends javax.swing.JFrame
     private javax.swing.JTextField ProjName;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

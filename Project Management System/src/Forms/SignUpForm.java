@@ -120,7 +120,7 @@ public class SignUpForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(14, 17, 140, 32);
+        BackBtn.setBounds(14, 17, 140, 40);
         getContentPane().add(EmailTxt);
         EmailTxt.setBounds(240, 210, 100, 24);
         getContentPane().add(IdTxt);

@@ -1,22 +1,20 @@
-package Forms;
-
+package UpdateDeleteForm;
+import Forms.ManagerForm;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import project.management.system.Project;
+import project.management.system.Department;
 import project.management.system.WriteFile;
 
-public class ProjectForm extends javax.swing.JFrame 
+public class UD_DepartmentForm extends javax.swing.JFrame
 {
-
     static ManagerForm MF = new ManagerForm();
     WriteFile WF = new WriteFile();
     
-    public ProjectForm() 
+    public UD_DepartmentForm()
     {
         initComponents();
         this.setLocationRelativeTo(null);
-       
     }
 
     /**
@@ -30,18 +28,16 @@ public class ProjectForm extends javax.swing.JFrame
     {
 
         BackBtn = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        DepName = new javax.swing.JTextField();
+        DepId = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
-        ProjId = new javax.swing.JTextField();
-        ProjName = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
-        setPreferredSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
         BackBtn.setText("Back");
@@ -53,27 +49,7 @@ public class ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(20, 20, 70, 40);
-
-        jLabel1.setText("Project ID:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(140, 120, 90, 16);
-
-        jLabel2.setText("Project Name:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(320, 120, 90, 16);
-
-        jLabel3.setText("Department ID:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(490, 120, 90, 16);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(520, 160, 65, 26);
-        getContentPane().add(ProjId);
-        ProjId.setBounds(140, 160, 100, 24);
-        getContentPane().add(ProjName);
-        ProjName.setBounds(330, 160, 100, 24);
+        BackBtn.setBounds(40, 20, 90, 32);
 
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener()
@@ -84,47 +60,66 @@ public class ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(550, 340, 80, 32);
+        jButton2.setBounds(570, 350, 90, 32);
+
+        jLabel1.setText("Department Name:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(320, 200, 120, 16);
+
+        jLabel2.setText("Department ID:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(100, 200, 120, 16);
+        getContentPane().add(DepName);
+        DepName.setBounds(320, 260, 110, 24);
+        getContentPane().add(DepId);
+        DepId.setBounds(100, 260, 110, 24);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(510, 110, 65, 26);
+
+        jLabel3.setText("Select Department you want to Update or Delete");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(340, 70, 300, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        ProjId.setEditable(true);
-        ProjName.setEditable(true);
+        DepId.setEditable(true);
+        DepName.setEditable(true);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        String ID = ProjId.getText().toString();
-        String Name = ProjName.getText().toString();
-        String DepartmentID;
-        DepartmentID = jComboBox1.getSelectedItem().toString();
+        String ID = DepId.getText().toString();
+        String Name = DepName.getText().toString();
         
-        Project proj = new Project();
-        proj.setName(Name);
-        //proj.setId(ID); ID is int
+        
+        Department dep = new Department();
+        dep.setName(Name);
+        //res.setId(ID); ID is int
         try
         {
-            WF.writeProject(ID, Name, DepartmentID);
+            WF.writeDepartment(ID, Name);
         } catch (IOException ex)
         {
-            Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
-        ProjId.setEditable(false);
-        ProjName.setEditable(false);
+        
+        DepId.setEditable(false);
+        DepName.setEditable(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) 
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -138,33 +133,35 @@ public class ProjectForm extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_DepartmentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_DepartmentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_DepartmentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_DepartmentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() 
-        {
-            public void run() 
-            {
-                new ProjectForm().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UD_DepartmentForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JTextField ProjId;
-    private javax.swing.JTextField ProjName;
+    private javax.swing.JTextField DepId;
+    private javax.swing.JTextField DepName;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;

@@ -1,17 +1,18 @@
-package Forms;
+package UpdateDeleteForm;
+import Forms.ManagerForm;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import project.management.system.Resource;
 import project.management.system.WriteFile;
 
-public class ResourcesForm extends javax.swing.JFrame
+public class UD_ResourcesForm extends javax.swing.JFrame
 {
 
     static ManagerForm MF = new ManagerForm();
     WriteFile WF = new WriteFile();
     
-    public ResourcesForm()
+    public UD_ResourcesForm()
     {
         initComponents();
         
@@ -38,9 +39,9 @@ public class ResourcesForm extends javax.swing.JFrame
         ResId = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
@@ -76,7 +77,11 @@ public class ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(40, 30, 70, 40);
+        BackBtn.setBounds(40, 30, 90, 32);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(580, 110, 65, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -95,7 +100,7 @@ public class ResourcesForm extends javax.swing.JFrame
             WF.writeResource(ID, Name);
         } catch (IOException ex)
         {
-            Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -133,17 +138,21 @@ public class ResourcesForm extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UD_ResourcesForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -154,7 +163,7 @@ public class ResourcesForm extends javax.swing.JFrame
         {
             public void run()
             {
-                new ResourcesForm().setVisible(true);
+                new UD_ResourcesForm().setVisible(true);
             }
         });
     }
@@ -164,6 +173,7 @@ public class ResourcesForm extends javax.swing.JFrame
     private javax.swing.JTextField ResId;
     private javax.swing.JTextField ResName;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
