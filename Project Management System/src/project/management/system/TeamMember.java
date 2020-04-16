@@ -4,7 +4,6 @@ public class TeamMember
 {    
     
     ReadFile RF = new ReadFile();
-    static public int IdCount = 0;
     //For checking the last ID number in file
     //Giving the new member the last ID in file + 1  
     
@@ -90,7 +89,17 @@ public class TeamMember
         this.Title = Title;
     }
     
-    
+    public int giveId()
+    {
+        if (RF.MemberNums == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return RF.MemberNums+1;
+        }
+    }
     
     
 }

@@ -65,7 +65,7 @@ public class ManagerForm extends javax.swing.JFrame
 
         jButton3.setText("Print All Delayed Tasks");
         getContentPane().add(jButton3);
-        jButton3.setBounds(440, 80, 200, 35);
+        jButton3.setBounds(440, 60, 200, 35);
 
         jButton4.setText("Log Progress");
         jButton4.addActionListener(new java.awt.event.ActionListener()
@@ -76,7 +76,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(100, 80, 200, 35);
+        jButton4.setBounds(100, 60, 200, 35);
 
         jButton6.setText("Add Task");
         jButton6.setMaximumSize(null);
@@ -93,7 +93,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(100, 180, 200, 35);
+        jButton6.setBounds(100, 190, 200, 35);
 
         jButton7.setText("Update / Delete Task");
         jButton7.setMaximumSize(null);
@@ -110,7 +110,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(100, 240, 200, 35);
+        jButton7.setBounds(100, 250, 200, 35);
 
         jButton9.setText("Add Department");
         jButton9.setMaximumSize(null);
@@ -127,7 +127,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton9);
-        jButton9.setBounds(100, 300, 200, 35);
+        jButton9.setBounds(100, 310, 200, 35);
 
         jButton10.setText("Update / Delete  Department");
         jButton10.setMaximumSize(null);
@@ -144,7 +144,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton10);
-        jButton10.setBounds(100, 360, 200, 35);
+        jButton10.setBounds(100, 370, 200, 35);
 
         jButton12.setText("Add Resource");
         jButton12.setMaximumSize(null);
@@ -161,7 +161,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton12);
-        jButton12.setBounds(440, 180, 200, 35);
+        jButton12.setBounds(440, 190, 200, 35);
 
         jButton13.setText("Update / Delete Resource");
         jButton13.setMaximumSize(null);
@@ -178,7 +178,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton13);
-        jButton13.setBounds(440, 240, 200, 35);
+        jButton13.setBounds(440, 250, 200, 35);
 
         jButton15.setText("Add Project");
         jButton15.setMaximumSize(null);
@@ -195,7 +195,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton15);
-        jButton15.setBounds(440, 300, 200, 35);
+        jButton15.setBounds(440, 310, 200, 35);
 
         jButton16.setText("Update / Delete Project");
         jButton16.setMaximumSize(null);
@@ -212,11 +212,18 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton16);
-        jButton16.setBounds(440, 360, 200, 35);
+        jButton16.setBounds(440, 370, 200, 35);
 
         jButton1.setText("Assign Task To Employee");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(260, 130, 200, 35);
+        jButton1.setBounds(260, 120, 200, 35);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -281,6 +288,11 @@ public class ManagerForm extends javax.swing.JFrame
         UDPF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -64,19 +64,18 @@ public class UD_DepartmentForm extends javax.swing.JFrame
 
         jLabel1.setText("Department Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 200, 120, 16);
+        jLabel1.setBounds(350, 190, 120, 16);
 
         jLabel2.setText("Department ID:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(100, 200, 120, 16);
+        jLabel2.setBounds(170, 190, 120, 16);
         getContentPane().add(DepName);
-        DepName.setBounds(320, 260, 110, 24);
+        DepName.setBounds(350, 250, 110, 24);
         getContentPane().add(DepId);
-        DepId.setBounds(100, 260, 110, 24);
+        DepId.setBounds(170, 250, 110, 24);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(510, 110, 65, 26);
+        jComboBox1.setBounds(510, 110, 90, 26);
 
         jLabel3.setText("Select Department you want to Update or Delete");
         getContentPane().add(jLabel3);
@@ -95,25 +94,10 @@ public class UD_DepartmentForm extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        String ID = DepId.getText().toString();
-        String Name = DepName.getText().toString();
-        
-        
-        Department dep = new Department();
-        dep.setName(Name);
-        //res.setId(ID); ID is int
-        try
-        {
-            WF.writeDepartment(ID, Name);
-        } catch (IOException ex)
-        {
-            Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         
         
         
-        DepId.setEditable(false);
-        DepName.setEditable(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

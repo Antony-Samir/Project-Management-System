@@ -186,6 +186,11 @@ public class WriteFile
             System.out.println("File Doesn't exist!");
         }
     }
+
+    public void writeMember(int ID, String Name, String Address, String Phone, String Email, String Password)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

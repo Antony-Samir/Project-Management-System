@@ -46,15 +46,15 @@ public class ResourcesForm extends javax.swing.JFrame
 
         jLabel1.setText("Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(400, 140, 36, 16);
+        jLabel1.setBounds(420, 120, 36, 16);
 
         jLabel2.setText("ID:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(190, 140, 14, 16);
+        jLabel2.setBounds(210, 120, 14, 16);
         getContentPane().add(ResName);
-        ResName.setBounds(390, 190, 90, 24);
+        ResName.setBounds(410, 170, 90, 24);
         getContentPane().add(ResId);
-        ResId.setBounds(190, 190, 90, 24);
+        ResId.setBounds(210, 170, 90, 24);
 
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener()

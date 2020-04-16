@@ -7,7 +7,7 @@ public class LoginForm extends javax.swing.JFrame
 {
     static SignUpForm SignObj = new SignUpForm();
     static EmployeeForm mainMenu = new EmployeeForm();
-    static ManagerForm managerMenu = new ManagerForm();
+    static ManagerForm MF = new ManagerForm();
     
     
     public LoginForm()
@@ -32,6 +32,7 @@ public class LoginForm extends javax.swing.JFrame
         SignUpBtn = new javax.swing.JButton();
         emailTxt = new javax.swing.JTextField();
         passwordTxt = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -40,14 +41,16 @@ public class LoginForm extends javax.swing.JFrame
         getContentPane().setLayout(null);
 
         email.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        email.setForeground(new java.awt.Color(255, 255, 255));
         email.setText("E-mail:");
         getContentPane().add(email);
-        email.setBounds(160, 110, 46, 19);
+        email.setBounds(40, 220, 46, 19);
 
         password.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        password.setForeground(new java.awt.Color(255, 255, 255));
         password.setText("Password:");
         getContentPane().add(password);
-        password.setBounds(161, 159, 72, 19);
+        password.setBounds(40, 260, 72, 19);
 
         SignInBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         SignInBtn.setText("Log In");
@@ -59,7 +62,7 @@ public class LoginForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SignInBtn);
-        SignInBtn.setBounds(320, 240, 110, 35);
+        SignInBtn.setBounds(230, 330, 110, 35);
 
         SignUpBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         SignUpBtn.setText("Sign Up");
@@ -73,17 +76,22 @@ public class LoginForm extends javax.swing.JFrame
         getContentPane().add(SignUpBtn);
         SignUpBtn.setBounds(570, 20, 110, 35);
         getContentPane().add(emailTxt);
-        emailTxt.setBounds(300, 120, 140, 24);
+        emailTxt.setBounds(170, 220, 140, 24);
         getContentPane().add(passwordTxt);
-        passwordTxt.setBounds(300, 160, 140, 24);
+        passwordTxt.setBounds(170, 260, 140, 24);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login background.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SignUpBtnActionPerformed
     {//GEN-HEADEREND:event_SignUpBtnActionPerformed
+        SignUpBtn.setVisible(false);
         SignObj.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_SignUpBtnActionPerformed
 
     private void SignInBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SignInBtnActionPerformed
@@ -101,7 +109,7 @@ public class LoginForm extends javax.swing.JFrame
         }
         else if (Name.equals("Admin") && Password.equals("123"))
         {//Check If Admin || Manager
-            managerMenu.setVisible(true);
+            MF.setVisible(true);
             this.dispose();
             //this.setVisible(false);  
         }
@@ -187,6 +195,7 @@ public class LoginForm extends javax.swing.JFrame
     private javax.swing.JButton SignUpBtn;
     private javax.swing.JLabel email;
     private javax.swing.JTextField emailTxt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel password;
     private javax.swing.JTextField passwordTxt;
     // End of variables declaration//GEN-END:variables

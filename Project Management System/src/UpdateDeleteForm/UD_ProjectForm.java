@@ -86,9 +86,8 @@ public class UD_ProjectForm extends javax.swing.JFrame
         getContentPane().add(jButton2);
         jButton2.setBounds(550, 340, 80, 32);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(610, 100, 65, 26);
+        jComboBox2.setBounds(575, 100, 100, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -103,25 +102,12 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        String ID = ProjId.getText().toString();
-        String Name = ProjName.getText().toString();
-        String DepartmentID;
-        DepartmentID = jComboBox1.getSelectedItem().toString();
-        
-        Project proj = new Project();
-        proj.setName(Name);
-        //proj.setId(ID); ID is int
-        try
-        {
-            WF.writeProject(ID, Name, DepartmentID);
-        } catch (IOException ex)
-        {
-            Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         
-        ProjId.setEditable(false);
-        ProjName.setEditable(false);
+        
+        
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

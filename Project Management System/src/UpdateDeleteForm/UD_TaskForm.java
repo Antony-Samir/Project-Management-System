@@ -89,8 +89,6 @@ public class UD_TaskForm extends javax.swing.JFrame
 
         jLabel9.setText("//Members and resources may be more than 1");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,8 +133,8 @@ public class UD_TaskForm extends javax.swing.JFrame
                             .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -202,53 +200,13 @@ public class UD_TaskForm extends javax.swing.JFrame
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
     {//GEN-HEADEREND:event_saveBtnActionPerformed
-        String TaskId = jTextField1.getText().toString();
-        String FromDate = jTextField2.getText().toString();
-        String Title = jTextField3.getText().toString();
-        String Members = jTextField4.getText().toString();
-        String ProjectId = jTextField5.getText().toString();
-        String ToDate = jTextField6.getText().toString();
-        String Status = jTextField7.getText().toString();
-        String Resources = jTextField8.getText().toString();
-
+       
         
-        if (TaskId.isEmpty() || FromDate.isEmpty() || Title.isEmpty() || Members.isEmpty() || ProjectId.isEmpty() || ToDate.isEmpty() || Status.isEmpty() || Resources.isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
-        } 
-        else
-        {
-            Task task = new Task();
-
-            //task.setId(TaskId);
-            task.setFromDate(FromDate);
-            task.setTitle(Title);
-            //members
-            //projectId          
-            task.setToDate(ToDate);
-            task.setStatus(Status);
-            //resources
-            
-          /*try
-            {
-                WF.writeTask("4", Name, Address, Phone, Email, Password);
-                //WF.writeAcount(account);
-            } 
-            catch (IOExceptionption ex)
-            {
-                //Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-            
-            
-            jTextField1.setEditable(false);
-            jTextField2.setEditable(false);
-            jTextField3.setEditable(false);
-            jTextField4.setEditable(false);
-            jTextField5.setEditable(false);
-            jTextField6.setEditable(false);
-            jTextField7.setEditable(false);
-            jTextField8.setEditable(false);
-        }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_saveBtnActionPerformed
 
     /**

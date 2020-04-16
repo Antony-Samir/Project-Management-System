@@ -1,5 +1,8 @@
 package UpdateDeleteForm;
 import Forms.ManagerForm;
+import project.management.system.ReadFile;
+
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,15 +15,33 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     static ManagerForm MF = new ManagerForm();
     WriteFile WF = new WriteFile();
     
+    ReadFile RF = new ReadFile();
+    
+    
     public UD_ResourcesForm()
     {
         initComponents();
+
+        if (RF.ResourceNums != 0)
+        {
+           for (int i = 0; i < RF.ResourceNums; i++)
+            {
+                jComboBox1.addItem(RF.resource[i].getName().toString());
+            }
+        }
+        String str = jComboBox1.getSelectedItem().toString();
+        if (str == str)
+        {
+            System.out.println(str+"asd");
+        }
+       /*boolean isMyComboBoxEmpty = (null == jComboBox1.getSelectionModel());
+        if (isMyComboBoxEmpty)
+        {
+            System.out.println("yastaaaaa");
+        }*/
         
         
-        this.setLocationRelativeTo(null);
-        
-        
-        
+        this.setLocationRelativeTo(null);   
     }
 
     /**
@@ -79,33 +100,20 @@ public class UD_ResourcesForm extends javax.swing.JFrame
         getContentPane().add(BackBtn);
         BackBtn.setBounds(40, 30, 90, 32);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(580, 110, 65, 26);
+        jComboBox1.setBounds(580, 110, 80, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        String ID = ResId.getText().toString();
-        String Name = ResName.getText().toString();
         
         
-        Resource res = new Resource();
-        res.setName(Name);
-        //res.setId(ID); ID is int
-        try
-        {
-            WF.writeResource(ID, Name);
-        } catch (IOException ex)
-        {
-            Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         
-        ResId.setEditable(false);
-        ResName.setEditable(false);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed

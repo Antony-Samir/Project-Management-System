@@ -19,15 +19,10 @@ public class ProjectManagementSystem
         
         ReadFile RF = new ReadFile();
         RF.fileLines();
-        //RF.readMembers();
+        RF.readResources();
         
         
-        /*Department dep[] = new Department[5];
-        dep[0] = new Department();
-        dep[0].setId(12);
-        dep[0].setName("asd");
-        System.out.println(dep[0].getId());
-        System.out.println(dep[0].getName());*/
+        //JCheckBox cb1 = new JCheckBox("Task 1");
         
         Forms.LoginForm Login = new  Forms.LoginForm();
         Login.setVisible(true);

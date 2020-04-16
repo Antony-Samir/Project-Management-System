@@ -1,7 +1,7 @@
 package Forms;
 
-import project.management.system.Manager;
 import project.management.system.Employee;
+import project.management.system.TeamMember;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 
@@ -16,6 +16,8 @@ public class SignUpForm extends javax.swing.JFrame
 {
 
     static LoginForm LG = new LoginForm();
+    TeamMember TM = new TeamMember();
+    
     WriteFile WF = new WriteFile();
     
 
@@ -61,25 +63,31 @@ public class SignUpForm extends javax.swing.JFrame
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(720, 480));
+        setMaximumSize(null);
+        setMinimumSize(null);
+        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 90, 60, 16);
+        jLabel1.setBounds(150, 90, 60, 16);
 
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(420, 130, 70, 16);
+        jLabel2.setBounds(300, 150, 70, 16);
 
         jLabel3.setText("Address");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(220, 90, 70, 16);
+        jLabel3.setBounds(460, 90, 70, 16);
 
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(220, 180, 80, 16);
+        jLabel4.setBounds(460, 180, 50, 16);
 
+        NameTxt.setMaximumSize(null);
+        NameTxt.setMinimumSize(new java.awt.Dimension(70, 70));
+        NameTxt.setName(""); // NOI18N
         NameTxt.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -88,7 +96,7 @@ public class SignUpForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(NameTxt);
-        NameTxt.setBounds(70, 120, 100, 24);
+        NameTxt.setBounds(130, 120, 100, 25);
 
         AddTxt.addActionListener(new java.awt.event.ActionListener()
         {
@@ -98,7 +106,7 @@ public class SignUpForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(AddTxt);
-        AddTxt.setBounds(240, 120, 100, 24);
+        AddTxt.setBounds(440, 120, 100, 25);
 
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener()
@@ -109,7 +117,7 @@ public class SignUpForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(550, 290, 90, 40);
+        jButton1.setBounds(560, 340, 90, 40);
 
         BackBtn.setText("Back To Main Menu");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -122,28 +130,34 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(BackBtn);
         BackBtn.setBounds(14, 17, 140, 40);
         getContentPane().add(EmailTxt);
-        EmailTxt.setBounds(240, 210, 100, 24);
+        EmailTxt.setBounds(440, 210, 100, 25);
         getContentPane().add(IdTxt);
-        IdTxt.setBounds(570, 160, 110, 24);
+        IdTxt.setBounds(290, 320, 100, 25);
 
         jLabel5.setText("Your ID will Show Up Here");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(550, 130, 150, 16);
+        jLabel5.setBounds(270, 280, 150, 16);
         getContentPane().add(PasswordTxt);
-        PasswordTxt.setBounds(400, 160, 100, 24);
+        PasswordTxt.setBounds(290, 180, 100, 25);
+
+        PhoneTxt.setMaximumSize(null);
+        PhoneTxt.setMinimumSize(new java.awt.Dimension(70, 70));
+        PhoneTxt.setName(""); // NOI18N
         getContentPane().add(PhoneTxt);
-        PhoneTxt.setBounds(70, 210, 90, 24);
+        PhoneTxt.setBounds(130, 210, 100, 25);
 
         jLabel6.setText("Phone");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(50, 180, 36, 16);
+        jLabel6.setBounds(150, 180, 36, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        String ID = null;
+        String ID = String.valueOf(TM.giveId());
+        System.out.println(TM.giveId());
+        IdTxt.setText(ID);
         
         String Name = NameTxt.getText().toString();
         String Address = AddTxt.getText().toString();
@@ -168,7 +182,7 @@ public class SignUpForm extends javax.swing.JFrame
             Emp.setPassword(Password);
             try
             {
-                WF.writeMember("4", Name, Address, Phone, Email, Password);
+                WF.writeMember(ID, Name, Address, Phone, Email, Password);
                 //WF.writeAcount(account);
             } 
             catch (IOException ex)
@@ -176,15 +190,7 @@ public class SignUpForm extends javax.swing.JFrame
                 //Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            /*try
-            {
-                ReadFile.readCust();
-            } 
-            catch (IOException ex)
-            {
-                Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-
+            
             BackBtn.setVisible(true);
             jButton1.setVisible(false);
             
@@ -199,7 +205,7 @@ public class SignUpForm extends javax.swing.JFrame
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
         LG.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void AddTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTxtActionPerformed
