@@ -71,19 +71,19 @@ public class SignUpForm extends javax.swing.JFrame
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(150, 90, 60, 16);
+        jLabel1.setBounds(160, 90, 50, 16);
 
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(300, 150, 70, 16);
+        jLabel2.setBounds(460, 180, 70, 16);
 
         jLabel3.setText("Address");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(460, 90, 70, 16);
+        jLabel3.setBounds(460, 90, 60, 16);
 
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(460, 180, 50, 16);
+        jLabel4.setBounds(320, 140, 50, 16);
 
         NameTxt.setMaximumSize(null);
         NameTxt.setMinimumSize(new java.awt.Dimension(70, 70));
@@ -130,7 +130,7 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(BackBtn);
         BackBtn.setBounds(14, 17, 140, 40);
         getContentPane().add(EmailTxt);
-        EmailTxt.setBounds(440, 210, 100, 25);
+        EmailTxt.setBounds(290, 170, 100, 25);
         getContentPane().add(IdTxt);
         IdTxt.setBounds(290, 320, 100, 25);
 
@@ -138,7 +138,7 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(jLabel5);
         jLabel5.setBounds(270, 280, 150, 16);
         getContentPane().add(PasswordTxt);
-        PasswordTxt.setBounds(290, 180, 100, 25);
+        PasswordTxt.setBounds(440, 210, 100, 25);
 
         PhoneTxt.setMaximumSize(null);
         PhoneTxt.setMinimumSize(new java.awt.Dimension(70, 70));
@@ -148,7 +148,7 @@ public class SignUpForm extends javax.swing.JFrame
 
         jLabel6.setText("Phone");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(150, 180, 36, 16);
+        jLabel6.setBounds(160, 180, 36, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

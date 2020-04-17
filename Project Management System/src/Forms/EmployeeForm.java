@@ -25,12 +25,27 @@ public class EmployeeForm extends javax.swing.JFrame
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
+        getContentPane().setLayout(null);
 
-        jButton1.setText("Manage Task");
+        jButton1.setText("Save");
         jButton1.setPreferredSize(new java.awt.Dimension(90, 40));
         jButton1.addActionListener(new java.awt.event.ActionListener()
         {
@@ -39,30 +54,63 @@ public class EmployeeForm extends javax.swing.JFrame
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(80, 300, 120, 40);
 
-        jButton2.setText("jButton2");
+        jButton2.setText("View Project");
         jButton2.setPreferredSize(new java.awt.Dimension(90, 40));
+        getContentPane().add(jButton2);
+        jButton2.setBounds(470, 300, 120, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(162, 162, 162)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(305, Short.MAX_VALUE))
-        );
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(255, 150, 80, 26);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(30, 200, 80, 24);
+
+        jLabel1.setText("Task ID");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 150, 50, 16);
+
+        getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(625, 150, 80, 26);
+
+        jLabel2.setText("Task Status");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(160, 150, 80, 16);
+
+        jLabel3.setText("Project ID");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(400, 150, 70, 16);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(410, 200, 80, 24);
+
+        jLabel4.setText("Project Name");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(520, 150, 90, 16);
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(540, 200, 80, 24);
+
+        jRadioButton1.setText("Done");
+        getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(160, 190, 61, 28);
+
+        jRadioButton2.setText("In Progress");
+        getContentPane().add(jRadioButton2);
+        jRadioButton2.setBounds(160, 220, 98, 28);
+
+        jLabel5.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login background.png"))); // NOI18N
+        jLabel5.setText("asd");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(360, 0, 20, 480);
+
+        jLabel6.setText("Manage Tasks");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(140, 30, 83, 16);
+
+        jLabel7.setText("View Projects");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(530, 30, 79, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,5 +173,19 @@ public class EmployeeForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

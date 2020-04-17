@@ -2,19 +2,14 @@ package project.management.system;
 
 public class Project
 {
-    public Department dep;
+    
     private int Id;
     private String Name;
+    private int depId;
+   
 
     
-    
-    
-    
-    
-    
-    
-    
-    
+        
     public int getId()
     {
         return Id;
@@ -34,6 +29,14 @@ public class Project
     {
         this.Name = ProjectName;
     }
-    
-    
+        
+    public int getDepId()
+    {
+        return depId;
+    }
+
+    public void setDepId(int depId)
+    {
+        this.depId = depId;
+    }
 }

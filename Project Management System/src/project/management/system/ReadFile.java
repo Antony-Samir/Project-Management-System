@@ -72,7 +72,6 @@ public class ReadFile
     
     public static void readDepartments() throws IOException
     {//Read All Departments
-        
         department = new Department[DepartmentNums];
         
         try
@@ -96,17 +95,17 @@ public class ReadFile
             department[i] = new Department();
             sentence = BR.readLine();
                                    
-            parts = sentence.split(" # ");  
+            parts = sentence.split(" # ");
             
             department[i].setId(Integer.parseInt(parts[0].toString()));
-            department[i].setName(parts[1].toString());            
+            department[i].setName(parts[1].toString());
         }
         
         BR.close();
         FR.close();
         
         //Check the input data
-        if (DepartmentNums == 0)
+        /*if (DepartmentNums == 0)
         {
             return;
         }
@@ -117,19 +116,59 @@ public class ReadFile
                 System.out.println(department[i].getId());
                 System.out.println(department[i].getName());
             }
-        }
-        
+        }*/
     }
     
     
     public static void readProjects() throws IOException
     {//Read All Projects
         project = new Project[ProjectNums];
+                
+        try
+        {
+            FR = new FileReader("Project.txt");
+            BR = new BufferedReader(FR);
+        }
+        catch (Exception ex)
+        {
+            System.out.println("File Not Found!!");
+        }
         
         
         
+        String sentence;
+        String[] parts = new String[3]; //for splitting by delameter
+        sentence = BR.readLine(); //for skipping first line in file
         
+        for (int i = 0; i < ProjectNums; i++)
+        {
+            project[i] = new Project();
+            sentence = BR.readLine();
+                                   
+            parts = sentence.split(" # ");
+            
+            project[i].setId(Integer.parseInt(parts[0].toString()));
+            project[i].setName(parts[1].toString());
+            project[i].setDepId(Integer.parseInt(parts[2].toString()));
+        }
         
+        BR.close();
+        FR.close();
+        
+        //Check the input data
+        /*if (ProjectNums == 0)
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < ProjectNums; i++)
+            {
+                System.out.println(project[i].getId());
+                System.out.println(project[i].getName());
+                System.out.println(project[i].getDepId());
+            }
+        }*/        
     }
     
     public static void readMembers() throws IOException
@@ -171,7 +210,7 @@ public class ReadFile
         FR.close();
         
         //Check the input data
-        if (MemberNums == 0)
+        /*if (MemberNums == 0)
         {
             return;
         }
@@ -186,8 +225,7 @@ public class ReadFile
                 System.out.println(member[i].getEmail());
                 System.out.println(member[i].getPassword());
             }
-        }
-        
+        }*/
     }
     
     public static void readResources() throws IOException
@@ -226,7 +264,7 @@ public class ReadFile
         FR.close();
         
         //Check the input data
-        if (ResourceNums == 0)
+        /*if (ResourceNums == 0)
         {
             return;
         }
@@ -238,9 +276,7 @@ public class ReadFile
                 System.out.println(resource[i].getName());
                 System.out.println(resource[i].getUsed());
             }
-        }
-        
-        
+        }*/
     }
     
     public static void readTasks() throws IOException

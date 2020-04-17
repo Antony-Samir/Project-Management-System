@@ -19,7 +19,15 @@ public class ProjectManagementSystem
         
         ReadFile RF = new ReadFile();
         RF.fileLines();
+        
+        RF.readDepartments();
+        //System.out.println("dep ok");
+        RF.readProjects();
+        //System.out.println("proj ok");
+        RF.readMembers();
+        //System.out.println("mem ok");
         RF.readResources();
+        //System.out.println("res ok");
         
         
         //JCheckBox cb1 = new JCheckBox("Task 1");

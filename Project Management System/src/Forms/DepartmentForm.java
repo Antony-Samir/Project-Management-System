@@ -78,6 +78,8 @@ public class DepartmentForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_BackBtnActionPerformed
         DepId.setEditable(true);
         DepName.setEditable(true);
+        DepId.setText(null);
+        DepName.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed

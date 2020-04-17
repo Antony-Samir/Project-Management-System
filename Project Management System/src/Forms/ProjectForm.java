@@ -4,17 +4,29 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import project.management.system.Project;
+import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 
 public class ProjectForm extends javax.swing.JFrame 
 {
 
     static ManagerForm MF = new ManagerForm();
+    ReadFile RF = new ReadFile();
     WriteFile WF = new WriteFile();
     
     public ProjectForm() 
     {
         initComponents();
+        
+        if (RF.DepartmentNums != 0)
+        {
+           for (int i = 0; i < RF.DepartmentNums; i++)
+            {
+                jComboBox1.addItem(String.valueOf(RF.department[i].getId()));
+            }
+        }
+        
+        
         this.setLocationRelativeTo(null);
        
     }
@@ -53,7 +65,7 @@ public class ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(20, 20, 70, 40);
+        BackBtn.setBounds(20, 20, 100, 32);
 
         jLabel1.setText("Project ID:");
         getContentPane().add(jLabel1);
@@ -65,11 +77,10 @@ public class ProjectForm extends javax.swing.JFrame
 
         jLabel3.setText("Department ID:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(490, 120, 90, 16);
+        jLabel3.setBounds(490, 120, 120, 16);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(520, 160, 65, 26);
+        jComboBox1.setBounds(520, 160, 100, 26);
         getContentPane().add(ProjId);
         ProjId.setBounds(140, 160, 100, 24);
         getContentPane().add(ProjName);
@@ -84,7 +95,7 @@ public class ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(550, 340, 80, 32);
+        jButton2.setBounds(550, 340, 100, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,6 +104,8 @@ public class ProjectForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_BackBtnActionPerformed
         ProjId.setEditable(true);
         ProjName.setEditable(true);
+        ProjId.setText(null);
+        ProjName.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
@@ -101,6 +114,7 @@ public class ProjectForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButton2ActionPerformed
         String ID = ProjId.getText().toString();
         String Name = ProjName.getText().toString();
+        
         String DepartmentID;
         DepartmentID = jComboBox1.getSelectedItem().toString();
         

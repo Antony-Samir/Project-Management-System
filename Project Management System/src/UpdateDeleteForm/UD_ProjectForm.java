@@ -4,18 +4,42 @@ import Forms.ManagerForm;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import project.management.system.Project;
+import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 
 public class UD_ProjectForm extends javax.swing.JFrame 
 {
 
     static ManagerForm MF = new ManagerForm();
+    
+    ReadFile RF = new ReadFile();
     WriteFile WF = new WriteFile();
     
     public UD_ProjectForm() 
     {
         initComponents();
+        
+        if (RF.ProjectNums != 0)
+        {
+           for (int i = 0; i < RF.ProjectNums; i++)
+            {
+                jComboBox2.addItem(RF.project[i].getName().toString());
+            }
+        }
+        
+        if (RF.DepartmentNums != 0)
+        {
+           for (int i = 0; i < RF.DepartmentNums; i++)
+            {
+                jComboBox1.addItem(RF.department[i].getName().toString());
+            }
+        }
+        
+        ProjId.setEditable(false);
+        ProjName.setEditable(false);
+        
         this.setLocationRelativeTo(null);
        
     }
@@ -39,6 +63,9 @@ public class UD_ProjectForm extends javax.swing.JFrame
         ProjName = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -53,27 +80,34 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(6, 6, 79, 39);
+        BackBtn.setBounds(20, 30, 100, 32);
 
         jLabel1.setText("Project ID:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 160, 90, 16);
+        jLabel1.setBounds(70, 160, 90, 16);
 
         jLabel2.setText("Project Name:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(290, 160, 90, 16);
+        jLabel2.setBounds(230, 160, 90, 16);
 
         jLabel3.setText("Department ID:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(460, 160, 90, 16);
+        jLabel3.setBounds(390, 160, 90, 16);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(490, 200, 65, 26);
+        jComboBox1.setBounds(390, 200, 100, 26);
         getContentPane().add(ProjId);
-        ProjId.setBounds(110, 200, 100, 24);
+        ProjId.setBounds(70, 200, 100, 24);
+
+        ProjName.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                ProjNameActionPerformed(evt);
+            }
+        });
         getContentPane().add(ProjName);
-        ProjName.setBounds(300, 200, 100, 24);
+        ProjName.setBounds(230, 200, 100, 24);
 
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener()
@@ -84,18 +118,44 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(550, 340, 80, 32);
+        jButton2.setBounds(230, 310, 100, 32);
 
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(575, 100, 100, 26);
+
+        jLabel4.setText("Select Project  you want to Update or Delete");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(400, 50, 260, 16);
+
+        jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(60, 310, 100, 32);
+
+        jButton3.setText("View");
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(577, 150, 100, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        ProjId.setEditable(true);
-        ProjName.setEditable(true);
+        ProjId.setEditable(false);
+        ProjName.setEditable(false);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
@@ -103,12 +163,66 @@ public class UD_ProjectForm extends javax.swing.JFrame
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
         
-        
+        if (ProjId.getText().toString().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
+        } 
+        else
+        {
+            //other logic
+        }
         
         
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ProjNameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ProjNameActionPerformed
+    {//GEN-HEADEREND:event_ProjNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProjNameActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        
+        if (ProjId.getText().toString().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
+        } 
+        else
+        {
+            //other logic
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
+    {//GEN-HEADEREND:event_jButton3ActionPerformed
+        
+        if (RF.DepartmentNums != 0)
+        {
+            ProjId.setEditable(true);
+            ProjName.setEditable(true);
+            
+            String SelectedProject  = jComboBox2.getSelectedItem().toString();
+                        
+            for (int i = 0; i < RF.ProjectNums; i++)
+            {
+                if (RF.project[i].getName() == SelectedProject)
+                {
+                    ProjId.setText(String.valueOf(RF.project[i].getId()));
+                    ProjName.setText(RF.project[i].getName());
+                    break;
+                }
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Departments Were Added!", "Add Departments First", JOptionPane.ERROR_MESSAGE);
+            MF.setVisible(true);
+            this.dispose();
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,11 +273,14 @@ public class UD_ProjectForm extends javax.swing.JFrame
     private javax.swing.JButton BackBtn;
     private javax.swing.JTextField ProjId;
     private javax.swing.JTextField ProjName;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

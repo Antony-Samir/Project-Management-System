@@ -44,13 +44,13 @@ public class ResourcesForm extends javax.swing.JFrame
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Name:");
+        jLabel1.setText("Resource Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(420, 120, 36, 16);
+        jLabel1.setBounds(420, 120, 100, 16);
 
-        jLabel2.setText("ID:");
+        jLabel2.setText("Resource ID:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(210, 120, 14, 16);
+        jLabel2.setBounds(210, 120, 90, 16);
         getContentPane().add(ResName);
         ResName.setBounds(410, 170, 90, 24);
         getContentPane().add(ResId);
@@ -65,7 +65,7 @@ public class ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(560, 310, 90, 32);
+        jButton1.setBounds(560, 310, 100, 32);
 
         BackBtn.setText("Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -76,7 +76,7 @@ public class ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(40, 30, 70, 40);
+        BackBtn.setBounds(40, 30, 100, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -107,6 +107,8 @@ public class ResourcesForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_BackBtnActionPerformed
         ResId.setEditable(true);
         ResName.setEditable(true);
+        ResId.setText(null);
+        ResName.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
