@@ -86,10 +86,6 @@ public class ResourcesForm extends javax.swing.JFrame
         String ID = ResId.getText().toString();
         String Name = ResName.getText().toString();
         
-        
-        Resource res = new Resource();
-        res.setName(Name);
-        //res.setId(ID); ID is int
         try
         {
             WF.writeResource(ID, Name);

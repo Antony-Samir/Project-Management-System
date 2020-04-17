@@ -36,7 +36,6 @@ public class ManagerForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        BackBtn = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -52,16 +51,6 @@ public class ManagerForm extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
-
-        BackBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                BackBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BackBtn);
-        BackBtn.setBounds(10, 11, 74, 40);
 
         jButton3.setText("Print All Delayed Tasks");
         getContentPane().add(jButton3);
@@ -228,12 +217,6 @@ public class ManagerForm extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
-
-        //this.dispose();
-        //this.setVisible(false);
-    }//GEN-LAST:event_BackBtnActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
     {//GEN-HEADEREND:event_jButton4ActionPerformed
         LPF.setVisible(true);
@@ -341,7 +324,6 @@ public class ManagerForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BackBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;

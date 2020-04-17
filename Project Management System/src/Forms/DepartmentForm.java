@@ -89,10 +89,6 @@ public class DepartmentForm extends javax.swing.JFrame
         String ID = DepId.getText().toString();
         String Name = DepName.getText().toString();
         
-        
-        Department dep = new Department();
-        dep.setName(Name);
-        //res.setId(ID); ID is int
         try
         {
             WF.writeDepartment(ID, Name);

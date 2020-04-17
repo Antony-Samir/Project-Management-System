@@ -18,6 +18,7 @@ public class SignUpForm extends javax.swing.JFrame
     static LoginForm LG = new LoginForm();
     TeamMember TM = new TeamMember();
     
+    ReadFile RF = new ReadFile();
     WriteFile WF = new WriteFile();
     
 
@@ -172,18 +173,9 @@ public class SignUpForm extends javax.swing.JFrame
         } 
         else
         {
-           //writeMember(String ID, String Name, String Address, String Phone, String Email, String Password)
-            Employee Emp = new Employee();
-
-            Emp.setName(Name);
-            Emp.setAddress(Address);
-            Emp.setPhone(Phone);
-            Emp.setEmail(Email);
-            Emp.setPassword(Password);
             try
             {
                 WF.writeMember(ID, Name, Address, Phone, Email, Password);
-                //WF.writeAcount(account);
             } 
             catch (IOException ex)
             {
@@ -204,6 +196,7 @@ public class SignUpForm extends javax.swing.JFrame
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
+        
         LG.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed

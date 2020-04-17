@@ -224,17 +224,7 @@ public class TaskForm extends javax.swing.JFrame
         } 
         else
         {
-            Task task = new Task();
-
-            //task.setId(TaskId);
-            task.setFromDate(FromDate);
-            task.setTitle(Title);
-            //members
-            //projectId          
-            task.setToDate(ToDate);
-            task.setStatus(Status);
-            //resources
-            
+           
           /*try
             {
                 WF.writeTask("4", Name, Address, Phone, Email, Password);

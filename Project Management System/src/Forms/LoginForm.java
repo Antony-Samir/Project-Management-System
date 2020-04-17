@@ -2,6 +2,7 @@ package Forms;
 
 import javax.swing.JOptionPane;
 import project.management.system.InvalidPasswordException;
+import project.management.system.ReadFile;
 
 public class LoginForm extends javax.swing.JFrame
 {
@@ -9,6 +10,7 @@ public class LoginForm extends javax.swing.JFrame
     static EmployeeForm mainMenu = new EmployeeForm();
     static ManagerForm MF = new ManagerForm();
     
+    ReadFile RF = new ReadFile();
     
     public LoginForm()
     {
@@ -96,6 +98,7 @@ public class LoginForm extends javax.swing.JFrame
 
     private void SignInBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SignInBtnActionPerformed
     {//GEN-HEADEREND:event_SignInBtnActionPerformed
+        Boolean accFound = false;
         
         String Name = emailTxt.getText().toString();
         String Password = passwordTxt.getText().toString();
@@ -109,17 +112,26 @@ public class LoginForm extends javax.swing.JFrame
         }
         else if (Name.equals("Admin") && Password.equals("123"))
         {//Check If Admin || Manager
+            accFound = true;
             MF.setVisible(true);
             this.dispose();
             //this.setVisible(false);  
         }
-        else if (Name.equals("test") && Password.equals("test"))
-        {//Check If Employee
-            mainMenu.setVisible(true);
-            this.dispose();
-            //this.setVisible(false);  
-        }
         else
+        {//Check If Employee
+            for (int i = 0; i < RF.MemberNums; i++)
+            {
+                if (Name.equals(RF.member[i].getEmail()) && Password.equals(RF.member[i].getPassword()))
+                {
+                    accFound = true;
+                    mainMenu.setVisible(true);
+                    this.dispose();
+                    break;
+                }                
+            }
+        }
+        
+        if (accFound == false)
         {
             InvalidPasswordException.InvalidCount--;
             if (InvalidPasswordException.getInvalidCount() >= 1)
@@ -132,14 +144,13 @@ public class LoginForm extends javax.swing.JFrame
                 JOptionPane.showMessageDialog(this, "You exceeded the allowed limit, Program will terminate", "Invalid Email or Password", JOptionPane.WARNING_MESSAGE);
                 this.dispose();
                 System.exit(0);
-            }        
-            
-              
+            }
         }
         
         
     }//GEN-LAST:event_SignInBtnActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */

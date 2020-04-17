@@ -117,10 +117,8 @@ public class ProjectForm extends javax.swing.JFrame
         
         String DepartmentID;
         DepartmentID = jComboBox1.getSelectedItem().toString();
+
         
-        Project proj = new Project();
-        proj.setName(Name);
-        //proj.setId(ID); ID is int
         try
         {
             WF.writeProject(ID, Name, DepartmentID);
