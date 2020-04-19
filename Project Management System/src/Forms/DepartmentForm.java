@@ -8,7 +8,6 @@ import project.management.system.WriteFile;
 public class DepartmentForm extends javax.swing.JFrame
 {
     static ManagerForm MF = new ManagerForm();
-    WriteFile WF = new WriteFile();
     
     public DepartmentForm()
     {
@@ -91,7 +90,7 @@ public class DepartmentForm extends javax.swing.JFrame
         
         try
         {
-            WF.writeDepartment(ID, Name);
+            WriteFile.getInstance().writeDepartment(ID, Name);
         } catch (IOException ex)
         {
             Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);

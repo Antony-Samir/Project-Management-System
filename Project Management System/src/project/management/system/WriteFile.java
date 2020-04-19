@@ -4,9 +4,29 @@ import java.io.*;
 
 public class WriteFile
 {
+    
+    private static WriteFile uniqueWF = null;
+    
+    private WriteFile()
+    {
+        //Using Singleton Design Pattern    
+    }
+    
+    public static WriteFile getInstance()
+    {
+        if (uniqueWF == null)
+        {
+            uniqueWF = new WriteFile();
+        }
+        return uniqueWF;
+    }
+    
+    
+    
+    
     static SignUpForm SignObj = new SignUpForm();
     
-    static private  FileWriter FW;
+    static private FileWriter FW;
     static private PrintWriter PW;
 
     //static Department newDep;

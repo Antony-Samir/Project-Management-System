@@ -4,6 +4,7 @@ public class LogProgressForm extends javax.swing.JFrame
 {
 
     static ManagerForm MF = new ManagerForm();
+    
     public LogProgressForm() 
     {
         initComponents();

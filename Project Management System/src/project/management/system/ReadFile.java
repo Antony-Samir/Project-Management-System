@@ -7,6 +7,24 @@ import java.io.LineNumberReader;
 
 public class ReadFile
 {
+    private static ReadFile uniqueRF = null;
+    
+    private ReadFile()
+    {
+        //Using Singleton Design Pattern    
+    }
+    
+    public static ReadFile getInstance()
+    {
+        if (uniqueRF == null)
+        {
+            uniqueRF = new ReadFile();
+        }
+        return uniqueRF;
+    }
+    
+    
+    
     static FileReader FR;
     static BufferedReader BR;
     

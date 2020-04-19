@@ -10,7 +10,6 @@ public class LoginForm extends javax.swing.JFrame
     static EmployeeForm mainMenu = new EmployeeForm();
     static ManagerForm MF = new ManagerForm();
     
-    ReadFile RF = new ReadFile();
     
     public LoginForm()
     {
@@ -119,9 +118,9 @@ public class LoginForm extends javax.swing.JFrame
         }
         else
         {//Check If Employee
-            for (int i = 0; i < RF.MemberNums; i++)
+            for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
             {
-                if (Name.equals(RF.member[i].getEmail()) && Password.equals(RF.member[i].getPassword()))
+                if (Name.equals(ReadFile.getInstance().member[i].getEmail()) && Password.equals(ReadFile.getInstance().member[i].getPassword()))
                 {
                     accFound = true;
                     mainMenu.setVisible(true);

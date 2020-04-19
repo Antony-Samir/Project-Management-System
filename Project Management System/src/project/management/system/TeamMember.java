@@ -3,7 +3,6 @@ package project.management.system;
 public class TeamMember
 {    
     
-    ReadFile RF = new ReadFile();
     //For checking the last ID number in file
     //Giving the new member the last ID in file + 1  
     
@@ -91,15 +90,14 @@ public class TeamMember
     
     public int giveId()
     {
-        if (RF.MemberNums == 0)
+        if (ReadFile.getInstance().MemberNums == 0)
         {
             return 1;
         }
         else
         {
-            return RF.MemberNums+1;
+            return ReadFile.getInstance().MemberNums+1;
         }
     }
-    
     
 }

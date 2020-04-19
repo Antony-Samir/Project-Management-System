@@ -3,7 +3,8 @@ package Forms;
 
 public class AssignTaskForm extends javax.swing.JFrame
 {
-   static ManagerForm MF = new ManagerForm();
+    static ManagerForm MF = new ManagerForm();
+    
     public AssignTaskForm()
     {
         initComponents();

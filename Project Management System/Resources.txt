@@ -6,3 +6,5 @@ RESOURCE ID # NAME
 8 # lap2 # 0
 7 # screen # 0
 55 # test # 0
+8 # PC 1 # 0
+99 # test99 # 0

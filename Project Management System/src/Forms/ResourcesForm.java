@@ -9,7 +9,6 @@ public class ResourcesForm extends javax.swing.JFrame
 {
 
     static ManagerForm MF = new ManagerForm();
-    WriteFile WF = new WriteFile();
     
     public ResourcesForm()
     {
@@ -88,7 +87,7 @@ public class ResourcesForm extends javax.swing.JFrame
         
         try
         {
-            WF.writeResource(ID, Name);
+            WriteFile.getInstance().writeResource(ID, Name);
         } catch (IOException ex)
         {
             Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);

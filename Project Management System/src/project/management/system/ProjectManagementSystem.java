@@ -3,6 +3,7 @@ package project.management.system;
 import javax.swing.JFrame;
 import java.io.IOException;
 import javax.swing.*;
+
 //import Forms.LoginForm;
 /**
  * @version 1.1
@@ -12,21 +13,22 @@ import javax.swing.*;
  * @author Kirollos Nayer
  * @author Bashnona Gamal
  */
+
 public class ProjectManagementSystem
 {
     public static void main(String[] args) throws IOException
     {
         
-        ReadFile RF = new ReadFile();
-        RF.fileLines();
+        //ReadFile RF = new ReadFile();
+        ReadFile.getInstance().fileLines();
         
-        RF.readDepartments();
+        ReadFile.getInstance().readDepartments();
         //System.out.println("dep ok");
-        RF.readProjects();
+        ReadFile.getInstance().readProjects();
         //System.out.println("proj ok");
-        RF.readMembers();
+        ReadFile.getInstance().readMembers();
         //System.out.println("mem ok");
-        RF.readResources();
+        ReadFile.getInstance().readResources();
         //System.out.println("res ok");
         
         

@@ -14,26 +14,24 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
     static ManagerForm MF = new ManagerForm();
     
-    ReadFile RF = new ReadFile();
-    WriteFile WF = new WriteFile();
     
     public UD_ProjectForm() 
     {
         initComponents();
         
-        if (RF.ProjectNums != 0)
+        if (ReadFile.getInstance().ProjectNums != 0)
         {
-           for (int i = 0; i < RF.ProjectNums; i++)
+           for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
             {
-                jComboBox2.addItem(RF.project[i].getName().toString());
+                jComboBox2.addItem(ReadFile.getInstance().project[i].getName().toString());
             }
         }
         
-        if (RF.DepartmentNums != 0)
+        if (ReadFile.getInstance().DepartmentNums != 0)
         {
-           for (int i = 0; i < RF.DepartmentNums; i++)
+           for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
             {
-                jComboBox1.addItem(RF.department[i].getName().toString());
+                jComboBox1.addItem(ReadFile.getInstance().department[i].getName().toString());
             }
         }
         
@@ -198,19 +196,19 @@ public class UD_ProjectForm extends javax.swing.JFrame
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
         
-        if (RF.DepartmentNums != 0)
+        if (ReadFile.getInstance().DepartmentNums != 0)
         {
             ProjId.setEditable(true);
             ProjName.setEditable(true);
             
             String SelectedProject  = jComboBox2.getSelectedItem().toString();
                         
-            for (int i = 0; i < RF.ProjectNums; i++)
+            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
             {
-                if (RF.project[i].getName() == SelectedProject)
+                if (ReadFile.getInstance().project[i].getName() == SelectedProject)
                 {
-                    ProjId.setText(String.valueOf(RF.project[i].getId()));
-                    ProjName.setText(RF.project[i].getName());
+                    ProjId.setText(String.valueOf(ReadFile.getInstance().project[i].getId()));
+                    ProjName.setText(ReadFile.getInstance().project[i].getName());
                     break;
                 }
             }

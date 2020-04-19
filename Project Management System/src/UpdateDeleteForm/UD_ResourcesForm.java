@@ -15,8 +15,6 @@ public class UD_ResourcesForm extends javax.swing.JFrame
 
     static ManagerForm MF = new ManagerForm();
     
-    ReadFile RF = new ReadFile();
-    WriteFile WF = new WriteFile();
     
     
     
@@ -24,11 +22,11 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     {
         initComponents();
 
-        if (RF.ResourceNums != 0)
+        if (ReadFile.getInstance().ResourceNums != 0)
         {
-           for (int i = 0; i < RF.ResourceNums; i++)
+           for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
             {
-                jComboBox1.addItem(RF.resource[i].getName().toString());
+                jComboBox1.addItem(ReadFile.getInstance().resource[i].getName().toString());
             }
         }
         
@@ -174,19 +172,19 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
         
-        if (RF.DepartmentNums != 0)
+        if (ReadFile.getInstance().DepartmentNums != 0)
         {
             ResId.setEditable(true);
             ResName.setEditable(true);
             
             String SelectedResource  = jComboBox1.getSelectedItem().toString();
             
-            for (int i = 0; i < RF.ResourceNums; i++)
+            for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
             {
-                if (RF.resource[i].getName() == SelectedResource)
+                if (ReadFile.getInstance().resource[i].getName() == SelectedResource)
                 {
-                    ResId.setText(String.valueOf(RF.resource[i].getId()));
-                    ResName.setText(RF.resource[i].getName());
+                    ResId.setText(String.valueOf(ReadFile.getInstance().resource[i].getId()));
+                    ResName.setText(ReadFile.getInstance().resource[i].getName());
                     break;
                 }
             }

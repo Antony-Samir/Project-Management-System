@@ -10,7 +10,6 @@ import project.management.system.WriteFile;
 public class UD_TaskForm extends javax.swing.JFrame
 {
     static ManagerForm MF = new ManagerForm();
-    WriteFile WF = new WriteFile();
     
     public UD_TaskForm()
     {

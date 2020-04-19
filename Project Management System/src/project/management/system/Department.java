@@ -6,7 +6,6 @@ public class Department
     private String Name;
 
     
-    
     public int getId()
     {
         return Id;
@@ -26,6 +25,5 @@ public class Department
     {
         this.Name = Name;
     }
-    
     
 }

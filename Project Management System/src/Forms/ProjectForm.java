@@ -11,18 +11,16 @@ public class ProjectForm extends javax.swing.JFrame
 {
 
     static ManagerForm MF = new ManagerForm();
-    ReadFile RF = new ReadFile();
-    WriteFile WF = new WriteFile();
     
     public ProjectForm() 
     {
         initComponents();
         
-        if (RF.DepartmentNums != 0)
+        if (ReadFile.getInstance().DepartmentNums != 0)
         {
-           for (int i = 0; i < RF.DepartmentNums; i++)
+           for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
             {
-                jComboBox1.addItem(String.valueOf(RF.department[i].getId()));
+                jComboBox1.addItem(String.valueOf(ReadFile.getInstance().department[i].getId()));
             }
         }
         
@@ -121,7 +119,7 @@ public class ProjectForm extends javax.swing.JFrame
         
         try
         {
-            WF.writeProject(ID, Name, DepartmentID);
+            WriteFile.getInstance().writeProject(ID, Name, DepartmentID);
         } catch (IOException ex)
         {
             Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);

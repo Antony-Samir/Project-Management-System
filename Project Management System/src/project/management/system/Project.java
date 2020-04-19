@@ -8,8 +8,6 @@ public class Project
     private int depId;
    
 
-    
-        
     public int getId()
     {
         return Id;

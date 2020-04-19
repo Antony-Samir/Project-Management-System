@@ -10,11 +10,11 @@ public class PrintTaskForm extends javax.swing.JFrame
 {
 
    
+    
     public PrintTaskForm()
     {
         initComponents();
         this.setLocationRelativeTo(null);
-        
     }
 
     /**

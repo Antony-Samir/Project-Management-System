@@ -12,18 +12,16 @@ public class UD_DepartmentForm extends javax.swing.JFrame
 {
     static ManagerForm MF = new ManagerForm();
     
-    ReadFile RF = new ReadFile();
-    WriteFile WF = new WriteFile();
     
     public UD_DepartmentForm()
     {
         initComponents();
         
-        if (RF.DepartmentNums != 0)
+        if (ReadFile.getInstance().DepartmentNums != 0)
         {
-            for (int i = 0; i < RF.DepartmentNums; i++)
+            for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
             {
-                jComboBox1.addItem(RF.department[i].getName().toString());
+                jComboBox1.addItem(ReadFile.getInstance().department[i].getName().toString());
             }
         }
         
@@ -164,19 +162,19 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
         
-        if (RF.DepartmentNums != 0)
+        if (ReadFile.getInstance().DepartmentNums != 0)
         {
             DepId.setEditable(true);
             DepName.setEditable(true);
             
             String SelectedDepartment  = jComboBox1.getSelectedItem().toString();
             
-            for (int i = 0; i < RF.DepartmentNums; i++)
+            for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
             {
-                if (RF.department[i].getName() == SelectedDepartment)
+                if (ReadFile.getInstance().department[i].getName() == SelectedDepartment)
                 {
-                    DepId.setText(String.valueOf(RF.department[i].getId()));
-                    DepName.setText(RF.department[i].getName());
+                    DepId.setText(String.valueOf(ReadFile.getInstance().department[i].getId()));
+                    DepName.setText(ReadFile.getInstance().department[i].getName());
                     break;
                 }
             }

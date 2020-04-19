@@ -17,10 +17,7 @@ public class SignUpForm extends javax.swing.JFrame
 
     static LoginForm LG = new LoginForm();
     TeamMember TM = new TeamMember();
-    
-    ReadFile RF = new ReadFile();
-    WriteFile WF = new WriteFile();
-    
+        
 
     /**
      * Creates new form SignUpForm
@@ -175,7 +172,7 @@ public class SignUpForm extends javax.swing.JFrame
         {
             try
             {
-                WF.writeMember(ID, Name, Address, Phone, Email, Password);
+                WriteFile.getInstance().writeMember(ID, Name, Address, Phone, Email, Password);
             } 
             catch (IOException ex)
             {

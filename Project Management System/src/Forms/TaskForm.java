@@ -9,7 +9,6 @@ import project.management.system.WriteFile;
 public class TaskForm extends javax.swing.JFrame
 {
     static ManagerForm MF = new ManagerForm();
-    WriteFile WF = new WriteFile();
     
     public TaskForm()
     {
@@ -35,11 +34,9 @@ public class TaskForm extends javax.swing.JFrame
         jTextField2 = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -48,12 +45,8 @@ public class TaskForm extends javax.swing.JFrame
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
@@ -99,19 +92,15 @@ public class TaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(saveBtn);
-        saveBtn.setBounds(590, 349, 58, 32);
+        saveBtn.setBounds(610, 410, 90, 32);
         getContentPane().add(jTextField3);
         jTextField3.setBounds(228, 218, 100, 24);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(380, 450, 100, 24);
         getContentPane().add(jTextField5);
         jTextField5.setBounds(487, 90, 100, 24);
         getContentPane().add(jTextField6);
         jTextField6.setBounds(487, 154, 100, 24);
         getContentPane().add(jTextField7);
         jTextField7.setBounds(487, 218, 100, 24);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(590, 400, 100, 30);
 
         jLabel1.setText("Task Id:");
         getContentPane().add(jLabel1);
@@ -144,50 +133,10 @@ public class TaskForm extends javax.swing.JFrame
         jLabel8.setText("Resources:");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(362, 286, 65, 16);
-
-        jLabel9.setText("//Members and resources may be more than 1");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(100, 440, 280, 30);
-
-        jCheckBox1.setText("jCheckBox1");
-        getContentPane().add(jCheckBox1);
-        jCheckBox1.setBounds(50, 380, 96, 24);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String []
-            {
-                "Title 1"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(230, 280, 80, 150);
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String []
-            {
-                "Title 1"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(500, 280, 80, 150);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(210, 290, 120, 110);
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(490, 280, 110, 120);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -197,11 +146,9 @@ public class TaskForm extends javax.swing.JFrame
         jTextField1.setEditable(true);
         jTextField2.setEditable(true);
         jTextField3.setEditable(true);
-        jTextField4.setEditable(true);
         jTextField5.setEditable(true);
         jTextField6.setEditable(true);
         jTextField7.setEditable(true);
-        jTextField8.setEditable(true);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
@@ -211,18 +158,16 @@ public class TaskForm extends javax.swing.JFrame
         String TaskId = jTextField1.getText().toString();
         String FromDate = jTextField2.getText().toString();
         String Title = jTextField3.getText().toString();
-        String Members = jTextField4.getText().toString();
         String ProjectId = jTextField5.getText().toString();
         String ToDate = jTextField6.getText().toString();
         String Status = jTextField7.getText().toString();
-        String Resources = jTextField8.getText().toString();
 
         
-        if (TaskId.isEmpty() || FromDate.isEmpty() || Title.isEmpty() || Members.isEmpty() || ProjectId.isEmpty() || ToDate.isEmpty() || Status.isEmpty() || Resources.isEmpty())
+        //if (TaskId.isEmpty() || FromDate.isEmpty() || Title.isEmpty() || Members.isEmpty() || ProjectId.isEmpty() || ToDate.isEmpty() || Status.isEmpty() || Resources.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
-        else
+       // else
         {
            
           /*try
@@ -239,11 +184,9 @@ public class TaskForm extends javax.swing.JFrame
             jTextField1.setEditable(false);
             jTextField2.setEditable(false);
             jTextField3.setEditable(false);
-            jTextField4.setEditable(false);
             jTextField5.setEditable(false);
             jTextField6.setEditable(false);
             jTextField7.setEditable(false);
-            jTextField8.setEditable(false);
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
@@ -288,7 +231,6 @@ public class TaskForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -297,21 +239,16 @@ public class TaskForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }
