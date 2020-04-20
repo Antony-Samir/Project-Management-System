@@ -25,6 +25,9 @@ public class LogProgressForm extends javax.swing.JFrame
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -41,25 +44,38 @@ public class LogProgressForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(6, 6, 79, 39);
+        BackBtn.setBounds(10, 10, 100, 32);
+        BackBtn.getAccessibleContext().setAccessibleName("");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String []
             {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Task ID", "Project ID", "Title", "From Date", "To Date", "Members", "Resources", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 70, 660, 390);
+        jScrollPane1.setBounds(20, 70, 580, 360);
+
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(600, 100, 100, 26);
+
+        jLabel1.setText("Select Project:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(610, 50, 90, 16);
+
+        jButton1.setText("View Log");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(600, 210, 100, 32);
+        jButton1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,6 +130,9 @@ public class LogProgressForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
