@@ -1,6 +1,7 @@
 package Forms;
 
 import javax.swing.JOptionPane;
+import project.management.system.ReadFile;
 
 /**
  *
@@ -9,11 +10,26 @@ import javax.swing.JOptionPane;
 public class PrintTaskForm extends javax.swing.JFrame
 {
 
-   
+   static ManagerForm MF = new ManagerForm();
     
     public PrintTaskForm()
     {
         initComponents();
+        
+        if (ReadFile.getInstance().TaskNums != 0)
+        {
+           for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+           {
+                jComboBox1.addItem(ReadFile.getInstance().task[i].getID());
+           }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
+            MF.setVisible(true);
+            this.dispose();
+        }
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -32,13 +48,15 @@ public class PrintTaskForm extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton1.setText("Print Project");
+        jButton1.setText("Print Task");
         jButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -47,31 +65,62 @@ public class PrintTaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(380, 240, 120, 32);
+        jButton1.setBounds(580, 70, 120, 32);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(240, 240, 110, 26);
+        jComboBox1.setBounds(450, 70, 110, 26);
 
         jLabel1.setText("OR, Select A Specific Project?");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(280, 180, 170, 16);
+        jLabel1.setBounds(280, 40, 170, 16);
 
-        jButton2.setText("Print All Delayed Projects?");
+        jButton2.setText("Print All Delayed Tasks?");
         getContentPane().add(jButton2);
-        jButton2.setBounds(260, 80, 200, 32);
+        jButton2.setBounds(80, 70, 200, 32);
 
         BackBtn.setText("Back");
+        BackBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                BackBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(50, 30, 59, 32);
+        BackBtn.setBounds(20, 20, 100, 32);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String []
+            {
+                "Task ID", "Project ID", "Title", "From Date", "To Date", "Members", "Resources", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(70, 140, 580, 310);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        this.setVisible(false);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
+    {//GEN-HEADEREND:event_BackBtnActionPerformed
+        MF.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,5 +188,7 @@ public class PrintTaskForm extends javax.swing.JFrame
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package UpdateDeleteForm;
 import Forms.ManagerForm;
+import static UpdateDeleteForm.UD_ProjectForm.MF;
 import project.management.system.ReadFile;
 
 
@@ -28,6 +29,12 @@ public class UD_ResourcesForm extends javax.swing.JFrame
             {
                 jComboBox1.addItem(ReadFile.getInstance().resource[i].getName().toString());
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Resources Were Added!", "Add Resource First", JOptionPane.ERROR_MESSAGE);
+            MF.setVisible(true);
+            this.dispose();
         }
         
         
@@ -148,7 +155,9 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
         ResId.setEditable(false);
+        ResId.setText(null);
         ResName.setEditable(false);
+        ResName.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
@@ -183,7 +192,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
             {
                 if (ReadFile.getInstance().resource[i].getName() == SelectedResource)
                 {
-                    ResId.setText(String.valueOf(ReadFile.getInstance().resource[i].getId()));
+                    ResId.setText(String.valueOf(ReadFile.getInstance().resource[i].getID()));
                     ResName.setText(ReadFile.getInstance().resource[i].getName());
                     break;
                 }

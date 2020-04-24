@@ -3,38 +3,43 @@ package project.management.system;
 public class Project
 {
     
-    private int Id;
+    private int ID;
     private String Name;
-    private int depId;
-   
+    private int DepartmentID;
 
-    public int getId()
-    {
-        return Id;
-    }
-
-    public void setId(int Id)
-    {
-        this.Id = Id;
-    }
     
+    
+    public int getID()
+    {
+        return ID;
+    }
+
+    public void setID(int ID)
+    {
+        this.ID = ID;
+    }
+
     public String getName()
     {
         return Name;
     }
 
-    public void setName(String ProjectName)
+    public void setName(String Name)
     {
-        this.Name = ProjectName;
-    }
-        
-    public int getDepId()
-    {
-        return depId;
+        this.Name = Name;
     }
 
-    public void setDepId(int depId)
+    public int getDepartmentID()
     {
-        this.depId = depId;
+        return DepartmentID;
     }
+
+    public void setDepartmentID(int DepartmentID)
+    {
+        this.DepartmentID = DepartmentID;
+    }
+    
+   
+        
+    
 }

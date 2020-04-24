@@ -24,6 +24,12 @@ public class UD_DepartmentForm extends javax.swing.JFrame
                 jComboBox1.addItem(ReadFile.getInstance().department[i].getName().toString());
             }
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Departments Were Added!", "Add Department First", JOptionPane.ERROR_MESSAGE);
+            MF.setVisible(true);
+            this.dispose();
+        }
         
         DepId.setEditable(false);
         DepName.setEditable(false);
@@ -124,7 +130,9 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
         DepId.setEditable(false);
+        DepId.setText(null);
         DepName.setEditable(false);
+        DepName.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
@@ -173,7 +181,7 @@ public class UD_DepartmentForm extends javax.swing.JFrame
             {
                 if (ReadFile.getInstance().department[i].getName() == SelectedDepartment)
                 {
-                    DepId.setText(String.valueOf(ReadFile.getInstance().department[i].getId()));
+                    DepId.setText(String.valueOf(ReadFile.getInstance().department[i].getID()));
                     DepName.setText(ReadFile.getInstance().department[i].getName());
                     break;
                 }

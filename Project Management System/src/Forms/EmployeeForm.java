@@ -1,5 +1,7 @@
 package Forms;
 
+import project.management.system.ReadFile;
+
 
 
 public class EmployeeForm extends javax.swing.JFrame
@@ -8,6 +10,10 @@ public class EmployeeForm extends javax.swing.JFrame
     public EmployeeForm()
     {
         initComponents();
+        
+        //System.out.println(LoginForm.accFoundID);
+        
+        
         this.setLocationRelativeTo(null);
 
     }
@@ -22,10 +28,10 @@ public class EmployeeForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        SaveBtn = new javax.swing.JButton();
+        ViewBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
+        ToDateTxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
@@ -33,69 +39,78 @@ public class EmployeeForm extends javax.swing.JFrame
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel10 = new javax.swing.JLabel();
+        NameTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(720, 480));
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton1.setText("Save");
-        jButton1.setPreferredSize(new java.awt.Dimension(90, 40));
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        SaveBtn.setText("Save");
+        SaveBtn.setPreferredSize(new java.awt.Dimension(90, 40));
+        SaveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                SaveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(80, 300, 120, 40);
+        getContentPane().add(SaveBtn);
+        SaveBtn.setBounds(120, 320, 120, 40);
 
-        jButton2.setText("View Project");
-        jButton2.setPreferredSize(new java.awt.Dimension(90, 40));
-        getContentPane().add(jButton2);
-        jButton2.setBounds(470, 300, 120, 40);
+        ViewBtn.setText("View Project");
+        ViewBtn.setPreferredSize(new java.awt.Dimension(90, 40));
+        ViewBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                ViewBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ViewBtn);
+        ViewBtn.setBounds(480, 320, 120, 40);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(255, 150, 80, 26);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(30, 200, 80, 24);
+        jComboBox1.setBounds(270, 150, 80, 26);
 
-        jLabel1.setText("Task ID");
+        ToDateTxt.setEditable(false);
+        getContentPane().add(ToDateTxt);
+        ToDateTxt.setBounds(20, 200, 100, 24);
+
+        jLabel1.setText("Task ID:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 150, 50, 16);
+        jLabel1.setBounds(260, 110, 50, 16);
 
         getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(625, 150, 80, 26);
+        jComboBox2.setBounds(620, 150, 80, 26);
 
-        jLabel2.setText("Task Status");
+        jLabel2.setText("Task Status:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(160, 150, 80, 16);
 
-        jLabel3.setText("Project ID");
+        jLabel3.setText("Project ID:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(400, 150, 70, 16);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(410, 200, 80, 24);
+        jLabel3.setBounds(410, 150, 70, 16);
 
-        jLabel4.setText("Project Name");
+        jTextField3.setEditable(false);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(400, 200, 100, 24);
+
+        jLabel4.setText("Department ID:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(520, 150, 90, 16);
+
+        jTextField4.setEditable(false);
         getContentPane().add(jTextField4);
-        jTextField4.setBounds(540, 200, 80, 24);
-
-        jRadioButton1.setText("Done");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(160, 190, 61, 28);
-
-        jRadioButton2.setText("In Progress");
-        getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(160, 220, 98, 28);
+        jTextField4.setBounds(520, 200, 100, 24);
 
         jLabel5.setForeground(new java.awt.Color(255, 153, 153));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login background.png"))); // NOI18N
@@ -103,21 +118,98 @@ public class EmployeeForm extends javax.swing.JFrame
         getContentPane().add(jLabel5);
         jLabel5.setBounds(360, 0, 20, 480);
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 255));
         jLabel6.setText("Manage Tasks");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(140, 30, 83, 16);
+        jLabel6.setBounds(110, 60, 83, 16);
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 255));
         jLabel7.setText("View Projects");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(530, 30, 79, 16);
+        jLabel7.setBounds(500, 60, 79, 16);
+
+        jLabel8.setText("To Date:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(30, 150, 50, 16);
+
+        jLabel9.setText("Project Name:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(610, 110, 80, 16);
+
+        jRadioButton1.setText("Done");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton1);
+
+        jRadioButton2.setText("In Progress");
+        jPanel1.add(jRadioButton2);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(160, 180, 110, 100);
+
+        jLabel10.setText("Welcome,");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(10, 20, 70, 16);
+
+        NameTxt.setEditable(false);
+        getContentPane().add(NameTxt);
+        NameTxt.setBounds(70, 20, 110, 24);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        //this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
+    {//GEN-HEADEREND:event_SaveBtnActionPerformed
+        int TaskID = Integer.valueOf(jComboBox1.getSelectedItem().toString());
+        
+        
+        for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+        {
+            if (ReadFile.getInstance().task[i].getID() == TaskID)
+            {
+                ToDateTxt.setText(ReadFile.getInstance().task[i].getToDate().toString());
+                break;
+            }
+        }
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_SaveBtnActionPerformed
+
+    private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
+    {//GEN-HEADEREND:event_ViewBtnActionPerformed
+         String ProjectName = jComboBox2.getSelectedItem().toString();
+         String ProjectID;
+         String DepartmentID;
+         
+        
+        for (int i = 0; i < ReadFile.ProjectNums; i++)
+        {
+            if (ProjectName == ReadFile.project[i].getName())
+            {
+                jTextField3.setText(String.valueOf(ReadFile.project[i].getID()));
+                jTextField4.setText(String.valueOf(ReadFile.project[i].getDepartmentID()));
+                break;
+            }
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_ViewBtnActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jRadioButton1ActionPerformed
+    {//GEN-HEADEREND:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,20 +262,25 @@ public class EmployeeForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    public static javax.swing.JTextField NameTxt;
+    private javax.swing.JButton SaveBtn;
+    private javax.swing.JTextField ToDateTxt;
+    private javax.swing.JButton ViewBtn;
+    public static javax.swing.JComboBox jComboBox1;
+    public static javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables

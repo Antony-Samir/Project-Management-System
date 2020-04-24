@@ -1,12 +1,8 @@
 package project.management.system;
 
 public class TeamMember
-{    
-    
-    //For checking the last ID number in file
-    //Giving the new member the last ID in file + 1  
-    
-    private int Id;
+{
+    private int ID;
     private String Name;
     private String Address;
     private String Phone; //Numbers Only
@@ -14,18 +10,16 @@ public class TeamMember
     private String Password;
     private String Title;
 
-    public TeamMember()
+    
+    
+    public int getID()
     {
+        return ID;
     }
 
-    public int getId()
+    public void setID(int ID)
     {
-        return Id;
-    }
-
-    public void setId(int Id)
-    {
-        this.Id = Id;
+        this.ID = ID;
     }
 
     public String getName()

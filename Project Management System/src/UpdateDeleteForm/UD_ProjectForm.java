@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import project.management.system.Project;
-import project.management.system.ReadFile;
-import project.management.system.WriteFile;
+import project.management.system.*;
 
 public class UD_ProjectForm extends javax.swing.JFrame 
 {
@@ -22,9 +20,15 @@ public class UD_ProjectForm extends javax.swing.JFrame
         if (ReadFile.getInstance().ProjectNums != 0)
         {
            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
-            {
+           {
                 jComboBox2.addItem(ReadFile.getInstance().project[i].getName().toString());
-            }
+           }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
+            MF.setVisible(true);
+            this.dispose();
         }
         
         if (ReadFile.getInstance().DepartmentNums != 0)
@@ -59,11 +63,11 @@ public class UD_ProjectForm extends javax.swing.JFrame
         jComboBox1 = new javax.swing.JComboBox();
         ProjId = new javax.swing.JTextField();
         ProjName = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        SaveBtn = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        DeleteBtn = new javax.swing.JButton();
+        ViewBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -107,16 +111,16 @@ public class UD_ProjectForm extends javax.swing.JFrame
         getContentPane().add(ProjName);
         ProjName.setBounds(230, 200, 100, 24);
 
-        jButton2.setText("Save");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
+        SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton2ActionPerformed(evt);
+                SaveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(230, 310, 100, 32);
+        getContentPane().add(SaveBtn);
+        SaveBtn.setBounds(230, 310, 100, 32);
 
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(575, 100, 100, 26);
@@ -125,27 +129,27 @@ public class UD_ProjectForm extends javax.swing.JFrame
         getContentPane().add(jLabel4);
         jLabel4.setBounds(400, 50, 260, 16);
 
-        jButton1.setText("Delete");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                DeleteBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(60, 310, 100, 32);
+        getContentPane().add(DeleteBtn);
+        DeleteBtn.setBounds(60, 310, 100, 32);
 
-        jButton3.setText("View");
-        jButton3.addActionListener(new java.awt.event.ActionListener()
+        ViewBtn.setText("View");
+        ViewBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton3ActionPerformed(evt);
+                ViewBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(577, 150, 100, 32);
+        getContentPane().add(ViewBtn);
+        ViewBtn.setBounds(577, 150, 100, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,13 +157,15 @@ public class UD_ProjectForm extends javax.swing.JFrame
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
         ProjId.setEditable(false);
+        ProjId.setText(null);
         ProjName.setEditable(false);
+        ProjName.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
-    {//GEN-HEADEREND:event_jButton2ActionPerformed
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
+    {//GEN-HEADEREND:event_SaveBtnActionPerformed
         
         if (ProjId.getText().toString().isEmpty())
         {
@@ -173,15 +179,15 @@ public class UD_ProjectForm extends javax.swing.JFrame
         
         
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_SaveBtnActionPerformed
 
     private void ProjNameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ProjNameActionPerformed
     {//GEN-HEADEREND:event_ProjNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ProjNameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
+    {//GEN-HEADEREND:event_DeleteBtnActionPerformed
         
         if (ProjId.getText().toString().isEmpty())
         {
@@ -191,10 +197,10 @@ public class UD_ProjectForm extends javax.swing.JFrame
         {
             //other logic
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
-    {//GEN-HEADEREND:event_jButton3ActionPerformed
+    private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
+    {//GEN-HEADEREND:event_ViewBtnActionPerformed
         
         if (ReadFile.getInstance().DepartmentNums != 0)
         {
@@ -207,7 +213,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
             {
                 if (ReadFile.getInstance().project[i].getName() == SelectedProject)
                 {
-                    ProjId.setText(String.valueOf(ReadFile.getInstance().project[i].getId()));
+                    ProjId.setText(String.valueOf(ReadFile.getInstance().project[i].getID()));
                     ProjName.setText(ReadFile.getInstance().project[i].getName());
                     break;
                 }
@@ -215,12 +221,12 @@ public class UD_ProjectForm extends javax.swing.JFrame
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "No Departments Were Added!", "Add Departments First", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No Departments Were Added!", "Add Department First", JOptionPane.ERROR_MESSAGE);
             MF.setVisible(true);
             this.dispose();
         }
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ViewBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,11 +275,11 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
+    private javax.swing.JButton DeleteBtn;
     private javax.swing.JTextField ProjId;
     private javax.swing.JTextField ProjName;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton SaveBtn;
+    private javax.swing.JButton ViewBtn;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;

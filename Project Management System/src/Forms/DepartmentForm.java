@@ -2,6 +2,7 @@ package Forms;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import project.management.system.Department;
 import project.management.system.WriteFile;
 
@@ -26,7 +27,7 @@ public class DepartmentForm extends javax.swing.JFrame
     {
 
         BackBtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         DepName = new javax.swing.JTextField();
@@ -47,16 +48,16 @@ public class DepartmentForm extends javax.swing.JFrame
         getContentPane().add(BackBtn);
         BackBtn.setBounds(40, 20, 90, 32);
 
-        jButton2.setText("Save");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton2ActionPerformed(evt);
+                saveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(570, 350, 90, 32);
+        getContentPane().add(saveBtn);
+        saveBtn.setBounds(570, 350, 90, 32);
 
         jLabel1.setText("Department Name:");
         getContentPane().add(jLabel1);
@@ -75,6 +76,7 @@ public class DepartmentForm extends javax.swing.JFrame
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
+        saveBtn.setVisible(true);
         DepId.setEditable(true);
         DepName.setEditable(true);
         DepId.setText(null);
@@ -83,24 +85,31 @@ public class DepartmentForm extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
-    {//GEN-HEADEREND:event_jButton2ActionPerformed
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
+    {//GEN-HEADEREND:event_saveBtnActionPerformed
         String ID = DepId.getText().toString();
         String Name = DepName.getText().toString();
         
-        try
+        if (ID.isEmpty() || Name.isEmpty())
         {
-            WriteFile.getInstance().writeDepartment(ID, Name);
-        } catch (IOException ex)
+            JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
+        }
+        else
         {
-            Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            try
+            {
+                WriteFile.getInstance().writeDepartment(ID, Name);
+            } 
+            catch (IOException ex)
+            {
+                Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DepId.setEditable(false);
+            DepName.setEditable(false);
+            saveBtn.setVisible(false);
         }
         
-        
-        
-        DepId.setEditable(false);
-        DepName.setEditable(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_saveBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,8 +153,8 @@ public class DepartmentForm extends javax.swing.JFrame
     private javax.swing.JButton BackBtn;
     private javax.swing.JTextField DepId;
     private javax.swing.JTextField DepName;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

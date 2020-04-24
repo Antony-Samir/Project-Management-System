@@ -154,7 +154,7 @@ public class SignUpForm extends javax.swing.JFrame
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
         String ID = String.valueOf(TM.giveId());
-        System.out.println(TM.giveId());
+        System.out.println("Your ID is: " + TM.giveId());
         IdTxt.setText(ID);
         
         String Name = NameTxt.getText().toString();
@@ -193,7 +193,6 @@ public class SignUpForm extends javax.swing.JFrame
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        
         LG.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed

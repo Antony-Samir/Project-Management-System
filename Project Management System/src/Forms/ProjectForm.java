@@ -3,6 +3,7 @@ package Forms;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import project.management.system.Project;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
@@ -20,7 +21,7 @@ public class ProjectForm extends javax.swing.JFrame
         {
            for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
             {
-                jComboBox1.addItem(String.valueOf(ReadFile.getInstance().department[i].getId()));
+                jComboBox1.addItem(String.valueOf(ReadFile.getInstance().department[i].getID()));
             }
         }
         
@@ -46,7 +47,7 @@ public class ProjectForm extends javax.swing.JFrame
         jComboBox1 = new javax.swing.JComboBox();
         ProjId = new javax.swing.JTextField();
         ProjName = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -84,22 +85,23 @@ public class ProjectForm extends javax.swing.JFrame
         getContentPane().add(ProjName);
         ProjName.setBounds(330, 160, 100, 24);
 
-        jButton2.setText("Save");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton2ActionPerformed(evt);
+                saveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(550, 340, 100, 32);
+        getContentPane().add(saveBtn);
+        saveBtn.setBounds(550, 340, 100, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
+        saveBtn.setVisible(true);
         ProjId.setEditable(true);
         ProjName.setEditable(true);
         ProjId.setText(null);
@@ -108,27 +110,34 @@ public class ProjectForm extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
-    {//GEN-HEADEREND:event_jButton2ActionPerformed
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
+    {//GEN-HEADEREND:event_saveBtnActionPerformed
         String ID = ProjId.getText().toString();
         String Name = ProjName.getText().toString();
         
         String DepartmentID;
         DepartmentID = jComboBox1.getSelectedItem().toString();
 
-        
-        try
+        if (ID.isEmpty() || Name.isEmpty())
         {
-            WriteFile.getInstance().writeProject(ID, Name, DepartmentID);
-        } catch (IOException ex)
-        {
-            Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
-        ProjId.setEditable(false);
-        ProjName.setEditable(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        else
+        {
+            try
+            {
+                WriteFile.getInstance().writeProject(ID, Name, DepartmentID);
+            } 
+            catch (IOException ex)
+            {
+                Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ProjId.setEditable(false);
+            ProjName.setEditable(false);
+            saveBtn.setVisible(false);
+        }
+   
+    }//GEN-LAST:event_saveBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,10 +184,10 @@ public class ProjectForm extends javax.swing.JFrame
     private javax.swing.JButton BackBtn;
     private javax.swing.JTextField ProjId;
     private javax.swing.JTextField ProjName;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

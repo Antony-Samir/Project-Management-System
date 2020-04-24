@@ -1,5 +1,8 @@
 package Forms;
 
+import javax.swing.JOptionPane;
+import project.management.system.*;
+
 public class LogProgressForm extends javax.swing.JFrame
 {
 
@@ -8,6 +11,21 @@ public class LogProgressForm extends javax.swing.JFrame
     public LogProgressForm() 
     {
         initComponents();
+        
+        if (ReadFile.getInstance().ProjectNums != 0)
+        {
+           for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+            {
+                jComboBox1.addItem(ReadFile.getInstance().project[i].getName().toString());
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
+            MF.setVisible(true);
+            this.dispose();
+        }
+        
         this.setLocationRelativeTo(null);
         
     }

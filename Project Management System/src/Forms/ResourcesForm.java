@@ -2,6 +2,7 @@ package Forms;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import project.management.system.Resource;
 import project.management.system.WriteFile;
 
@@ -35,7 +36,7 @@ public class ResourcesForm extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         ResName = new javax.swing.JTextField();
         ResId = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,16 +56,16 @@ public class ResourcesForm extends javax.swing.JFrame
         getContentPane().add(ResId);
         ResId.setBounds(210, 170, 90, 24);
 
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                saveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(560, 310, 100, 32);
+        getContentPane().add(saveBtn);
+        saveBtn.setBounds(560, 310, 100, 32);
 
         BackBtn.setText("Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -80,26 +81,35 @@ public class ResourcesForm extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
+    {//GEN-HEADEREND:event_saveBtnActionPerformed
         String ID = ResId.getText().toString();
         String Name = ResName.getText().toString();
-        
-        try
+        if (ID.isEmpty() || Name.isEmpty())
         {
-            WriteFile.getInstance().writeResource(ID, Name);
-        } catch (IOException ex)
+            JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
+        }
+        else
         {
-            Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            try
+            {
+                WriteFile.getInstance().writeResource(ID, Name);
+            } 
+            catch (IOException ex)
+            {
+                Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            ResId.setEditable(false);
+            ResName.setEditable(false);
+            saveBtn.setVisible(false);
         }
         
-        
-        ResId.setEditable(false);
-        ResName.setEditable(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_saveBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
+        saveBtn.setVisible(true);
         ResId.setEditable(true);
         ResName.setEditable(true);
         ResId.setText(null);
@@ -160,8 +170,8 @@ public class ResourcesForm extends javax.swing.JFrame
     private javax.swing.JButton BackBtn;
     private javax.swing.JTextField ResId;
     private javax.swing.JTextField ResName;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,18 +2,66 @@ package UpdateDeleteForm;
 
 import Forms.ManagerForm;
 import java.io.IOException;
+import javax.swing.JCheckBox;
+import javax.swing.*;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import project.management.system.Task;
 import project.management.system.WriteFile;
-
+import project.management.system.ReadFile;
+import static project.management.system.ReadFile.MemberNums;
+import static project.management.system.ReadFile.ResourceNums;
+import java.io.IOException;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UD_TaskForm extends javax.swing.JFrame
 {
+     static public int MemCount = 0; //To Know How Many Members Where Selected
+     static public int ResCount = 0; //To Know How Many Resources Where Selected
+        
     static ManagerForm MF = new ManagerForm();
+
+    JCheckBox[] boxMembers = new JCheckBox[MemberNums];
+    JCheckBox[] boxResources = new JCheckBox[ResourceNums];
     
     public UD_TaskForm()
     {
+        
         initComponents();
+        
+        TaskID.setEditable(false);
+        TaskTitle.setEditable(false);
+        FromDateChooser.setEnabled(false);
+        ToDateChooser.setEnabled(false);
+        
+        
+        TaskStatus.setEditable(false);
+        
+        
+        if (ReadFile.getInstance().ProjectNums != 0)
+        {//Load Departments into ComboBox
+            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+            {
+                ProjectID.addItem(String.valueOf(ReadFile.getInstance().project[i].getID()));
+            }
+        }
+        
+        for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
+        {//Load Members into CheckBoxes
+            boxMembers[i] = new JCheckBox();
+            boxMembers[i].setText(String.valueOf(ReadFile.getInstance().member[i].getID()));
+            MemberPanel.add( boxMembers[i] );
+        }
+        for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+        {//Load Resources into CheckBoxes
+            boxResources[i] = new JCheckBox();
+            boxResources[i].setText(String.valueOf(ReadFile.getInstance().resource[i].getID()));
+            ResourcePanel.add( boxResources[i] );
+        }
+        
+        
         this.setLocationRelativeTo(null);
         
     }
@@ -29,15 +77,10 @@ public class UD_TaskForm extends javax.swing.JFrame
     {
 
         BackBtn = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        TaskID = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        TaskTitle = new javax.swing.JTextField();
+        TaskStatus = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -46,9 +89,15 @@ public class UD_TaskForm extends javax.swing.JFrame
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        MemberPanel = new javax.swing.JPanel();
+        ResourcePanel = new javax.swing.JPanel();
+        ProjectID = new javax.swing.JComboBox();
+        FromDateChooser = new datechooser.beans.DateChooserCombo();
+        ToDateChooser = new datechooser.beans.DateChooserCombo();
         jLabel9 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        ViewBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -63,11 +112,9 @@ public class UD_TaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(36, 19, 100, 32);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(230, 170, 100, 24);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(228, 227, 100, 24);
+        BackBtn.setBounds(30, 30, 100, 32);
+        getContentPane().add(TaskID);
+        TaskID.setBounds(150, 100, 100, 24);
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -78,90 +125,109 @@ public class UD_TaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(saveBtn);
-        saveBtn.setBounds(590, 422, 100, 32);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(228, 291, 100, 24);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(228, 355, 100, 24);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(490, 170, 100, 24);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(487, 227, 100, 24);
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(487, 291, 100, 24);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(487, 355, 100, 24);
+        saveBtn.setBounds(590, 290, 100, 32);
+        getContentPane().add(TaskTitle);
+        TaskTitle.setBounds(150, 160, 100, 24);
 
-        jLabel1.setText("Task Id:");
+        TaskStatus.setEditable(false);
+        TaskStatus.setText("In Progress");
+        getContentPane().add(TaskStatus);
+        TaskStatus.setBounds(440, 160, 100, 24);
+
+        jLabel1.setText("Task ID:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 170, 44, 16);
+        jLabel1.setBounds(60, 100, 45, 16);
 
         jLabel2.setText("From Date:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(107, 231, 61, 16);
+        jLabel2.setBounds(60, 220, 61, 16);
 
         jLabel3.setText("Title:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(107, 295, 27, 16);
+        jLabel3.setBounds(60, 160, 27, 16);
 
         jLabel4.setText("Members:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(111, 359, 57, 16);
+        jLabel4.setBounds(60, 280, 57, 16);
 
-        jLabel5.setText("Project Id:");
+        jLabel5.setText("Project ID:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(370, 170, 57, 16);
+        jLabel5.setBounds(320, 100, 58, 16);
 
         jLabel6.setText("To Date:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(381, 231, 46, 16);
+        jLabel6.setBounds(320, 220, 46, 16);
 
         jLabel7.setText("Status:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(387, 295, 40, 16);
+        jLabel7.setBounds(320, 160, 40, 16);
 
         jLabel8.setText("Resources:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(362, 359, 65, 16);
+        jLabel8.setBounds(320, 280, 65, 16);
+        getContentPane().add(MemberPanel);
+        MemberPanel.setBounds(130, 270, 170, 200);
+        getContentPane().add(ResourcePanel);
+        ResourcePanel.setBounds(390, 270, 170, 200);
 
-        jLabel9.setText("//Members and resources may be more than 1");
+        getContentPane().add(ProjectID);
+        ProjectID.setBounds(440, 100, 100, 26);
+        getContentPane().add(FromDateChooser);
+        FromDateChooser.setBounds(150, 220, 100, 20);
+        getContentPane().add(ToDateChooser);
+        ToDateChooser.setBounds(440, 220, 100, 20);
+
+        jLabel9.setText("Select Task You Want To Change:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(119, 397, 352, 82);
+        jLabel9.setBounds(500, 40, 190, 16);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(605, 93, 100, 26);
+        jComboBox1.setBounds(600, 70, 100, 26);
 
-        jLabel10.setText("jLabel10");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(620, 60, 48, 16);
+        jButton1.setText("Delete");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(590, 340, 100, 32);
+
+        ViewBtn.setText("View");
+        ViewBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                ViewBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ViewBtn);
+        ViewBtn.setBounds(600, 110, 100, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
+    {//GEN-HEADEREND:event_saveBtnActionPerformed
+       
+       
+    }//GEN-LAST:event_saveBtnActionPerformed
+
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        jTextField1.setEditable(true);
-        jTextField2.setEditable(true);
-        jTextField3.setEditable(true);
-        jTextField4.setEditable(true);
-        jTextField5.setEditable(true);
-        jTextField6.setEditable(true);
-        jTextField7.setEditable(true);
-        jTextField8.setEditable(true);
+        saveBtn.setVisible(true);
+        TaskID.setEditable(false);
+        TaskID.setText(null);
+        TaskTitle.setEditable(false);
+        TaskTitle.setText(null);
+        FromDateChooser.setEnabled(false);
+        ToDateChooser.setEnabled(false);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
-    {//GEN-HEADEREND:event_saveBtnActionPerformed
-       
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_saveBtnActionPerformed
+    private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
+    {//GEN-HEADEREND:event_ViewBtnActionPerformed
+        TaskID.setEditable(true);
+        TaskTitle.setEditable(true);
+        FromDateChooser.setEnabled(true);
+        ToDateChooser.setEnabled(true);
+    }//GEN-LAST:event_ViewBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,9 +274,18 @@ public class UD_TaskForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
+    private datechooser.beans.DateChooserCombo FromDateChooser;
+    private javax.swing.JPanel MemberPanel;
+    private javax.swing.JComboBox ProjectID;
+    private javax.swing.JPanel ResourcePanel;
+    private javax.swing.JTextField TaskID;
+    private javax.swing.JTextField TaskStatus;
+    private javax.swing.JTextField TaskTitle;
+    private datechooser.beans.DateChooserCombo ToDateChooser;
+    private javax.swing.JButton ViewBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -219,14 +294,6 @@ public class UD_TaskForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

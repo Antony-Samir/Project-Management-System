@@ -1,9 +1,12 @@
 package Forms;
 import UpdateDeleteForm.*;
+import javax.swing.JOptionPane;
+import project.management.system.ReadFile;
 
 public class ManagerForm extends javax.swing.JFrame
 {
 
+    static PrintTaskForm PTF = new PrintTaskForm();
     static TaskForm TF = new TaskForm();
     static DepartmentForm DF = new DepartmentForm();
     static ResourcesForm RF = new ResourcesForm();
@@ -44,15 +47,21 @@ public class ManagerForm extends javax.swing.JFrame
         jButton13 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton3.setText("Print All Delayed Tasks");
+        jButton3.setText("Print Tasks & Projects");
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3);
-        jButton3.setBounds(440, 60, 200, 35);
+        jButton3.setBounds(440, 80, 200, 35);
 
         jButton4.setText("Log Progress");
         jButton4.addActionListener(new java.awt.event.ActionListener()
@@ -63,7 +72,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(100, 60, 200, 35);
+        jButton4.setBounds(100, 80, 200, 35);
 
         jButton6.setText("Add Task");
         jButton6.setMaximumSize(null);
@@ -80,7 +89,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(100, 190, 200, 35);
+        jButton6.setBounds(100, 180, 200, 35);
 
         jButton7.setText("Update / Delete Task");
         jButton7.setMaximumSize(null);
@@ -97,7 +106,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(100, 250, 200, 35);
+        jButton7.setBounds(100, 240, 200, 35);
 
         jButton9.setText("Add Department");
         jButton9.setMaximumSize(null);
@@ -114,7 +123,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton9);
-        jButton9.setBounds(100, 310, 200, 35);
+        jButton9.setBounds(100, 300, 200, 35);
 
         jButton10.setText("Update / Delete  Department");
         jButton10.setMaximumSize(null);
@@ -131,7 +140,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton10);
-        jButton10.setBounds(100, 370, 200, 35);
+        jButton10.setBounds(100, 360, 200, 35);
 
         jButton12.setText("Add Resource");
         jButton12.setMaximumSize(null);
@@ -148,7 +157,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton12);
-        jButton12.setBounds(440, 190, 200, 35);
+        jButton12.setBounds(440, 180, 200, 35);
 
         jButton13.setText("Update / Delete Resource");
         jButton13.setMaximumSize(null);
@@ -165,7 +174,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton13);
-        jButton13.setBounds(440, 250, 200, 35);
+        jButton13.setBounds(440, 240, 200, 35);
 
         jButton15.setText("Add Project");
         jButton15.setMaximumSize(null);
@@ -182,7 +191,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton15);
-        jButton15.setBounds(440, 310, 200, 35);
+        jButton15.setBounds(440, 300, 200, 35);
 
         jButton16.setText("Update / Delete Project");
         jButton16.setMaximumSize(null);
@@ -199,18 +208,7 @@ public class ManagerForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButton16);
-        jButton16.setBounds(440, 370, 200, 35);
-
-        jButton1.setText("Assign Task To Employee");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(260, 120, 200, 35);
+        jButton16.setBounds(440, 360, 200, 35);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -223,8 +221,23 @@ public class ManagerForm extends javax.swing.JFrame
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
     {//GEN-HEADEREND:event_jButton6ActionPerformed
-        TF.setVisible(true);
-        this.dispose();
+        if (ReadFile.MemberNums == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No Employees Were Added", "Sorry Form Can't Be Loaded", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (ReadFile.ResourceNums == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No Resources Were Added", "Sorry Form Can't Be Loaded", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (ReadFile.ProjectNums == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No Projects Were Added", "Sorry Form Can't Be Loaded", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+           TF.setVisible(true);
+           this.dispose();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton9ActionPerformed
@@ -270,10 +283,11 @@ public class ManagerForm extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
+    {//GEN-HEADEREND:event_jButton3ActionPerformed
+        PTF.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,7 +336,6 @@ public class ManagerForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;

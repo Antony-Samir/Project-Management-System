@@ -69,19 +69,17 @@ public class ReadFile
            ResourceNums = ResourceCount.getLineNumber() - 1;
            TaskNums = TaskCount.getLineNumber() - 1;
         }
-        System.out.println(DepartmentNums);
-        System.out.println(ProjectNums);
-        System.out.println(MemberNums);
-        System.out.println(ResourceNums);
-        System.out.println(TaskNums);
+        System.out.println("Departments: " + DepartmentNums);
+        System.out.println("Projects: " + ProjectNums);
+        System.out.println("Members: " + MemberNums);
+        System.out.println("Resources: " + ResourceNums);
+        System.out.println("Tasks: " + TaskNums);
     }
     
         
     
     
-    
-    
-    static public Department department[]; 
+    static public Department department[];
     static public Project project[];
     static public TeamMember member[];
     static public Resource resource[];
@@ -115,7 +113,7 @@ public class ReadFile
                                    
             parts = sentence.split(" # ");
             
-            department[i].setId(Integer.parseInt(parts[0].toString()));
+            department[i].setID(Integer.parseInt(parts[0].toString()));
             department[i].setName(parts[1].toString());
         }
         
@@ -131,7 +129,7 @@ public class ReadFile
         {
             for (int i = 0; i < DepartmentNums; i++)
             {
-                System.out.println(department[i].getId());
+                System.out.println(department[i].getID());
                 System.out.println(department[i].getName());
             }
         }*/
@@ -165,9 +163,9 @@ public class ReadFile
                                    
             parts = sentence.split(" # ");
             
-            project[i].setId(Integer.parseInt(parts[0].toString()));
+            project[i].setID(Integer.parseInt(parts[0].toString()));
             project[i].setName(parts[1].toString());
-            project[i].setDepId(Integer.parseInt(parts[2].toString()));
+            project[i].setDepartmentID(Integer.parseInt(parts[2].toString()));
         }
         
         BR.close();
@@ -182,12 +180,13 @@ public class ReadFile
         {
             for (int i = 0; i < ProjectNums; i++)
             {
-                System.out.println(project[i].getId());
+                System.out.println(project[i].getID());
                 System.out.println(project[i].getName());
-                System.out.println(project[i].getDepId());
+                System.out.println(project[i].getDepartmentID());
             }
-        }*/        
+        }*/
     }
+    
     
     public static void readMembers() throws IOException
     {//Read All Members
@@ -216,7 +215,7 @@ public class ReadFile
                                    
             parts = sentence.split(" # ");  
             
-            member[i].setId(Integer.parseInt(parts[0].toString()));
+            member[i].setID(Integer.parseInt(parts[0].toString()));
             member[i].setName(parts[1].toString());
             member[i].setAddress(parts[2].toString());
             member[i].setPhone(parts[3].toString());
@@ -236,7 +235,7 @@ public class ReadFile
         {
             for (int i = 0; i < MemberNums; i++)
             {
-                System.out.println(member[i].getId());
+                System.out.println(member[i].getID());
                 System.out.println(member[i].getName());
                 System.out.println(member[i].getAddress());
                 System.out.println(member[i].getPhone());
@@ -245,6 +244,7 @@ public class ReadFile
             }
         }*/
     }
+    
     
     public static void readResources() throws IOException
     {//Read All Resources
@@ -273,7 +273,7 @@ public class ReadFile
                                    
             parts = sentence.split(" # ");  
             
-            resource[i].setId(Integer.parseInt(parts[0].toString()));
+            resource[i].setID(Integer.parseInt(parts[0].toString()));
             resource[i].setName(parts[1].toString());
             resource[i].setUsed(Integer.parseInt(parts[2].toString()));
         }
@@ -290,22 +290,122 @@ public class ReadFile
         {
             for (int i = 0; i < ResourceNums; i++)
             {
-                System.out.println(resource[i].getId());
+                System.out.println(resource[i].getID());
                 System.out.println(resource[i].getName());
                 System.out.println(resource[i].getUsed());
             }
         }*/
     }
     
+    public static int MemberNumbersInTask[];
+    public static int ResourcesUsedInTask[];
     public static void readTasks() throws IOException
     {//Read All Tasks
         task = new Task[TaskNums];
+        MemberNumbersInTask = new int[TaskNums];
+        ResourcesUsedInTask = new int[TaskNums];
+        
+        
+        try
+        {
+            FR = new FileReader("Tasks.txt");
+            BR = new BufferedReader(FR);
+        }
+        catch (Exception ex)
+        {
+            System.out.println("File Not Found!!");
+        }
         
         
         
+        String sentence;
+        String[] parts = new String[8]; //for splitting by delameter
+        String[] partsMembers = new String[MemberNums]; //forsplitting members
+        String[] partsResources = new String[ResourceNums]; //for splitting resources
+        sentence = BR.readLine(); //for skipping first line in file
         
+        for (int i = 0; i < TaskNums; i++)
+        {
+            task[i] = new Task();
+            sentence = BR.readLine();
+                                   
+            parts = sentence.split(" # ");  
+            
+            task[i].setID(Integer.parseInt(parts[0].toString()));
+            task[i].setProjectID(Integer.parseInt(parts[1].toString()));
+            task[i].setTitle(parts[2].toString());
+            task[i].setFromDate(parts[3].toString());
+            task[i].setToDate(parts[4].toString());
+            
+            
+            partsMembers = parts[5].split(",");
+            for (int j = 0; j < MemberNums+1; j++)
+            {
+                try
+                {
+                    task[i].MemberID[j] = Integer.parseInt(partsMembers[j+1]);
+                }
+                catch(Exception ex)
+                {
+                    
+                    break;
+                    
+                }
+                MemberNumbersInTask[i] = (j+1);
+            }
+            
+            partsResources = parts[6].split(",");
+            for (int j = 0; j < ResourceNums+1; j++)
+            {
+                try
+                {
+                    task[i].ResourceID[j] = Integer.parseInt(partsResources[j+1]);
+                }
+                catch(Exception ex)
+                {
+                    break;
+                }
+                ResourcesUsedInTask[i] = (j+1);
+            }
+            
+            task[i].setStatus(parts[7].toString());
+            
+        }
         
+        BR.close();
+        FR.close();
+        
+        //Check the input data
+        /*if (TaskNums == 0)
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < TaskNums; i++)
+            {
+                System.out.println("ID: " + task[i].getID());
+                System.out.println("Project ID: " + task[i].getProjectID());
+                System.out.println("Title: " + task[i].getTitle());
+                System.out.println("From Date: " + task[i].getFromDate());
+                System.out.println("To Date: " + task[i].getToDate());
+                
+                System.out.println("Number of Member Work in Task:" + MemberNumbersInTask[i]);
+                for (int j = 0; j < MemberNumbersInTask[i]; j++)
+                {
+                    System.out.println("Members: " + task[i].MemberID[j]);
+                }
+                
+                System.out.println("Number of Resources Used: " + ResourcesUsedInTask[i]);
+                for (int j = 0; j < ResourcesUsedInTask[i]; j++)
+                {
+                    System.out.println("Resources: " + task[i].ResourceID[j]);
+                }
+                
+                System.out.println("Status: " + task[i].getStatus());
+                System.out.println();
+            }
+        }*/
     }
-    
     
 }

@@ -2,18 +2,20 @@ package project.management.system;
 
 public class Resource
 {
-    private int Id;
+    private int ID;
     private String Name;
     private int Used;
 
-    public int getId()
+    
+    
+    public int getID()
     {
-        return Id;
+        return ID;
     }
 
-    public void setId(int Id)
+    public void setID(int ID)
     {
-        this.Id = Id;
+        this.ID = ID;
     }
 
     public String getName()

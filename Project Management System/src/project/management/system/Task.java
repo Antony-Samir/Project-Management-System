@@ -2,23 +2,41 @@ package project.management.system;
 
 public class Task
 {
-    private int Id;
-    public Project Proj;
+    private int ID;
+    public int ProjectID;
     private String Title;
     private String FromDate;
     private String ToDate;
-    public TeamMember Member;
-    public Resource Resource;
+    public int MemberID[];
+    public int ResourceID[];
     private String Status;
 
-    public int getId()
+    public Task()
     {
-        return Id;
+        MemberID = new int[ReadFile.MemberNums];
+        ResourceID = new int[ReadFile.ResourceNums];
     }
 
-    public void setId(int Id)
+    
+    
+    public int getID()
     {
-        this.Id = Id;
+        return ID;
+    }
+
+    public void setID(int ID)
+    {
+        this.ID = ID;
+    }
+
+    public int getProjectID()
+    {
+        return ProjectID;
+    }
+
+    public void setProjectID(int ProjectID)
+    {
+        this.ProjectID = ProjectID;
     }
 
     public String getTitle()
@@ -60,8 +78,7 @@ public class Task
     {
         this.Status = Status;
     }
-    
-    
+
     
     
 }

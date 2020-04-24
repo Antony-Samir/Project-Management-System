@@ -22,6 +22,9 @@ public class ProjectManagementSystem
         //ReadFile RF = new ReadFile();
         ReadFile.getInstance().fileLines();
         
+        System.out.println("////////////////////////////////");
+        System.out.println("////////////////////////////////");
+        
         ReadFile.getInstance().readDepartments();
         //System.out.println("dep ok");
         ReadFile.getInstance().readProjects();
@@ -30,6 +33,8 @@ public class ProjectManagementSystem
         //System.out.println("mem ok");
         ReadFile.getInstance().readResources();
         //System.out.println("res ok");
+        ReadFile.getInstance().readTasks();
+        //System.out.println("task ok");
         
         
         //JCheckBox cb1 = new JCheckBox("Task 1");

@@ -146,7 +146,6 @@ public class WriteFile
             PW.write(" # ");
             PW.println(0); // used or not
 
-            
             PW.close();
             
             if (PW != null)
@@ -167,7 +166,7 @@ public class WriteFile
 
     
     //static Tasks newTask;
-    public static void writeTask(String taskID, String projectID, String Title, String fromDate, String toDate, String memberID, String Resources, String Status) throws IOException
+    public static void writeTask(String taskID, String projectID, String Title, String fromDate, String toDate, String[] memberID, String[] Resources, String Status) throws IOException
     {
         try 
         {
@@ -184,10 +183,33 @@ public class WriteFile
             PW.write(" # ");
             PW.write(toDate);
             PW.write(" # ");
-            PW.write(memberID);
+            
+            
+            //PW.write(memberID);
+            for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
+            {//For Members
+                if (memberID[i] != null)
+                {
+                    PW.write(",");
+                    PW.write(memberID[i]);
+                }                
+            }
             PW.write(" # ");
-            PW.write(Resources);
+            
+            
+            
+            //PW.write(Resources);
+            for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+            {//For Members
+                if (Resources[i] != null)
+                {
+                    PW.write(",");
+                    PW.write(Resources[i]);
+                }                
+            }
             PW.write(" # ");
+            
+            
             PW.println(Status);
             
             PW.close();
@@ -200,17 +222,12 @@ public class WriteFile
             {
                 FW.close();
             }
+            
         }
-        catch (IOException e)
+        catch (IOException ex)
         {
             System.out.println("File Doesn't exist!");
         }
     }
-
-    public void writeMember(int ID, String Name, String Address, String Phone, String Email, String Password)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 }

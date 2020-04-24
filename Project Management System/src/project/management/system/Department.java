@@ -2,18 +2,19 @@ package project.management.system;
 
 public class Department
 {
-    private int Id;
+    private int ID;
     private String Name;
 
     
-    public int getId()
+    
+    public int getID()
     {
-        return Id;
+        return ID;
     }
 
-    public void setId(int ID)
+    public void setID(int ID)
     {
-        this.Id = ID;
+        this.ID = ID;
     }
 
     public String getName()
