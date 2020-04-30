@@ -16,8 +16,8 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     public UD_DepartmentForm()
     {
         initComponents();        
-        DepId.setEditable(false);
-        DepName.setEditable(false);
+        DepartmentIdTxt.setEditable(false);
+        DepartmentNameTxt.setEditable(false);
         this.setLocationRelativeTo(null);
     }
 
@@ -35,8 +35,8 @@ public class UD_DepartmentForm extends javax.swing.JFrame
         SaveBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        DepName = new javax.swing.JTextField();
-        DepId = new javax.swing.JTextField();
+        DepartmentNameTxt = new javax.swing.JTextField();
+        DepartmentIdTxt = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         DeleteBtn = new javax.swing.JButton();
@@ -75,10 +75,10 @@ public class UD_DepartmentForm extends javax.swing.JFrame
         jLabel2.setText("Department ID:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(190, 190, 120, 16);
-        getContentPane().add(DepName);
-        DepName.setBounds(370, 240, 110, 24);
-        getContentPane().add(DepId);
-        DepId.setBounds(190, 240, 110, 24);
+        getContentPane().add(DepartmentNameTxt);
+        DepartmentNameTxt.setBounds(370, 240, 110, 24);
+        getContentPane().add(DepartmentIdTxt);
+        DepartmentIdTxt.setBounds(190, 240, 110, 24);
 
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(570, 110, 100, 26);
@@ -114,23 +114,33 @@ public class UD_DepartmentForm extends javax.swing.JFrame
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        DepId.setEditable(false);
-        DepId.setText(null);
-        DepName.setEditable(false);
-        DepName.setText(null);
+        DepartmentIdTxt.setEditable(false);
+        DepartmentIdTxt.setText(null);
+        DepartmentNameTxt.setEditable(false);
+        DepartmentNameTxt.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
     {//GEN-HEADEREND:event_SaveBtnActionPerformed
+        String ID = DepartmentIdTxt.getText().toString();
+        String Name = DepartmentNameTxt.getText().toString();
         
-        if (DepId.getText().toString().isEmpty())
+        if (DepartmentIdTxt.getText().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Department!", "Field not entered", JOptionPane.WARNING_MESSAGE);
-        } 
+        }
         else
         {
+            for (int i = 0; i < ReadFile.DepartmentNums; i++)
+            {
+                if (Integer.parseInt(ID) == ReadFile.DEPARTMENT.get(i).getID())
+                {
+                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Department ID is already saved", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
             //other logic
         }
         
@@ -140,7 +150,7 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
     {//GEN-HEADEREND:event_DeleteBtnActionPerformed
         
-        if (DepId.getText().toString().isEmpty())
+        if (DepartmentIdTxt.getText().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Department!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
@@ -155,8 +165,8 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
     {//GEN-HEADEREND:event_ViewBtnActionPerformed
         
-        DepId.setEditable(true);
-        DepName.setEditable(true);
+        DepartmentIdTxt.setEditable(true);
+        DepartmentNameTxt.setEditable(true);
 
         String SelectedDepartment  = jComboBox1.getSelectedItem().toString();
 
@@ -164,8 +174,8 @@ public class UD_DepartmentForm extends javax.swing.JFrame
         {
             if (ReadFile.getInstance().DEPARTMENT.get(i).getName() == SelectedDepartment)
             {
-                DepId.setText(String.valueOf(ReadFile.getInstance().DEPARTMENT.get(i).getID()));
-                DepName.setText(ReadFile.getInstance().DEPARTMENT.get(i).getName());
+                DepartmentIdTxt.setText(String.valueOf(ReadFile.getInstance().DEPARTMENT.get(i).getID()));
+                DepartmentNameTxt.setText(ReadFile.getInstance().DEPARTMENT.get(i).getName());
                 break;
             }
         }
@@ -216,8 +226,8 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton DeleteBtn;
-    private javax.swing.JTextField DepId;
-    private javax.swing.JTextField DepName;
+    private javax.swing.JTextField DepartmentIdTxt;
+    private javax.swing.JTextField DepartmentNameTxt;
     private javax.swing.JButton SaveBtn;
     private javax.swing.JButton ViewBtn;
     public static javax.swing.JComboBox jComboBox1;

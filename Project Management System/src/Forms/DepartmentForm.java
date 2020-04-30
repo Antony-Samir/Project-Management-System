@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import project.management.system.Department;
+import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 
 public class DepartmentForm extends javax.swing.JFrame
@@ -96,6 +97,14 @@ public class DepartmentForm extends javax.swing.JFrame
         }
         else
         {
+            for (int i = 0; i < ReadFile.DepartmentNums; i++)
+            {
+                if (Integer.parseInt(ID) == ReadFile.DEPARTMENT.get(i).getID())
+                {
+                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Department ID is already saved", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
             try
             {
                 WriteFile.getInstance().writeDepartment(ID, Name);
@@ -107,6 +116,7 @@ public class DepartmentForm extends javax.swing.JFrame
             DepartmentIdTxt.setEditable(false);
             DepartmentNameTxt.setEditable(false);
             SaveBtn.setVisible(false);
+            
         }
         
     }//GEN-LAST:event_SaveBtnActionPerformed

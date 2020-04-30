@@ -22,8 +22,8 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     public UD_ResourcesForm()
     {
         initComponents();        
-        ResId.setEditable(false);
-        ResName.setEditable(false);
+        ResourceIdTxt.setEditable(false);
+        ResourceNameTxt.setEditable(false);
         this.setLocationRelativeTo(null);   
     }
 
@@ -39,8 +39,8 @@ public class UD_ResourcesForm extends javax.swing.JFrame
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ResName = new javax.swing.JTextField();
-        ResId = new javax.swing.JTextField();
+        ResourceNameTxt = new javax.swing.JTextField();
+        ResourceIdTxt = new javax.swing.JTextField();
         SaveBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
@@ -59,10 +59,10 @@ public class UD_ResourcesForm extends javax.swing.JFrame
         jLabel2.setText("Resource ID:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(180, 190, 80, 16);
-        getContentPane().add(ResName);
-        ResName.setBounds(380, 240, 90, 24);
-        getContentPane().add(ResId);
-        ResId.setBounds(190, 240, 90, 24);
+        getContentPane().add(ResourceNameTxt);
+        ResourceNameTxt.setBounds(380, 240, 90, 24);
+        getContentPane().add(ResourceIdTxt);
+        ResourceIdTxt.setBounds(190, 240, 90, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -120,13 +120,23 @@ public class UD_ResourcesForm extends javax.swing.JFrame
 
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
     {//GEN-HEADEREND:event_SaveBtnActionPerformed
+        String ID = ResourceIdTxt.getText().toString();
+        String Name = ResourceNameTxt.getText().toString();
         
-        if (ResId.getText().toString().isEmpty())
+        if (ResourceIdTxt.getText().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
         else
         {
+            for (int i = 0; i < ReadFile.ResourceNums; i++)
+            {
+                if (Integer.parseInt(ID) == ReadFile.RESOURCE.get(i).getID())
+                {
+                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Resouce ID is already saved", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
             //other logic
         }
         
@@ -137,10 +147,10 @@ public class UD_ResourcesForm extends javax.swing.JFrame
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        ResId.setEditable(false);
-        ResId.setText(null);
-        ResName.setEditable(false);
-        ResName.setText(null);
+        ResourceIdTxt.setEditable(false);
+        ResourceIdTxt.setText(null);
+        ResourceNameTxt.setEditable(false);
+        ResourceNameTxt.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
@@ -148,7 +158,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
     {//GEN-HEADEREND:event_DeleteBtnActionPerformed
         
-        if (ResId.getText().toString().isEmpty())
+        if (ResourceIdTxt.getText().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
@@ -164,8 +174,8 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
     {//GEN-HEADEREND:event_ViewBtnActionPerformed
         
-        ResId.setEditable(true);
-        ResName.setEditable(true);
+        ResourceIdTxt.setEditable(true);
+        ResourceNameTxt.setEditable(true);
 
         String SelectedResource  = jComboBox1.getSelectedItem().toString();
 
@@ -173,8 +183,8 @@ public class UD_ResourcesForm extends javax.swing.JFrame
         {
             if (ReadFile.getInstance().RESOURCE.get(i).getName() == SelectedResource)
             {
-                ResId.setText(String.valueOf(ReadFile.getInstance().RESOURCE.get(i).getID()));
-                ResName.setText(ReadFile.getInstance().RESOURCE.get(i).getName());
+                ResourceIdTxt.setText(String.valueOf(ReadFile.getInstance().RESOURCE.get(i).getID()));
+                ResourceNameTxt.setText(ReadFile.getInstance().RESOURCE.get(i).getName());
                 break;
             }
         }
@@ -235,8 +245,8 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton DeleteBtn;
-    private javax.swing.JTextField ResId;
-    private javax.swing.JTextField ResName;
+    private javax.swing.JTextField ResourceIdTxt;
+    private javax.swing.JTextField ResourceNameTxt;
     private javax.swing.JButton SaveBtn;
     private javax.swing.JButton ViewBtn;
     public static javax.swing.JComboBox jComboBox1;

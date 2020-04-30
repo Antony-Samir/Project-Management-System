@@ -122,6 +122,14 @@ public class ProjectForm extends javax.swing.JFrame
         }
         else
         {
+            for (int i = 0; i < ReadFile.ProjectNums; i++)
+            {
+                if (Integer.parseInt(ID) == ReadFile.PROJECT.get(i).getID())
+                {
+                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Project ID is already saved", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
             try
             {
                 WriteFile.getInstance().writeProject(ID, Name, DepartmentID);

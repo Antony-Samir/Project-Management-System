@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import project.management.system.ReadFile;
 import project.management.system.Resource;
 import project.management.system.WriteFile;
 
@@ -88,6 +89,14 @@ public class ResourcesForm extends javax.swing.JFrame
         }
         else
         {
+            for (int i = 0; i < ReadFile.ResourceNums; i++)
+            {
+                if (Integer.parseInt(ID) == ReadFile.RESOURCE.get(i).getID())
+                {
+                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Resouce ID is already saved", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
             try
             {
                 WriteFile.getInstance().writeResource(ID, Name);

@@ -25,8 +25,8 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         }
         
-        ProjId.setEditable(false);
-        ProjName.setEditable(false);
+        ProjectIdTxt.setEditable(false);
+        ProjectNameTxt.setEditable(false);
         
         this.setLocationRelativeTo(null);
        
@@ -47,8 +47,8 @@ public class UD_ProjectForm extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        ProjId = new javax.swing.JTextField();
-        ProjName = new javax.swing.JTextField();
+        ProjectIdTxt = new javax.swing.JTextField();
+        ProjectNameTxt = new javax.swing.JTextField();
         SaveBtn = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
@@ -84,18 +84,18 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(390, 200, 100, 26);
-        getContentPane().add(ProjId);
-        ProjId.setBounds(70, 200, 100, 24);
+        getContentPane().add(ProjectIdTxt);
+        ProjectIdTxt.setBounds(70, 200, 100, 24);
 
-        ProjName.addActionListener(new java.awt.event.ActionListener()
+        ProjectNameTxt.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                ProjNameActionPerformed(evt);
+                ProjectNameTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(ProjName);
-        ProjName.setBounds(230, 200, 100, 24);
+        getContentPane().add(ProjectNameTxt);
+        ProjectNameTxt.setBounds(230, 200, 100, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -142,23 +142,33 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        ProjId.setEditable(false);
-        ProjId.setText(null);
-        ProjName.setEditable(false);
-        ProjName.setText(null);
+        ProjectIdTxt.setEditable(false);
+        ProjectIdTxt.setText(null);
+        ProjectNameTxt.setEditable(false);
+        ProjectNameTxt.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
     {//GEN-HEADEREND:event_SaveBtnActionPerformed
+        String ID = ProjectIdTxt.getText().toString();
+        String Name = ProjectNameTxt.getText().toString();
         
-        if (ProjId.getText().toString().isEmpty())
+        if (ProjectIdTxt.getText().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
         else
         {
+            for (int i = 0; i < ReadFile.ProjectNums; i++)
+            {
+                if (Integer.parseInt(ID) == ReadFile.PROJECT.get(i).getID())
+                {
+                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Project ID is already saved", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
             //other logic
         }
         
@@ -167,15 +177,15 @@ public class UD_ProjectForm extends javax.swing.JFrame
         
     }//GEN-LAST:event_SaveBtnActionPerformed
 
-    private void ProjNameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ProjNameActionPerformed
-    {//GEN-HEADEREND:event_ProjNameActionPerformed
+    private void ProjectNameTxtActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ProjectNameTxtActionPerformed
+    {//GEN-HEADEREND:event_ProjectNameTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ProjNameActionPerformed
+    }//GEN-LAST:event_ProjectNameTxtActionPerformed
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
     {//GEN-HEADEREND:event_DeleteBtnActionPerformed
         
-        if (ProjId.getText().toString().isEmpty())
+        if (ProjectIdTxt.getText().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
@@ -187,8 +197,8 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
     {//GEN-HEADEREND:event_ViewBtnActionPerformed
-        ProjId.setEditable(true);
-        ProjName.setEditable(true);
+        ProjectIdTxt.setEditable(true);
+        ProjectNameTxt.setEditable(true);
 
         String SelectedProject  = jComboBox2.getSelectedItem().toString();
 
@@ -196,8 +206,8 @@ public class UD_ProjectForm extends javax.swing.JFrame
         {
             if (ReadFile.getInstance().PROJECT.get(i).getName() == SelectedProject)
             {
-                ProjId.setText(String.valueOf(ReadFile.getInstance().PROJECT.get(i).getID()));
-                ProjName.setText(ReadFile.getInstance().PROJECT.get(i).getName());
+                ProjectIdTxt.setText(String.valueOf(ReadFile.getInstance().PROJECT.get(i).getID()));
+                ProjectNameTxt.setText(ReadFile.getInstance().PROJECT.get(i).getName());
                 break;
             }
         }
@@ -252,8 +262,8 @@ public class UD_ProjectForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton DeleteBtn;
-    private javax.swing.JTextField ProjId;
-    private javax.swing.JTextField ProjName;
+    private javax.swing.JTextField ProjectIdTxt;
+    private javax.swing.JTextField ProjectNameTxt;
     private javax.swing.JButton SaveBtn;
     private javax.swing.JButton ViewBtn;
     private javax.swing.JComboBox jComboBox1;

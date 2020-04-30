@@ -10,14 +10,14 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-
  
 public class SignUpForm extends javax.swing.JFrame 
 {
 
     static LoginForm LG = new LoginForm();
     TeamMember TM = new TeamMember();
-        
+    
+    
 
     /**
      * Creates new form SignUpForm
@@ -25,9 +25,10 @@ public class SignUpForm extends javax.swing.JFrame
     public SignUpForm() 
     {
         initComponents();
-        this.setLocationRelativeTo(null);
+        
         IdTxt.setEditable(false);
         BackBtn.setVisible(false);
+        this.setLocationRelativeTo(null);
     }
 
     SignUpForm(LoginForm aThis) 
