@@ -28,6 +28,7 @@ public class EmployeeForm extends javax.swing.JFrame
     private void initComponents()
     {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         SaveBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
@@ -36,9 +37,9 @@ public class EmployeeForm extends javax.swing.JFrame
         jComboBox2 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        ProjectIdTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        DepartmentIdTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -47,7 +48,7 @@ public class EmployeeForm extends javax.swing.JFrame
         jPanel1 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel10 = new javax.swing.JLabel();
+        WelcomeLabel = new javax.swing.JLabel();
         NameTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,17 +101,17 @@ public class EmployeeForm extends javax.swing.JFrame
         getContentPane().add(jLabel3);
         jLabel3.setBounds(410, 150, 70, 16);
 
-        jTextField3.setEditable(false);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(400, 200, 100, 24);
+        ProjectIdTxt.setEditable(false);
+        getContentPane().add(ProjectIdTxt);
+        ProjectIdTxt.setBounds(400, 200, 100, 24);
 
         jLabel4.setText("Department ID:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(520, 150, 90, 16);
 
-        jTextField4.setEditable(false);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(520, 200, 100, 24);
+        DepartmentIdTxt.setEditable(false);
+        getContentPane().add(DepartmentIdTxt);
+        DepartmentIdTxt.setBounds(520, 200, 100, 24);
 
         jLabel5.setForeground(new java.awt.Color(255, 153, 153));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login background.png"))); // NOI18N
@@ -136,6 +137,7 @@ public class EmployeeForm extends javax.swing.JFrame
         getContentPane().add(jLabel9);
         jLabel9.setBounds(610, 110, 80, 16);
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Done");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener()
         {
@@ -146,15 +148,16 @@ public class EmployeeForm extends javax.swing.JFrame
         });
         jPanel1.add(jRadioButton1);
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("In Progress");
         jPanel1.add(jRadioButton2);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(160, 180, 110, 100);
 
-        jLabel10.setText("Welcome,");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(10, 20, 70, 16);
+        WelcomeLabel.setText("Welcome,");
+        getContentPane().add(WelcomeLabel);
+        WelcomeLabel.setBounds(10, 20, 70, 16);
 
         NameTxt.setEditable(false);
         getContentPane().add(NameTxt);
@@ -170,9 +173,9 @@ public class EmployeeForm extends javax.swing.JFrame
         
         for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
         {
-            if (ReadFile.getInstance().task[i].getID() == TaskID)
+            if (ReadFile.getInstance().TASK.get(i).getID() == TaskID)
             {
-                ToDateTxt.setText(ReadFile.getInstance().task[i].getToDate().toString());
+                ToDateTxt.setText(ReadFile.getInstance().TASK.get(i).getToDate().toString());
                 break;
             }
         }
@@ -193,10 +196,10 @@ public class EmployeeForm extends javax.swing.JFrame
         
         for (int i = 0; i < ReadFile.ProjectNums; i++)
         {
-            if (ProjectName == ReadFile.project[i].getName())
+            if (ProjectName == ReadFile.PROJECT.get(i).getName())
             {
-                jTextField3.setText(String.valueOf(ReadFile.project[i].getID()));
-                jTextField4.setText(String.valueOf(ReadFile.project[i].getDepartmentID()));
+                ProjectIdTxt.setText(String.valueOf(ReadFile.PROJECT.get(i).getID()));
+                DepartmentIdTxt.setText(String.valueOf(ReadFile.PROJECT.get(i).getDepartmentID()));
                 break;
             }
         }
@@ -262,14 +265,17 @@ public class EmployeeForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DepartmentIdTxt;
     public static javax.swing.JTextField NameTxt;
+    private javax.swing.JTextField ProjectIdTxt;
     private javax.swing.JButton SaveBtn;
     private javax.swing.JTextField ToDateTxt;
     private javax.swing.JButton ViewBtn;
+    private javax.swing.JLabel WelcomeLabel;
+    private javax.swing.ButtonGroup buttonGroup1;
     public static javax.swing.JComboBox jComboBox1;
     public static javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -281,7 +287,5 @@ public class EmployeeForm extends javax.swing.JFrame
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

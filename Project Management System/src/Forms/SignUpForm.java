@@ -50,8 +50,8 @@ public class SignUpForm extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         NameTxt = new javax.swing.JTextField();
-        AddTxt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        AddressTxt = new javax.swing.JTextField();
+        SaveBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
         EmailTxt = new javax.swing.JTextField();
         IdTxt = new javax.swing.JTextField();
@@ -96,26 +96,26 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(NameTxt);
         NameTxt.setBounds(130, 120, 100, 25);
 
-        AddTxt.addActionListener(new java.awt.event.ActionListener()
+        AddressTxt.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                AddTxtActionPerformed(evt);
+                AddressTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(AddTxt);
-        AddTxt.setBounds(440, 120, 100, 25);
+        getContentPane().add(AddressTxt);
+        AddressTxt.setBounds(440, 120, 100, 25);
 
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                SaveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(560, 340, 90, 40);
+        getContentPane().add(SaveBtn);
+        SaveBtn.setBounds(560, 340, 100, 32);
 
         BackBtn.setText("Back To Main Menu");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -126,7 +126,7 @@ public class SignUpForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(14, 17, 140, 40);
+        BackBtn.setBounds(14, 17, 150, 32);
         getContentPane().add(EmailTxt);
         EmailTxt.setBounds(290, 170, 100, 25);
         getContentPane().add(IdTxt);
@@ -151,14 +151,14 @@ public class SignUpForm extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
+    {//GEN-HEADEREND:event_SaveBtnActionPerformed
         String ID = String.valueOf(TM.giveId());
         System.out.println("Your ID is: " + TM.giveId());
         IdTxt.setText(ID);
         
         String Name = NameTxt.getText().toString();
-        String Address = AddTxt.getText().toString();
+        String Address = AddressTxt.getText().toString();
         String Phone = PhoneTxt.getText().toString();
         String Email = EmailTxt.getText().toString();
         String Password = PasswordTxt.getText().toString();
@@ -181,15 +181,15 @@ public class SignUpForm extends javax.swing.JFrame
 
             
             BackBtn.setVisible(true);
-            jButton1.setVisible(false);
+            SaveBtn.setVisible(false);
             
             NameTxt.setEditable(false);
-            AddTxt.setEditable(false);
+            AddressTxt.setEditable(false);
             PhoneTxt.setEditable(false);
             PasswordTxt.setEditable(false);
             EmailTxt.setEditable(false);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SaveBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
@@ -197,9 +197,9 @@ public class SignUpForm extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void AddTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTxtActionPerformed
+    private void AddressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddTxtActionPerformed
+    }//GEN-LAST:event_AddressTxtActionPerformed
 
     private void NameTxtActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_NameTxtActionPerformed
     {//GEN-HEADEREND:event_NameTxtActionPerformed
@@ -240,14 +240,14 @@ public class SignUpForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AddTxt;
+    private javax.swing.JTextField AddressTxt;
     private javax.swing.JButton BackBtn;
     private javax.swing.JTextField EmailTxt;
     private javax.swing.JTextField IdTxt;
     private javax.swing.JTextField NameTxt;
     private javax.swing.JTextField PasswordTxt;
     private javax.swing.JTextField PhoneTxt;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton SaveBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

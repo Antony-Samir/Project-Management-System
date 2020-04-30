@@ -21,13 +21,11 @@ public class ProjectForm extends javax.swing.JFrame
         {
            for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
             {
-                jComboBox1.addItem(String.valueOf(ReadFile.getInstance().department[i].getID()));
+                jComboBox1.addItem(String.valueOf(ReadFile.getInstance().DEPARTMENT.get(i).getID()));
             }
         }
         
-        
         this.setLocationRelativeTo(null);
-       
     }
 
     /**
@@ -45,9 +43,9 @@ public class ProjectForm extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        ProjId = new javax.swing.JTextField();
-        ProjName = new javax.swing.JTextField();
-        saveBtn = new javax.swing.JButton();
+        ProjectIdTxt = new javax.swing.JTextField();
+        ProjectNameTxt = new javax.swing.JTextField();
+        SaveBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -80,40 +78,40 @@ public class ProjectForm extends javax.swing.JFrame
 
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(520, 160, 100, 26);
-        getContentPane().add(ProjId);
-        ProjId.setBounds(140, 160, 100, 24);
-        getContentPane().add(ProjName);
-        ProjName.setBounds(330, 160, 100, 24);
+        getContentPane().add(ProjectIdTxt);
+        ProjectIdTxt.setBounds(140, 160, 100, 24);
+        getContentPane().add(ProjectNameTxt);
+        ProjectNameTxt.setBounds(330, 160, 100, 24);
 
-        saveBtn.setText("Save");
-        saveBtn.addActionListener(new java.awt.event.ActionListener()
+        SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                saveBtnActionPerformed(evt);
+                SaveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(saveBtn);
-        saveBtn.setBounds(550, 340, 100, 32);
+        getContentPane().add(SaveBtn);
+        SaveBtn.setBounds(550, 340, 100, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        saveBtn.setVisible(true);
-        ProjId.setEditable(true);
-        ProjName.setEditable(true);
-        ProjId.setText(null);
-        ProjName.setText(null);
+        SaveBtn.setVisible(true);
+        ProjectIdTxt.setEditable(true);
+        ProjectNameTxt.setEditable(true);
+        ProjectIdTxt.setText(null);
+        ProjectNameTxt.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
-    {//GEN-HEADEREND:event_saveBtnActionPerformed
-        String ID = ProjId.getText().toString();
-        String Name = ProjName.getText().toString();
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
+    {//GEN-HEADEREND:event_SaveBtnActionPerformed
+        String ID = ProjectIdTxt.getText().toString();
+        String Name = ProjectNameTxt.getText().toString();
         
         String DepartmentID;
         DepartmentID = jComboBox1.getSelectedItem().toString();
@@ -132,12 +130,12 @@ public class ProjectForm extends javax.swing.JFrame
             {
                 Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ProjId.setEditable(false);
-            ProjName.setEditable(false);
-            saveBtn.setVisible(false);
+            ProjectIdTxt.setEditable(false);
+            ProjectNameTxt.setEditable(false);
+            SaveBtn.setVisible(false);
         }
    
-    }//GEN-LAST:event_saveBtnActionPerformed
+    }//GEN-LAST:event_SaveBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,12 +180,12 @@ public class ProjectForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JTextField ProjId;
-    private javax.swing.JTextField ProjName;
+    private javax.swing.JTextField ProjectIdTxt;
+    private javax.swing.JTextField ProjectNameTxt;
+    private javax.swing.JButton SaveBtn;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

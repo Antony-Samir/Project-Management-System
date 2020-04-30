@@ -17,25 +17,11 @@ public class UD_ProjectForm extends javax.swing.JFrame
     {
         initComponents();
         
-        if (ReadFile.getInstance().ProjectNums != 0)
-        {
-           for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
-           {
-                jComboBox2.addItem(ReadFile.getInstance().project[i].getName().toString());
-           }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
-            MF.setVisible(true);
-            this.dispose();
-        }
-        
         if (ReadFile.getInstance().DepartmentNums != 0)
         {
            for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
             {
-                jComboBox1.addItem(ReadFile.getInstance().department[i].getName().toString());
+                jComboBox1.addItem(ReadFile.getInstance().DEPARTMENT.get(i).getName().toString());
             }
         }
         
@@ -201,29 +187,19 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
     {//GEN-HEADEREND:event_ViewBtnActionPerformed
-        
-        if (ReadFile.getInstance().DepartmentNums != 0)
+        ProjId.setEditable(true);
+        ProjName.setEditable(true);
+
+        String SelectedProject  = jComboBox2.getSelectedItem().toString();
+
+        for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
         {
-            ProjId.setEditable(true);
-            ProjName.setEditable(true);
-            
-            String SelectedProject  = jComboBox2.getSelectedItem().toString();
-                        
-            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+            if (ReadFile.getInstance().PROJECT.get(i).getName() == SelectedProject)
             {
-                if (ReadFile.getInstance().project[i].getName() == SelectedProject)
-                {
-                    ProjId.setText(String.valueOf(ReadFile.getInstance().project[i].getID()));
-                    ProjName.setText(ReadFile.getInstance().project[i].getName());
-                    break;
-                }
+                ProjId.setText(String.valueOf(ReadFile.getInstance().PROJECT.get(i).getID()));
+                ProjName.setText(ReadFile.getInstance().PROJECT.get(i).getName());
+                break;
             }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "No Departments Were Added!", "Add Department First", JOptionPane.ERROR_MESSAGE);
-            MF.setVisible(true);
-            this.dispose();
         }
         
     }//GEN-LAST:event_ViewBtnActionPerformed
@@ -281,7 +257,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
     private javax.swing.JButton SaveBtn;
     private javax.swing.JButton ViewBtn;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    public static javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

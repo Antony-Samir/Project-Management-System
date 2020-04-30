@@ -17,8 +17,8 @@ import java.util.logging.Logger;
 
 public class TaskForm extends javax.swing.JFrame
 {
-     static public int MemCount = 0; //To Know How Many Members Where Selected
-     static public int ResCount = 0; //To Know How Many Resources Where Selected
+    static public int MemCount = 0; //To Know How Many Members Where Selected
+    static public int ResCount = 0; //To Know How Many Resources Where Selected
         
     static ManagerForm MF = new ManagerForm();
 
@@ -35,26 +35,25 @@ public class TaskForm extends javax.swing.JFrame
         {//Load Departments into ComboBox
             for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
             {
-                ProjectID.addItem(String.valueOf(ReadFile.getInstance().project[i].getID()));
+                ProjectID.addItem(String.valueOf(ReadFile.getInstance().PROJECT.get(i).getID()));
             }
         }
         
         for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
         {//Load Members into CheckBoxes
             boxMembers[i] = new JCheckBox();
-            boxMembers[i].setText(String.valueOf(ReadFile.getInstance().member[i].getID()));
+            boxMembers[i].setText(String.valueOf(ReadFile.getInstance().MEMBERS.get(i).getID()));
             MemberPanel.add( boxMembers[i] );
         }
         for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
         {//Load Resources into CheckBoxes
             boxResources[i] = new JCheckBox();
-            boxResources[i].setText(String.valueOf(ReadFile.getInstance().resource[i].getID()));
+            boxResources[i].setText(String.valueOf(ReadFile.getInstance().RESOURCE.get(i).getID()));
             ResourcePanel.add( boxResources[i] );
         }
         
         
         this.setLocationRelativeTo(null);
-        
     }
 
     /**
@@ -69,7 +68,7 @@ public class TaskForm extends javax.swing.JFrame
 
         BackBtn = new javax.swing.JButton();
         TaskID = new javax.swing.JTextField();
-        saveBtn = new javax.swing.JButton();
+        SaveBtn = new javax.swing.JButton();
         TaskTitle = new javax.swing.JTextField();
         TaskStatus = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -104,16 +103,16 @@ public class TaskForm extends javax.swing.JFrame
         getContentPane().add(TaskID);
         TaskID.setBounds(150, 100, 100, 24);
 
-        saveBtn.setText("Save");
-        saveBtn.addActionListener(new java.awt.event.ActionListener()
+        SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                saveBtnActionPerformed(evt);
+                SaveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(saveBtn);
-        saveBtn.setBounds(580, 350, 100, 32);
+        getContentPane().add(SaveBtn);
+        SaveBtn.setBounds(580, 350, 100, 32);
         getContentPane().add(TaskTitle);
         TaskTitle.setBounds(150, 160, 100, 24);
 
@@ -168,8 +167,8 @@ public class TaskForm extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
-    {//GEN-HEADEREND:event_saveBtnActionPerformed
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
+    {//GEN-HEADEREND:event_SaveBtnActionPerformed
        
         
         Boolean Mem = false; 
@@ -231,16 +230,16 @@ public class TaskForm extends javax.swing.JFrame
                }
                TaskID.setEditable(false);
                TaskTitle.setEditable(false);
-               saveBtn.setVisible(false);
+               SaveBtn.setVisible(false);
             }
             
            
         }
-    }//GEN-LAST:event_saveBtnActionPerformed
+    }//GEN-LAST:event_SaveBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        saveBtn.setVisible(true);
+        SaveBtn.setVisible(true);
         TaskID.setEditable(true);
         TaskID.setText(null);
         TaskTitle.setEditable(true);
@@ -294,6 +293,7 @@ public class TaskForm extends javax.swing.JFrame
     private javax.swing.JPanel MemberPanel;
     private javax.swing.JComboBox ProjectID;
     private javax.swing.JPanel ResourcePanel;
+    private javax.swing.JButton SaveBtn;
     private javax.swing.JTextField TaskID;
     private javax.swing.JTextField TaskStatus;
     private javax.swing.JTextField TaskTitle;
@@ -306,6 +306,5 @@ public class TaskForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

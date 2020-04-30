@@ -17,9 +17,6 @@ public class ResourcesForm extends javax.swing.JFrame
         
         
         this.setLocationRelativeTo(null);
-        
-        
-        
     }
 
     /**
@@ -34,9 +31,9 @@ public class ResourcesForm extends javax.swing.JFrame
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ResName = new javax.swing.JTextField();
-        ResId = new javax.swing.JTextField();
-        saveBtn = new javax.swing.JButton();
+        ResourceNameTxt = new javax.swing.JTextField();
+        ResourceIdTxt = new javax.swing.JTextField();
+        SaveBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,26 +43,26 @@ public class ResourcesForm extends javax.swing.JFrame
 
         jLabel1.setText("Resource Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(420, 120, 100, 16);
+        jLabel1.setBounds(400, 120, 100, 16);
 
         jLabel2.setText("Resource ID:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(210, 120, 90, 16);
-        getContentPane().add(ResName);
-        ResName.setBounds(410, 170, 90, 24);
-        getContentPane().add(ResId);
-        ResId.setBounds(210, 170, 90, 24);
+        getContentPane().add(ResourceNameTxt);
+        ResourceNameTxt.setBounds(410, 170, 90, 24);
+        getContentPane().add(ResourceIdTxt);
+        ResourceIdTxt.setBounds(210, 170, 90, 24);
 
-        saveBtn.setText("Save");
-        saveBtn.addActionListener(new java.awt.event.ActionListener()
+        SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                saveBtnActionPerformed(evt);
+                SaveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(saveBtn);
-        saveBtn.setBounds(560, 310, 100, 32);
+        getContentPane().add(SaveBtn);
+        SaveBtn.setBounds(560, 310, 100, 32);
 
         BackBtn.setText("Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -81,10 +78,10 @@ public class ResourcesForm extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
-    {//GEN-HEADEREND:event_saveBtnActionPerformed
-        String ID = ResId.getText().toString();
-        String Name = ResName.getText().toString();
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
+    {//GEN-HEADEREND:event_SaveBtnActionPerformed
+        String ID = ResourceIdTxt.getText().toString();
+        String Name = ResourceNameTxt.getText().toString();
         if (ID.isEmpty() || Name.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
@@ -100,20 +97,20 @@ public class ResourcesForm extends javax.swing.JFrame
                 Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            ResId.setEditable(false);
-            ResName.setEditable(false);
-            saveBtn.setVisible(false);
+            ResourceIdTxt.setEditable(false);
+            ResourceNameTxt.setEditable(false);
+            SaveBtn.setVisible(false);
         }
         
-    }//GEN-LAST:event_saveBtnActionPerformed
+    }//GEN-LAST:event_SaveBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        saveBtn.setVisible(true);
-        ResId.setEditable(true);
-        ResName.setEditable(true);
-        ResId.setText(null);
-        ResName.setText(null);
+        SaveBtn.setVisible(true);
+        ResourceIdTxt.setEditable(true);
+        ResourceNameTxt.setEditable(true);
+        ResourceIdTxt.setText(null);
+        ResourceNameTxt.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
@@ -168,10 +165,10 @@ public class ResourcesForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JTextField ResId;
-    private javax.swing.JTextField ResName;
+    private javax.swing.JTextField ResourceIdTxt;
+    private javax.swing.JTextField ResourceNameTxt;
+    private javax.swing.JButton SaveBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

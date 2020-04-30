@@ -12,19 +12,6 @@ public class LogProgressForm extends javax.swing.JFrame
     {
         initComponents();
         
-        if (ReadFile.getInstance().ProjectNums != 0)
-        {
-           for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
-            {
-                jComboBox1.addItem(ReadFile.getInstance().project[i].getName().toString());
-            }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
-            MF.setVisible(true);
-            this.dispose();
-        }
         
         this.setLocationRelativeTo(null);
         
@@ -45,7 +32,7 @@ public class LogProgressForm extends javax.swing.JFrame
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ViewBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -90,10 +77,10 @@ public class LogProgressForm extends javax.swing.JFrame
         getContentPane().add(jLabel1);
         jLabel1.setBounds(610, 50, 90, 16);
 
-        jButton1.setText("View Log");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(600, 210, 100, 32);
-        jButton1.getAccessibleContext().setAccessibleName("");
+        ViewBtn.setText("View Log");
+        getContentPane().add(ViewBtn);
+        ViewBtn.setBounds(600, 210, 100, 32);
+        ViewBtn.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,8 +135,8 @@ public class LogProgressForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton ViewBtn;
+    public static javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

@@ -27,11 +27,11 @@ public class DepartmentForm extends javax.swing.JFrame
     {
 
         BackBtn = new javax.swing.JButton();
-        saveBtn = new javax.swing.JButton();
+        SaveBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        DepName = new javax.swing.JTextField();
-        DepId = new javax.swing.JTextField();
+        DepartmentNameTxt = new javax.swing.JTextField();
+        DepartmentIdTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -48,16 +48,16 @@ public class DepartmentForm extends javax.swing.JFrame
         getContentPane().add(BackBtn);
         BackBtn.setBounds(40, 20, 90, 32);
 
-        saveBtn.setText("Save");
-        saveBtn.addActionListener(new java.awt.event.ActionListener()
+        SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                saveBtnActionPerformed(evt);
+                SaveBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(saveBtn);
-        saveBtn.setBounds(570, 350, 90, 32);
+        getContentPane().add(SaveBtn);
+        SaveBtn.setBounds(570, 350, 90, 32);
 
         jLabel1.setText("Department Name:");
         getContentPane().add(jLabel1);
@@ -66,29 +66,29 @@ public class DepartmentForm extends javax.swing.JFrame
         jLabel2.setText("Department ID:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(200, 110, 120, 16);
-        getContentPane().add(DepName);
-        DepName.setBounds(420, 170, 110, 24);
-        getContentPane().add(DepId);
-        DepId.setBounds(200, 170, 110, 24);
+        getContentPane().add(DepartmentNameTxt);
+        DepartmentNameTxt.setBounds(420, 170, 110, 24);
+        getContentPane().add(DepartmentIdTxt);
+        DepartmentIdTxt.setBounds(200, 170, 110, 24);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        saveBtn.setVisible(true);
-        DepId.setEditable(true);
-        DepName.setEditable(true);
-        DepId.setText(null);
-        DepName.setText(null);
+        SaveBtn.setVisible(true);
+        DepartmentIdTxt.setEditable(true);
+        DepartmentNameTxt.setEditable(true);
+        DepartmentIdTxt.setText(null);
+        DepartmentNameTxt.setText(null);
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveBtnActionPerformed
-    {//GEN-HEADEREND:event_saveBtnActionPerformed
-        String ID = DepId.getText().toString();
-        String Name = DepName.getText().toString();
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
+    {//GEN-HEADEREND:event_SaveBtnActionPerformed
+        String ID = DepartmentIdTxt.getText().toString();
+        String Name = DepartmentNameTxt.getText().toString();
         
         if (ID.isEmpty() || Name.isEmpty())
         {
@@ -104,12 +104,12 @@ public class DepartmentForm extends javax.swing.JFrame
             {
                 Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
             }
-            DepId.setEditable(false);
-            DepName.setEditable(false);
-            saveBtn.setVisible(false);
+            DepartmentIdTxt.setEditable(false);
+            DepartmentNameTxt.setEditable(false);
+            SaveBtn.setVisible(false);
         }
         
-    }//GEN-LAST:event_saveBtnActionPerformed
+    }//GEN-LAST:event_SaveBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,10 +151,10 @@ public class DepartmentForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JTextField DepId;
-    private javax.swing.JTextField DepName;
+    private javax.swing.JTextField DepartmentIdTxt;
+    private javax.swing.JTextField DepartmentNameTxt;
+    private javax.swing.JButton SaveBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

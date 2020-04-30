@@ -15,21 +15,6 @@ public class PrintTaskForm extends javax.swing.JFrame
     public PrintTaskForm()
     {
         initComponents();
-        
-        if (ReadFile.getInstance().TaskNums != 0)
-        {
-           for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
-           {
-                jComboBox1.addItem(ReadFile.getInstance().task[i].getID());
-           }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
-            MF.setVisible(true);
-            this.dispose();
-        }
-        
         this.setLocationRelativeTo(null);
     }
 
@@ -43,10 +28,10 @@ public class PrintTaskForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jButton1 = new javax.swing.JButton();
+        SelectedTaskBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        DelayedTasksBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -56,16 +41,16 @@ public class PrintTaskForm extends javax.swing.JFrame
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton1.setText("Print Task");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        SelectedTaskBtn.setText("Print Task");
+        SelectedTaskBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                SelectedTaskBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(580, 70, 120, 32);
+        getContentPane().add(SelectedTaskBtn);
+        SelectedTaskBtn.setBounds(580, 70, 120, 32);
 
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(450, 70, 110, 26);
@@ -74,9 +59,9 @@ public class PrintTaskForm extends javax.swing.JFrame
         getContentPane().add(jLabel1);
         jLabel1.setBounds(280, 40, 170, 16);
 
-        jButton2.setText("Print All Delayed Tasks?");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(80, 70, 200, 32);
+        DelayedTasksBtn.setText("Print All Delayed Tasks?");
+        getContentPane().add(DelayedTasksBtn);
+        DelayedTasksBtn.setBounds(80, 70, 200, 32);
 
         BackBtn.setText("Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -110,11 +95,11 @@ public class PrintTaskForm extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void SelectedTaskBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SelectedTaskBtnActionPerformed
+    {//GEN-HEADEREND:event_SelectedTaskBtnActionPerformed
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SelectedTaskBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
@@ -184,9 +169,9 @@ public class PrintTaskForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton DelayedTasksBtn;
+    private javax.swing.JButton SelectedTaskBtn;
+    public static javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

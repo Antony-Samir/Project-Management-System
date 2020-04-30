@@ -1,6 +1,2 @@
 PROJECT ID # NAME # DEPT Id
-1 # game # 3
-2 # AhwaShay # 3
-3 # asd # 4
-4 # testing # 9
-6 # best # 2
+1 # game # 1

@@ -34,7 +34,7 @@ public class LoginForm extends javax.swing.JFrame
         SignUpBtn = new javax.swing.JButton();
         emailTxt = new javax.swing.JTextField();
         passwordTxt = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        BackGroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -82,9 +82,9 @@ public class LoginForm extends javax.swing.JFrame
         getContentPane().add(passwordTxt);
         passwordTxt.setBounds(170, 260, 140, 24);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login background.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 720, 480);
+        BackGroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login background.png"))); // NOI18N
+        getContentPane().add(BackGroundLabel);
+        BackGroundLabel.setBounds(0, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,11 +121,11 @@ public class LoginForm extends javax.swing.JFrame
         {//Check If Employee
             for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
             {
-                if (Name.equals(ReadFile.getInstance().member[i].getEmail()) && Password.equals(ReadFile.getInstance().member[i].getPassword()))
+                if (Name.equals(ReadFile.getInstance().MEMBERS.get(i).getEmail()) && Password.equals(ReadFile.getInstance().MEMBERS.get(i).getPassword()))
                 {
                     accFound = true;
-                    accFoundID = ReadFile.getInstance().member[i].getID();
-                    EF.NameTxt.setText(ReadFile.getInstance().member[i].getName());
+                    accFoundID = ReadFile.getInstance().MEMBERS.get(i).getID();
+                    EF.NameTxt.setText(ReadFile.getInstance().MEMBERS.get(i).getName());
                     EF.setVisible(true);
                     this.dispose();
                     break;
@@ -136,10 +136,10 @@ public class LoginForm extends javax.swing.JFrame
             {//For Loading Task ID's in Employee's Form
                 for (int j = 0; j < ReadFile.getInstance().MemberNums; j++)
                 {
-                    if (ReadFile.getInstance().task[i].MemberID[j] == LoginForm.accFoundID)
+                    if (ReadFile.getInstance().TASK.get(i).MemberID[j] == LoginForm.accFoundID)
                     {
-                        System.out.println(ReadFile.getInstance().task[i].getID());
-                        EmployeeForm.jComboBox1.addItem(String.valueOf(ReadFile.getInstance().task[i].getID()));
+                        System.out.println(ReadFile.getInstance().TASK.get(i).getID());
+                        EmployeeForm.jComboBox1.addItem(String.valueOf(ReadFile.getInstance().TASK.get(i).getID()));
                         break;
                     }
                 }
@@ -149,14 +149,14 @@ public class LoginForm extends javax.swing.JFrame
             {//For Loading Task ID's in Employee's Form
                 for (int j = 0; j < ReadFile.getInstance().MemberNums; j++)
                 {
-                    if (ReadFile.getInstance().task[i].MemberID[j] == LoginForm.accFoundID)
+                    if (ReadFile.getInstance().TASK.get(i).MemberID[j] == LoginForm.accFoundID)
                     {
                         for (int k = 0; k < ReadFile.ProjectNums; k++)
                         {
-                            if (ReadFile.getInstance().task[i].getProjectID() == ReadFile.project[k].getID())
+                            if (ReadFile.getInstance().TASK.get(i).getProjectID() == ReadFile.PROJECT.get(k).getID())
                             {
-                                System.out.println(ReadFile.project[k].getName());
-                                EmployeeForm.jComboBox2.addItem(ReadFile.project[k].getName());
+                                System.out.println(ReadFile.PROJECT.get(k).getName());
+                                EmployeeForm.jComboBox2.addItem(ReadFile.PROJECT.get(k).getName());
                             }
                         }
                         
@@ -180,7 +180,6 @@ public class LoginForm extends javax.swing.JFrame
                 System.exit(0);
             }
         }
-        
         
     }//GEN-LAST:event_SignInBtnActionPerformed
 
@@ -236,11 +235,11 @@ public class LoginForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BackGroundLabel;
     private javax.swing.JButton SignInBtn;
     private javax.swing.JButton SignUpBtn;
     private javax.swing.JLabel email;
     private javax.swing.JTextField emailTxt;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel password;
     private javax.swing.JTextField passwordTxt;
     // End of variables declaration//GEN-END:variables

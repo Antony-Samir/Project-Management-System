@@ -1,6 +1,2 @@
 Department ID  # NAME
 1 # HR
-2 # Acounting
-3 # OfficeBoy
-4 # Developers
-9 # test

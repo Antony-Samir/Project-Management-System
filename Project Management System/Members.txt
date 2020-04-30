@@ -1,6 +1,2 @@
 MEMBER ID # NAME # ADDRESS # PHONE # EMAIL # Password
-1 # z # z # z # z # z
-2 # tony # t # t # t # t
-3 # d # d # d # d # d
-4 # x # x # x # x # x
-5 # youssef # makram # 010 # gmail # 123
+1 # tony # hassan # 012 # gmail # 123

@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ReadFile
@@ -79,16 +81,16 @@ public class ReadFile
         
     
     
-    static public Department department[];
-    static public Project project[];
-    static public TeamMember member[];
-    static public Resource resource[];
-    static public Task task[];
+    static public List<Department> DEPARTMENT = new ArrayList<Department>();
+    static public List<Project> PROJECT = new ArrayList<Project>();
+    static public List<TeamMember> MEMBERS = new ArrayList<TeamMember>();
+    static public List<Resource> RESOURCE = new ArrayList<Resource>();
+    static public List<Task> TASK = new ArrayList<Task>();
     
     
     public static void readDepartments() throws IOException
     {//Read All Departments
-        department = new Department[DepartmentNums];
+        Department department;
         
         try
         {
@@ -108,13 +110,16 @@ public class ReadFile
         
         for (int i = 0; i < DepartmentNums; i++)
         {
-            department[i] = new Department();
+            department = new Department();
             sentence = BR.readLine();
                                    
             parts = sentence.split(" # ");
             
-            department[i].setID(Integer.parseInt(parts[0].toString()));
-            department[i].setName(parts[1].toString());
+            
+            
+            department.setID(Integer.parseInt(parts[0].toString()));
+            department.setName(parts[1].toString());
+            DEPARTMENT.add(department);
         }
         
         BR.close();
@@ -129,8 +134,8 @@ public class ReadFile
         {
             for (int i = 0; i < DepartmentNums; i++)
             {
-                System.out.println(department[i].getID());
-                System.out.println(department[i].getName());
+                System.out.println(DEPARTMENT.get(i).getID());
+                System.out.println(DEPARTMENT.get(i).getName());
             }
         }*/
     }
@@ -138,7 +143,7 @@ public class ReadFile
     
     public static void readProjects() throws IOException
     {//Read All Projects
-        project = new Project[ProjectNums];
+        Project project;
                 
         try
         {
@@ -158,14 +163,15 @@ public class ReadFile
         
         for (int i = 0; i < ProjectNums; i++)
         {
-            project[i] = new Project();
+            project = new Project();
             sentence = BR.readLine();
                                    
             parts = sentence.split(" # ");
             
-            project[i].setID(Integer.parseInt(parts[0].toString()));
-            project[i].setName(parts[1].toString());
-            project[i].setDepartmentID(Integer.parseInt(parts[2].toString()));
+            project.setID(Integer.parseInt(parts[0].toString()));
+            project.setName(parts[1].toString());
+            project.setDepartmentID(Integer.parseInt(parts[2].toString()));
+            PROJECT.add(project);
         }
         
         BR.close();
@@ -180,9 +186,9 @@ public class ReadFile
         {
             for (int i = 0; i < ProjectNums; i++)
             {
-                System.out.println(project[i].getID());
-                System.out.println(project[i].getName());
-                System.out.println(project[i].getDepartmentID());
+                System.out.println(PROJECT.get(i).getID());
+                System.out.println(PROJECT.get(i).getName());
+                System.out.println(PROJECT.get(i).getDepartmentID());
             }
         }*/
     }
@@ -190,7 +196,7 @@ public class ReadFile
     
     public static void readMembers() throws IOException
     {//Read All Members
-        member = new TeamMember[MemberNums];
+        TeamMember member;
         
         try
         {
@@ -210,17 +216,18 @@ public class ReadFile
         
         for (int i = 0; i < MemberNums; i++)
         {
-            member[i] = new TeamMember();
+            member = new TeamMember();
             sentence = BR.readLine();
                                    
             parts = sentence.split(" # ");  
             
-            member[i].setID(Integer.parseInt(parts[0].toString()));
-            member[i].setName(parts[1].toString());
-            member[i].setAddress(parts[2].toString());
-            member[i].setPhone(parts[3].toString());
-            member[i].setEmail(parts[4].toString());
-            member[i].setPassword(parts[5].toString());
+            member.setID(Integer.parseInt(parts[0].toString()));
+            member.setName(parts[1].toString());
+            member.setAddress(parts[2].toString());
+            member.setPhone(parts[3].toString());
+            member.setEmail(parts[4].toString());
+            member.setPassword(parts[5].toString());
+            MEMBERS.add(member);
         }
         
         BR.close();
@@ -235,12 +242,12 @@ public class ReadFile
         {
             for (int i = 0; i < MemberNums; i++)
             {
-                System.out.println(member[i].getID());
-                System.out.println(member[i].getName());
-                System.out.println(member[i].getAddress());
-                System.out.println(member[i].getPhone());
-                System.out.println(member[i].getEmail());
-                System.out.println(member[i].getPassword());
+                System.out.println(MEMBERS.get(i).getID());
+                System.out.println(MEMBERS.get(i).getName());
+                System.out.println(MEMBERS.get(i).getAddress());
+                System.out.println(MEMBERS.get(i).getPhone());
+                System.out.println(MEMBERS.get(i).getEmail());
+                System.out.println(MEMBERS.get(i).getPassword());
             }
         }*/
     }
@@ -248,7 +255,7 @@ public class ReadFile
     
     public static void readResources() throws IOException
     {//Read All Resources
-        resource = new Resource[ResourceNums];
+        Resource resource;
         
         try
         {
@@ -268,14 +275,15 @@ public class ReadFile
         
         for (int i = 0; i < ResourceNums; i++)
         {
-            resource[i] = new Resource();
+            resource = new Resource();
             sentence = BR.readLine();
                                    
             parts = sentence.split(" # ");  
             
-            resource[i].setID(Integer.parseInt(parts[0].toString()));
-            resource[i].setName(parts[1].toString());
-            resource[i].setUsed(Integer.parseInt(parts[2].toString()));
+            resource.setID(Integer.parseInt(parts[0].toString()));
+            resource.setName(parts[1].toString());
+            resource.setUsed(Integer.parseInt(parts[2].toString()));
+            RESOURCE.add(resource);
         }
         
         BR.close();
@@ -290,9 +298,9 @@ public class ReadFile
         {
             for (int i = 0; i < ResourceNums; i++)
             {
-                System.out.println(resource[i].getID());
-                System.out.println(resource[i].getName());
-                System.out.println(resource[i].getUsed());
+                System.out.println(RESOURCE.get(i).getID());
+                System.out.println(RESOURCE.get(i).getName());
+                System.out.println(RESOURCE.get(i).getUsed());
             }
         }*/
     }
@@ -301,7 +309,7 @@ public class ReadFile
     public static int ResourcesUsedInTask[];
     public static void readTasks() throws IOException
     {//Read All Tasks
-        task = new Task[TaskNums];
+        Task task;
         MemberNumbersInTask = new int[TaskNums];
         ResourcesUsedInTask = new int[TaskNums];
         
@@ -326,16 +334,16 @@ public class ReadFile
         
         for (int i = 0; i < TaskNums; i++)
         {
-            task[i] = new Task();
+            task = new Task();
             sentence = BR.readLine();
                                    
             parts = sentence.split(" # ");  
             
-            task[i].setID(Integer.parseInt(parts[0].toString()));
-            task[i].setProjectID(Integer.parseInt(parts[1].toString()));
-            task[i].setTitle(parts[2].toString());
-            task[i].setFromDate(parts[3].toString());
-            task[i].setToDate(parts[4].toString());
+            task.setID(Integer.parseInt(parts[0].toString()));
+            task.setProjectID(Integer.parseInt(parts[1].toString()));
+            task.setTitle(parts[2].toString());
+            task.setFromDate(parts[3].toString());
+            task.setToDate(parts[4].toString());
             
             
             partsMembers = parts[5].split(",");
@@ -343,7 +351,7 @@ public class ReadFile
             {
                 try
                 {
-                    task[i].MemberID[j] = Integer.parseInt(partsMembers[j+1]);
+                    task.MemberID[j] = Integer.parseInt(partsMembers[j+1]);
                 }
                 catch(Exception ex)
                 {
@@ -359,7 +367,7 @@ public class ReadFile
             {
                 try
                 {
-                    task[i].ResourceID[j] = Integer.parseInt(partsResources[j+1]);
+                    task.ResourceID[j] = Integer.parseInt(partsResources[j+1]);
                 }
                 catch(Exception ex)
                 {
@@ -368,8 +376,8 @@ public class ReadFile
                 ResourcesUsedInTask[i] = (j+1);
             }
             
-            task[i].setStatus(parts[7].toString());
-            
+            task.setStatus(parts[7].toString());
+            TASK.add(task);
         }
         
         BR.close();
@@ -384,25 +392,25 @@ public class ReadFile
         {
             for (int i = 0; i < TaskNums; i++)
             {
-                System.out.println("ID: " + task[i].getID());
-                System.out.println("Project ID: " + task[i].getProjectID());
-                System.out.println("Title: " + task[i].getTitle());
-                System.out.println("From Date: " + task[i].getFromDate());
-                System.out.println("To Date: " + task[i].getToDate());
+                System.out.println("ID: " + TASK.get(i).getID());
+                System.out.println("Project ID: " + TASK.get(i).getProjectID());
+                System.out.println("Title: " + TASK.get(i).getTitle());
+                System.out.println("From Date: " + TASK.get(i).getFromDate());
+                System.out.println("To Date: " + TASK.get(i).getToDate());
                 
                 System.out.println("Number of Member Work in Task:" + MemberNumbersInTask[i]);
                 for (int j = 0; j < MemberNumbersInTask[i]; j++)
                 {
-                    System.out.println("Members: " + task[i].MemberID[j]);
+                    System.out.println("Members: " + TASK.get(i).MemberID[j]);
                 }
                 
                 System.out.println("Number of Resources Used: " + ResourcesUsedInTask[i]);
                 for (int j = 0; j < ResourcesUsedInTask[i]; j++)
                 {
-                    System.out.println("Resources: " + task[i].ResourceID[j]);
+                    System.out.println("Resources: " + TASK.get(i).ResourceID[j]);
                 }
                 
-                System.out.println("Status: " + task[i].getStatus());
+                System.out.println("Status: " + TASK.get(i).getStatus());
                 System.out.println();
             }
         }*/

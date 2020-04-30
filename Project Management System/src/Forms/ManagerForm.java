@@ -1,4 +1,6 @@
 package Forms;
+import static Forms.LogProgressForm.MF;
+import static Forms.PrintTaskForm.MF;
 import UpdateDeleteForm.*;
 import javax.swing.JOptionPane;
 import project.management.system.ReadFile;
@@ -22,9 +24,7 @@ public class ManagerForm extends javax.swing.JFrame
     public ManagerForm()
     {
         initComponents();
-
         this.setLocationRelativeTo(null);
-       
     }
 
     /**
@@ -37,190 +37,205 @@ public class ManagerForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        PrintTaskBtn = new javax.swing.JButton();
+        LogBtn = new javax.swing.JButton();
+        AddTaskBtn = new javax.swing.JButton();
+        UD_TaskBtn = new javax.swing.JButton();
+        AddDepartmentBtn = new javax.swing.JButton();
+        UD_DepartmentBtn = new javax.swing.JButton();
+        AddResourceBtn = new javax.swing.JButton();
+        UD_ResourceBtn = new javax.swing.JButton();
+        AddProjectBtn = new javax.swing.JButton();
+        UD_ProjectBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        jButton3.setText("Print Tasks & Projects");
-        jButton3.addActionListener(new java.awt.event.ActionListener()
+        PrintTaskBtn.setText("Print Tasks & Projects");
+        PrintTaskBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton3ActionPerformed(evt);
+                PrintTaskBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(440, 80, 200, 35);
+        getContentPane().add(PrintTaskBtn);
+        PrintTaskBtn.setBounds(440, 80, 200, 35);
 
-        jButton4.setText("Log Progress");
-        jButton4.addActionListener(new java.awt.event.ActionListener()
+        LogBtn.setText("Log Progress");
+        LogBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton4ActionPerformed(evt);
+                LogBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(100, 80, 200, 35);
+        getContentPane().add(LogBtn);
+        LogBtn.setBounds(100, 80, 200, 35);
 
-        jButton6.setText("Add Task");
-        jButton6.setMaximumSize(null);
-        jButton6.setMinimumSize(null);
-        jButton6.setName(""); // NOI18N
-        jButton6.setOpaque(false);
-        jButton6.setPreferredSize(null);
-        jButton6.setRolloverEnabled(true);
-        jButton6.addActionListener(new java.awt.event.ActionListener()
+        AddTaskBtn.setText("Add Task");
+        AddTaskBtn.setMaximumSize(null);
+        AddTaskBtn.setMinimumSize(null);
+        AddTaskBtn.setName(""); // NOI18N
+        AddTaskBtn.setOpaque(false);
+        AddTaskBtn.setPreferredSize(null);
+        AddTaskBtn.setRolloverEnabled(true);
+        AddTaskBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton6ActionPerformed(evt);
+                AddTaskBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(100, 180, 200, 35);
+        getContentPane().add(AddTaskBtn);
+        AddTaskBtn.setBounds(100, 180, 200, 35);
 
-        jButton7.setText("Update / Delete Task");
-        jButton7.setMaximumSize(null);
-        jButton7.setMinimumSize(null);
-        jButton7.setName(""); // NOI18N
-        jButton7.setOpaque(false);
-        jButton7.setPreferredSize(null);
-        jButton7.setRolloverEnabled(true);
-        jButton7.addActionListener(new java.awt.event.ActionListener()
+        UD_TaskBtn.setText("Update / Delete Task");
+        UD_TaskBtn.setMaximumSize(null);
+        UD_TaskBtn.setMinimumSize(null);
+        UD_TaskBtn.setName(""); // NOI18N
+        UD_TaskBtn.setOpaque(false);
+        UD_TaskBtn.setPreferredSize(null);
+        UD_TaskBtn.setRolloverEnabled(true);
+        UD_TaskBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton7ActionPerformed(evt);
+                UD_TaskBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7);
-        jButton7.setBounds(100, 240, 200, 35);
+        getContentPane().add(UD_TaskBtn);
+        UD_TaskBtn.setBounds(100, 240, 200, 35);
 
-        jButton9.setText("Add Department");
-        jButton9.setMaximumSize(null);
-        jButton9.setMinimumSize(null);
-        jButton9.setName(""); // NOI18N
-        jButton9.setOpaque(false);
-        jButton9.setPreferredSize(null);
-        jButton9.setRolloverEnabled(true);
-        jButton9.addActionListener(new java.awt.event.ActionListener()
+        AddDepartmentBtn.setText("Add Department");
+        AddDepartmentBtn.setMaximumSize(null);
+        AddDepartmentBtn.setMinimumSize(null);
+        AddDepartmentBtn.setName(""); // NOI18N
+        AddDepartmentBtn.setOpaque(false);
+        AddDepartmentBtn.setPreferredSize(null);
+        AddDepartmentBtn.setRolloverEnabled(true);
+        AddDepartmentBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton9ActionPerformed(evt);
+                AddDepartmentBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9);
-        jButton9.setBounds(100, 300, 200, 35);
+        getContentPane().add(AddDepartmentBtn);
+        AddDepartmentBtn.setBounds(100, 300, 200, 35);
 
-        jButton10.setText("Update / Delete  Department");
-        jButton10.setMaximumSize(null);
-        jButton10.setMinimumSize(null);
-        jButton10.setName(""); // NOI18N
-        jButton10.setOpaque(false);
-        jButton10.setPreferredSize(null);
-        jButton10.setRolloverEnabled(true);
-        jButton10.addActionListener(new java.awt.event.ActionListener()
+        UD_DepartmentBtn.setText("Update / Delete  Department");
+        UD_DepartmentBtn.setMaximumSize(null);
+        UD_DepartmentBtn.setMinimumSize(null);
+        UD_DepartmentBtn.setName(""); // NOI18N
+        UD_DepartmentBtn.setOpaque(false);
+        UD_DepartmentBtn.setPreferredSize(null);
+        UD_DepartmentBtn.setRolloverEnabled(true);
+        UD_DepartmentBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton10ActionPerformed(evt);
+                UD_DepartmentBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10);
-        jButton10.setBounds(100, 360, 200, 35);
+        getContentPane().add(UD_DepartmentBtn);
+        UD_DepartmentBtn.setBounds(100, 360, 200, 35);
 
-        jButton12.setText("Add Resource");
-        jButton12.setMaximumSize(null);
-        jButton12.setMinimumSize(null);
-        jButton12.setName(""); // NOI18N
-        jButton12.setOpaque(false);
-        jButton12.setPreferredSize(null);
-        jButton12.setRolloverEnabled(true);
-        jButton12.addActionListener(new java.awt.event.ActionListener()
+        AddResourceBtn.setText("Add Resource");
+        AddResourceBtn.setMaximumSize(null);
+        AddResourceBtn.setMinimumSize(null);
+        AddResourceBtn.setName(""); // NOI18N
+        AddResourceBtn.setOpaque(false);
+        AddResourceBtn.setPreferredSize(null);
+        AddResourceBtn.setRolloverEnabled(true);
+        AddResourceBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton12ActionPerformed(evt);
+                AddResourceBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton12);
-        jButton12.setBounds(440, 180, 200, 35);
+        getContentPane().add(AddResourceBtn);
+        AddResourceBtn.setBounds(440, 180, 200, 35);
 
-        jButton13.setText("Update / Delete Resource");
-        jButton13.setMaximumSize(null);
-        jButton13.setMinimumSize(null);
-        jButton13.setName(""); // NOI18N
-        jButton13.setOpaque(false);
-        jButton13.setPreferredSize(null);
-        jButton13.setRolloverEnabled(true);
-        jButton13.addActionListener(new java.awt.event.ActionListener()
+        UD_ResourceBtn.setText("Update / Delete Resource");
+        UD_ResourceBtn.setMaximumSize(null);
+        UD_ResourceBtn.setMinimumSize(null);
+        UD_ResourceBtn.setName(""); // NOI18N
+        UD_ResourceBtn.setOpaque(false);
+        UD_ResourceBtn.setPreferredSize(null);
+        UD_ResourceBtn.setRolloverEnabled(true);
+        UD_ResourceBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton13ActionPerformed(evt);
+                UD_ResourceBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton13);
-        jButton13.setBounds(440, 240, 200, 35);
+        getContentPane().add(UD_ResourceBtn);
+        UD_ResourceBtn.setBounds(440, 240, 200, 35);
 
-        jButton15.setText("Add Project");
-        jButton15.setMaximumSize(null);
-        jButton15.setMinimumSize(null);
-        jButton15.setName(""); // NOI18N
-        jButton15.setOpaque(false);
-        jButton15.setPreferredSize(null);
-        jButton15.setRolloverEnabled(true);
-        jButton15.addActionListener(new java.awt.event.ActionListener()
+        AddProjectBtn.setText("Add Project");
+        AddProjectBtn.setMaximumSize(null);
+        AddProjectBtn.setMinimumSize(null);
+        AddProjectBtn.setName(""); // NOI18N
+        AddProjectBtn.setOpaque(false);
+        AddProjectBtn.setPreferredSize(null);
+        AddProjectBtn.setRolloverEnabled(true);
+        AddProjectBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton15ActionPerformed(evt);
+                AddProjectBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton15);
-        jButton15.setBounds(440, 300, 200, 35);
+        getContentPane().add(AddProjectBtn);
+        AddProjectBtn.setBounds(440, 300, 200, 35);
 
-        jButton16.setText("Update / Delete Project");
-        jButton16.setMaximumSize(null);
-        jButton16.setMinimumSize(null);
-        jButton16.setName(""); // NOI18N
-        jButton16.setOpaque(false);
-        jButton16.setPreferredSize(null);
-        jButton16.setRolloverEnabled(true);
-        jButton16.addActionListener(new java.awt.event.ActionListener()
+        UD_ProjectBtn.setText("Update / Delete Project");
+        UD_ProjectBtn.setMaximumSize(null);
+        UD_ProjectBtn.setMinimumSize(null);
+        UD_ProjectBtn.setName(""); // NOI18N
+        UD_ProjectBtn.setOpaque(false);
+        UD_ProjectBtn.setPreferredSize(null);
+        UD_ProjectBtn.setRolloverEnabled(true);
+        UD_ProjectBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton16ActionPerformed(evt);
+                UD_ProjectBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton16);
-        jButton16.setBounds(440, 360, 200, 35);
+        getContentPane().add(UD_ProjectBtn);
+        UD_ProjectBtn.setBounds(440, 360, 200, 35);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
-    {//GEN-HEADEREND:event_jButton4ActionPerformed
-        LPF.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void LogBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_LogBtnActionPerformed
+    {//GEN-HEADEREND:event_LogBtnActionPerformed
+        
+        if (ReadFile.getInstance().ProjectNums != 0)
+        {
+            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+            {
+                LogProgressForm.jComboBox1.addItem(ReadFile.getInstance().PROJECT.get(i).getName().toString());
+            }
+            LPF.setVisible(true);
+            this.dispose();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
+            //this.dispose();
+        }
+        
+        
+    }//GEN-LAST:event_LogBtnActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
-    {//GEN-HEADEREND:event_jButton6ActionPerformed
+    private void AddTaskBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AddTaskBtnActionPerformed
+    {//GEN-HEADEREND:event_AddTaskBtnActionPerformed
         if (ReadFile.MemberNums == 0)
         {
             JOptionPane.showMessageDialog(this, "No Employees Were Added", "Sorry Form Can't Be Loaded", JOptionPane.WARNING_MESSAGE);
@@ -238,56 +253,122 @@ public class ManagerForm extends javax.swing.JFrame
            TF.setVisible(true);
            this.dispose();
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_AddTaskBtnActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton9ActionPerformed
-    {//GEN-HEADEREND:event_jButton9ActionPerformed
+    private void AddDepartmentBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AddDepartmentBtnActionPerformed
+    {//GEN-HEADEREND:event_AddDepartmentBtnActionPerformed
         DF.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_AddDepartmentBtnActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton12ActionPerformed
-    {//GEN-HEADEREND:event_jButton12ActionPerformed
+    private void AddResourceBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AddResourceBtnActionPerformed
+    {//GEN-HEADEREND:event_AddResourceBtnActionPerformed
         RF.setVisible(true);
         this.dispose();
         
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_AddResourceBtnActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton15ActionPerformed
-    {//GEN-HEADEREND:event_jButton15ActionPerformed
-        PF.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton15ActionPerformed
+    private void AddProjectBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AddProjectBtnActionPerformed
+    {//GEN-HEADEREND:event_AddProjectBtnActionPerformed
+        if (ReadFile.DepartmentNums == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No Departments Were Added", "Sorry Form Can't Be Loaded", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+            PF.setVisible(true);
+            this.dispose();
+        }
+        
+    }//GEN-LAST:event_AddProjectBtnActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton7ActionPerformed
-    {//GEN-HEADEREND:event_jButton7ActionPerformed
-        UDTF.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void UD_TaskBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_UD_TaskBtnActionPerformed
+    {//GEN-HEADEREND:event_UD_TaskBtnActionPerformed
+        if (ReadFile.getInstance().TaskNums == 0)
+        {
+            JOptionPane.showMessageDialog(null, "No Tasks Were Added!", "Add Task First", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {   
+            for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+            {
+                UDTF.jComboBox1.addItem(String.valueOf(ReadFile.getInstance().TASK.get(i).getID()));
+            }
+            UDTF.setVisible(true);
+            this.dispose();
+        }
+        
+    }//GEN-LAST:event_UD_TaskBtnActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton13ActionPerformed
-    {//GEN-HEADEREND:event_jButton13ActionPerformed
-        UDRF.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void UD_ResourceBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_UD_ResourceBtnActionPerformed
+    {//GEN-HEADEREND:event_UD_ResourceBtnActionPerformed
+        if (ReadFile.getInstance().ResourceNums == 0)
+        {
+            JOptionPane.showMessageDialog(null, "No Resources Were Added!", "Add Resource First", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+            {
+                UDRF.jComboBox1.addItem(ReadFile.getInstance().RESOURCE.get(i).getName().toString());
+            }
+            UDRF.setVisible(true);
+            this.dispose();
+            
+        }
+    }//GEN-LAST:event_UD_ResourceBtnActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton10ActionPerformed
-    {//GEN-HEADEREND:event_jButton10ActionPerformed
-        UDDF.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void UD_DepartmentBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_UD_DepartmentBtnActionPerformed
+    {//GEN-HEADEREND:event_UD_DepartmentBtnActionPerformed
+        if (ReadFile.getInstance().DepartmentNums == 0)
+        {
+            JOptionPane.showMessageDialog(null, "No Departments Were Added!", "Add Department First", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
+            {
+                UDDF.jComboBox1.addItem(ReadFile.getInstance().DEPARTMENT.get(i).getName().toString());
+            }
+            UDDF.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_UD_DepartmentBtnActionPerformed
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton16ActionPerformed
-    {//GEN-HEADEREND:event_jButton16ActionPerformed
-        UDPF.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton16ActionPerformed
+    private void UD_ProjectBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_UD_ProjectBtnActionPerformed
+    {//GEN-HEADEREND:event_UD_ProjectBtnActionPerformed
+        
+        if (ReadFile.getInstance().ProjectNums != 0)
+        {
+           for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+           {
+                UDPF.jComboBox2.addItem(ReadFile.getInstance().PROJECT.get(i).getName().toString());
+           }
+           UDPF.setVisible(true);
+           this.dispose();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_UD_ProjectBtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
-    {//GEN-HEADEREND:event_jButton3ActionPerformed
-        PTF.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void PrintTaskBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_PrintTaskBtnActionPerformed
+    {//GEN-HEADEREND:event_PrintTaskBtnActionPerformed
+        if (ReadFile.getInstance().TaskNums != 0)
+        {
+           for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+           {
+                PrintTaskForm.jComboBox1.addItem(ReadFile.getInstance().TASK.get(i).getID());
+           }
+           PTF.setVisible(true);
+           this.dispose();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_PrintTaskBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,15 +417,15 @@ public class ManagerForm extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton AddDepartmentBtn;
+    private javax.swing.JButton AddProjectBtn;
+    private javax.swing.JButton AddResourceBtn;
+    private javax.swing.JButton AddTaskBtn;
+    private javax.swing.JButton LogBtn;
+    private javax.swing.JButton PrintTaskBtn;
+    private javax.swing.JButton UD_DepartmentBtn;
+    private javax.swing.JButton UD_ProjectBtn;
+    private javax.swing.JButton UD_ResourceBtn;
+    private javax.swing.JButton UD_TaskBtn;
     // End of variables declaration//GEN-END:variables
 }
