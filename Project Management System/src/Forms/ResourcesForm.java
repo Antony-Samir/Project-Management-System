@@ -83,6 +83,7 @@ public class ResourcesForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_SaveBtnActionPerformed
         String ID = ResourceIdTxt.getText().toString();
         String Name = ResourceNameTxt.getText().toString();
+        String Used = "0";
         if (ID.isEmpty() || Name.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Enter All Empty Fields!", "Field not entered", JOptionPane.WARNING_MESSAGE);
@@ -99,11 +100,11 @@ public class ResourcesForm extends javax.swing.JFrame
             }
             try
             {
-                WriteFile.getInstance().writeResource(ID, Name);
+                WriteFile.getInstance().writeResource(ID, Name, Used);
             } 
             catch (IOException ex)
             {
-                Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             ResourceIdTxt.setEditable(false);

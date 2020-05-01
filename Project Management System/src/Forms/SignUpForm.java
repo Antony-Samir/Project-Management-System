@@ -60,6 +60,7 @@ public class SignUpForm extends javax.swing.JFrame
         PasswordTxt = new javax.swing.JTextField();
         PhoneTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        MailFormatTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(null);
@@ -74,7 +75,7 @@ public class SignUpForm extends javax.swing.JFrame
 
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(460, 180, 70, 16);
+        jLabel2.setBounds(460, 210, 70, 16);
 
         jLabel3.setText("Address");
         getContentPane().add(jLabel3);
@@ -116,7 +117,7 @@ public class SignUpForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(560, 340, 100, 32);
+        SaveBtn.setBounds(560, 380, 100, 32);
 
         BackBtn.setText("Back To Main Menu");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -129,25 +130,37 @@ public class SignUpForm extends javax.swing.JFrame
         getContentPane().add(BackBtn);
         BackBtn.setBounds(14, 17, 150, 32);
         getContentPane().add(EmailTxt);
-        EmailTxt.setBounds(290, 170, 100, 25);
+        EmailTxt.setBounds(210, 170, 100, 25);
         getContentPane().add(IdTxt);
-        IdTxt.setBounds(290, 320, 100, 25);
+        IdTxt.setBounds(290, 350, 100, 25);
 
         jLabel5.setText("Your ID will Show Up Here");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(270, 280, 150, 16);
+        jLabel5.setBounds(270, 310, 150, 16);
         getContentPane().add(PasswordTxt);
-        PasswordTxt.setBounds(440, 210, 100, 25);
+        PasswordTxt.setBounds(440, 240, 100, 25);
 
         PhoneTxt.setMaximumSize(null);
         PhoneTxt.setMinimumSize(new java.awt.Dimension(70, 70));
         PhoneTxt.setName(""); // NOI18N
         getContentPane().add(PhoneTxt);
-        PhoneTxt.setBounds(130, 210, 100, 25);
+        PhoneTxt.setBounds(130, 240, 100, 25);
 
         jLabel6.setText("Phone");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(160, 180, 36, 16);
+        jLabel6.setBounds(160, 210, 36, 16);
+
+        MailFormatTxt.setEditable(false);
+        MailFormatTxt.setText("@management.sys.com");
+        MailFormatTxt.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                MailFormatTxtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MailFormatTxt);
+        MailFormatTxt.setBounds(310, 170, 150, 24);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,7 +174,7 @@ public class SignUpForm extends javax.swing.JFrame
         String Name = NameTxt.getText().toString();
         String Address = AddressTxt.getText().toString();
         String Phone = PhoneTxt.getText().toString();
-        String Email = EmailTxt.getText().toString();
+        String Email = EmailTxt.getText().toString() + MailFormatTxt.getText().toString();
         String Password = PasswordTxt.getText().toString();
         
         
@@ -207,6 +220,11 @@ public class SignUpForm extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_NameTxtActionPerformed
 
+    private void MailFormatTxtActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MailFormatTxtActionPerformed
+    {//GEN-HEADEREND:event_MailFormatTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MailFormatTxtActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -245,6 +263,7 @@ public class SignUpForm extends javax.swing.JFrame
     private javax.swing.JButton BackBtn;
     private javax.swing.JTextField EmailTxt;
     private javax.swing.JTextField IdTxt;
+    private javax.swing.JTextField MailFormatTxt;
     private javax.swing.JTextField NameTxt;
     private javax.swing.JTextField PasswordTxt;
     private javax.swing.JTextField PhoneTxt;

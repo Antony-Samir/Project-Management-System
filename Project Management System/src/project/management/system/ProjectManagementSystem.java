@@ -37,6 +37,11 @@ public class ProjectManagementSystem
         //System.out.println("task ok");
         
         
+        ReadFile.getInstance().readLog();
+        //System.out.println("log ok");
+        
+        
+        
         //JCheckBox cb1 = new JCheckBox("Task 1");
         
         Forms.LoginForm Login = new  Forms.LoginForm();

@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import project.management.system.*;
+import project.management.system.EditFile;
 
 public class UD_ProjectForm extends javax.swing.JFrame 
 {
@@ -21,7 +22,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
         {
            for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
             {
-                jComboBox1.addItem(ReadFile.getInstance().DEPARTMENT.get(i).getName().toString());
+                jComboBox1.addItem(ReadFile.getInstance().DEPARTMENT.get(i).getID());
             }
         }
         
@@ -72,20 +73,20 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
         jLabel1.setText("Project ID:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 160, 90, 16);
+        jLabel1.setBounds(110, 160, 90, 16);
 
         jLabel2.setText("Project Name:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 160, 90, 16);
+        jLabel2.setBounds(270, 160, 90, 16);
 
         jLabel3.setText("Department ID:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(390, 160, 90, 16);
+        jLabel3.setBounds(430, 160, 90, 16);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(390, 200, 100, 26);
+        jComboBox1.setBounds(430, 200, 100, 26);
         getContentPane().add(ProjectIdTxt);
-        ProjectIdTxt.setBounds(70, 200, 100, 24);
+        ProjectIdTxt.setBounds(100, 200, 100, 24);
 
         ProjectNameTxt.addActionListener(new java.awt.event.ActionListener()
         {
@@ -95,7 +96,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(ProjectNameTxt);
-        ProjectNameTxt.setBounds(230, 200, 100, 24);
+        ProjectNameTxt.setBounds(270, 200, 100, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -106,7 +107,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(230, 310, 100, 32);
+        SaveBtn.setBounds(270, 290, 100, 32);
 
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(575, 100, 100, 26);
@@ -124,7 +125,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(DeleteBtn);
-        DeleteBtn.setBounds(60, 310, 100, 32);
+        DeleteBtn.setBounds(100, 290, 100, 32);
 
         ViewBtn.setText("View");
         ViewBtn.addActionListener(new java.awt.event.ActionListener()
@@ -155,6 +156,9 @@ public class UD_ProjectForm extends javax.swing.JFrame
         String ID = ProjectIdTxt.getText().toString();
         String Name = ProjectNameTxt.getText().toString();
         
+        String DepartmentID;
+        DepartmentID = jComboBox1.getSelectedItem().toString();
+        
         if (ProjectIdTxt.getText().toString().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
@@ -163,13 +167,40 @@ public class UD_ProjectForm extends javax.swing.JFrame
         {
             for (int i = 0; i < ReadFile.ProjectNums; i++)
             {
+                if (Integer.parseInt(ID) ==  ReadFile.PROJECT.get(i).getID())
+                {
+                    try
+                    {//+2 (File Description Line + Indexing from zero)
+                        EditFile.deleteProject(i + 2);
+                        JOptionPane.showMessageDialog(this, "congratulations Project Updated Successfully", "Updated", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    } 
+                    catch (IOException ex)
+                    {
+                    }
+                }
+            }
+            /*for (int i = 0; i < ReadFile.ProjectNums; i++)
+            {
                 if (Integer.parseInt(ID) == ReadFile.PROJECT.get(i).getID())
                 {
                     JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Project ID is already saved", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
+            }*/
+            try
+            {
+                WriteFile.getInstance().writeProject(ID, Name, DepartmentID);
+            } 
+            catch (IOException ex)
+            {
             }
-            //other logic
+            ProjectIdTxt.setEditable(false);
+            ProjectIdTxt.setText(null);
+            ProjectNameTxt.setEditable(false);
+            ProjectNameTxt.setText(null);
+            MF.setVisible(true);
+            this.dispose();
         }
         
         
@@ -184,14 +215,36 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
     {//GEN-HEADEREND:event_DeleteBtnActionPerformed
+        String ID = ProjectIdTxt.getText().toString();
         
-        if (ProjectIdTxt.getText().toString().isEmpty())
+        if (ID.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
         else
         {
-            //other logic
+            for (int i = 0; i < ReadFile.ProjectNums; i++)
+            {
+                if (Integer.parseInt(ID) ==  ReadFile.PROJECT.get(i).getID())
+                {
+                    try
+                    {//+2 (File Description Line + Indexing from zero)
+                        EditFile.deleteProject(i + 2);
+                        JOptionPane.showMessageDialog(this, "congratulations Project Deleted Successfully", "Deleted", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    } 
+                    catch (IOException ex)
+                    {
+                        //Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }                
+            }
+            ProjectIdTxt.setEditable(false);
+            ProjectIdTxt.setText(null);
+            ProjectNameTxt.setEditable(false);
+            ProjectNameTxt.setText(null);
+            MF.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_DeleteBtnActionPerformed
 

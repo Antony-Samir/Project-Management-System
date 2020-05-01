@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import project.management.system.Department;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
+import project.management.system.EditFile;
 
 public class UD_DepartmentForm extends javax.swing.JFrame
 {
@@ -149,13 +150,37 @@ public class UD_DepartmentForm extends javax.swing.JFrame
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
     {//GEN-HEADEREND:event_DeleteBtnActionPerformed
+        String ID = DepartmentIdTxt.getText().toString();
         
-        if (DepartmentIdTxt.getText().toString().isEmpty())
+        
+        if (ID.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Department!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
         else
         {
+            for (int i = 0; i < ReadFile.DepartmentNums; i++)
+            {
+                if (Integer.parseInt(ID) ==  ReadFile.DEPARTMENT.get(i).getID())
+                {
+                    try
+                    {//+2 (File Description Line + Indexing from zero)
+                        EditFile.deleteDepartment(i + 2);
+                        JOptionPane.showMessageDialog(this, "congratulations Department Deleted Successfully", "Deleted", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    } 
+                    catch (IOException ex)
+                    {
+                        //Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            DepartmentIdTxt.setEditable(false);
+            DepartmentIdTxt.setText(null);
+            DepartmentNameTxt.setEditable(false);
+            DepartmentNameTxt.setText(null);
+            MF.setVisible(true);
+            this.dispose();
             //other logic
         }
         

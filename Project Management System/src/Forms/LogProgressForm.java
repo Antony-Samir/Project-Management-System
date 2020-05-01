@@ -1,6 +1,10 @@
 package Forms;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import project.management.system.*;
 
 public class LogProgressForm extends javax.swing.JFrame
@@ -12,8 +16,18 @@ public class LogProgressForm extends javax.swing.JFrame
     {
         initComponents();
         
+        jTable1.setEnabled(false);
         
         this.setLocationRelativeTo(null);
+        
+        
+        
+        /*String[] tblHead = {"Item Name","Price","Qty"};
+        DefaultTableModel dtm = new DefaultTableModel(tblHead,0);
+        //JTable tbl = new JTable(dtm);
+        jTable1 = new JTable(dtm);
+        String[] item={"A","B","C","D"};
+        dtm.addRow(item);*/
         
     }
 
@@ -30,8 +44,6 @@ public class LogProgressForm extends javax.swing.JFrame
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
         ViewBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,14 +67,14 @@ public class LogProgressForm extends javax.swing.JFrame
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String []
             {
-                "Task ID", "Project ID", "Title", "From Date", "To Date", "Members", "Resources", "Status"
+                "Member ID", "Member Name", "Time and Date"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -70,16 +82,9 @@ public class LogProgressForm extends javax.swing.JFrame
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 70, 580, 360);
 
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(600, 100, 100, 26);
-
-        jLabel1.setText("Select Project:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(610, 50, 90, 16);
-
         ViewBtn.setText("View Log");
         getContentPane().add(ViewBtn);
-        ViewBtn.setBounds(600, 210, 100, 32);
+        ViewBtn.setBounds(610, 90, 100, 32);
         ViewBtn.getAccessibleContext().setAccessibleName("");
 
         pack();
@@ -136,8 +141,6 @@ public class LogProgressForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton ViewBtn;
-    public static javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

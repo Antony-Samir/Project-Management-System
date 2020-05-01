@@ -37,6 +37,8 @@ public class ReadFile
     static public int ResourceNums;
     static public int TaskNums;
     
+    static public int LogNums;
+    
     public static void fileLines() throws IOException
     {//Read 
         try
@@ -55,6 +57,10 @@ public class ReadFile
                 
            FileReader TaskInput = new FileReader("Tasks.txt");
            LineNumberReader TaskCount = new LineNumberReader(TaskInput);
+                
+                
+           FileReader LogInput = new FileReader("LogProgress.txt");
+           LineNumberReader LogCount = new LineNumberReader(LogInput);
         )
         {
             // Loop just in case the file is > Long.MAX_VALUE or skip() decides to not read the entire file
@@ -64,18 +70,24 @@ public class ReadFile
            while (ResourceCount.skip(Long.MAX_VALUE) > 0){}
            while (TaskCount.skip(Long.MAX_VALUE) > 0){}
            
+           while (LogCount.skip(Long.MAX_VALUE) > 0){}
+           
            //+1 because line index starts at 0
            DepartmentNums = DepartmentCount.getLineNumber() - 1;
            ProjectNums = ProjectCount.getLineNumber() - 1;
            MemberNums = MemberCount.getLineNumber() - 1;
            ResourceNums = ResourceCount.getLineNumber() - 1;
            TaskNums = TaskCount.getLineNumber() - 1;
+           
+           LogNums = LogCount.getLineNumber() - 1;
         }
         System.out.println("Departments: " + DepartmentNums);
         System.out.println("Projects: " + ProjectNums);
         System.out.println("Members: " + MemberNums);
         System.out.println("Resources: " + ResourceNums);
         System.out.println("Tasks: " + TaskNums);
+        
+        System.out.println("Log: " + LogNums);
     }
     
         
@@ -86,6 +98,9 @@ public class ReadFile
     static public List<TeamMember> MEMBERS = new ArrayList<TeamMember>();
     static public List<Resource> RESOURCE = new ArrayList<Resource>();
     static public List<Task> TASK = new ArrayList<Task>();
+    
+    
+    static public List<Log> LOG = new ArrayList<Log>();
     
     
     public static void readDepartments() throws IOException
@@ -305,6 +320,7 @@ public class ReadFile
         }*/
     }
     
+    
     public static int MemberNumbersInTask[];
     public static int ResourcesUsedInTask[];
     public static void readTasks() throws IOException
@@ -412,6 +428,61 @@ public class ReadFile
                 
                 System.out.println("Status: " + TASK.get(i).getStatus());
                 System.out.println();
+            }
+        }*/
+    }
+    
+    
+    
+    
+    public static void readLog() throws IOException
+    {//Read All Projects
+        Log log;
+                
+        try
+        {
+            FR = new FileReader("LogProgress.txt");
+            BR = new BufferedReader(FR);
+        }
+        catch (Exception ex)
+        {
+            System.out.println("File Not Found!!");
+        }
+        
+        
+        
+        String sentence;
+        String[] parts = new String[3]; //for splitting by delameter
+        sentence = BR.readLine(); //for skipping first line in file
+        
+        for (int i = 0; i < LogNums; i++)
+        {
+            log = new Log();
+            sentence = BR.readLine();
+                                   
+            parts = sentence.split(" # ");
+            
+            log.setMemberID(Integer.parseInt(parts[0].toString()));
+            log.setMemberName(parts[1].toString());
+            log.setDate_time(parts[2].toString());
+            LOG.add(log);
+        }
+        
+        BR.close();
+        FR.close();
+        
+        //Check the input data
+        /*if (LogNums == 0)
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < LogNums; i++)
+            {
+                System.out.println(LOG.get(i).getMemberID());
+                System.out.println(LOG.get(i).getMemberName());
+                System.out.println(LOG.get(i).getDate_time());
             }
         }*/
     }

@@ -1,3 +1,6 @@
-RESOURCE ID # NAME
-9 # screen # 0
-1 # lap # 0
+RESOURCE ID # NAME # Used
+2 # lap3 # 0
+3 # q # 0
+4 # lapasd # 0
+5 # lap2 # 0
+7 # Screen # 0

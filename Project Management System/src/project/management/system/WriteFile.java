@@ -133,7 +133,7 @@ public class WriteFile
     
     
     //static Resources newResource;
-    public static void writeResource(String ID, String Name) throws IOException
+    public static void writeResource(String ID, String Name, String Used) throws IOException
     {
         try 
         {
@@ -144,7 +144,7 @@ public class WriteFile
             PW.write(" # ");
             PW.write(Name);
             PW.write(" # ");
-            PW.println(0); // used or not
+            PW.println(Used); //Used or not //Initialy = 0;
 
             PW.close();
             
@@ -229,5 +229,53 @@ public class WriteFile
             System.out.println("File Doesn't exist!");
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public static void writeLog(String memberID, String memberName, String date_time) throws IOException
+    {
+        try 
+        {
+            FW = new FileWriter("LogProgress.txt", true);
+            PW = new PrintWriter(FW);
+            
+            PW.write(memberID);
+            PW.write(" # ");
+            PW.write(memberName);
+            PW.write(" # ");
+            PW.println(date_time);
+            
+            PW.close();
+            
+            if (PW != null)
+            {
+                PW.close();
+            }
+            if (FW != null)
+            {
+                FW.close();
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("File Doesn't exist!");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

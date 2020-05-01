@@ -24,6 +24,7 @@ public class ManagerForm extends javax.swing.JFrame
     public ManagerForm()
     {
         initComponents();
+        NameTxt.setText("ADMIN");
         this.setLocationRelativeTo(null);
     }
 
@@ -47,6 +48,8 @@ public class ManagerForm extends javax.swing.JFrame
         UD_ResourceBtn = new javax.swing.JButton();
         AddProjectBtn = new javax.swing.JButton();
         UD_ProjectBtn = new javax.swing.JButton();
+        WelcomeLabel = new javax.swing.JLabel();
+        NameTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -210,28 +213,21 @@ public class ManagerForm extends javax.swing.JFrame
         getContentPane().add(UD_ProjectBtn);
         UD_ProjectBtn.setBounds(440, 360, 200, 35);
 
+        WelcomeLabel.setText("Welcome,");
+        getContentPane().add(WelcomeLabel);
+        WelcomeLabel.setBounds(10, 20, 70, 16);
+
+        NameTxt.setEditable(false);
+        getContentPane().add(NameTxt);
+        NameTxt.setBounds(70, 20, 110, 24);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_LogBtnActionPerformed
     {//GEN-HEADEREND:event_LogBtnActionPerformed
-        
-        if (ReadFile.getInstance().ProjectNums != 0)
-        {
-            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
-            {
-                LogProgressForm.jComboBox1.addItem(ReadFile.getInstance().PROJECT.get(i).getName().toString());
-            }
-            LPF.setVisible(true);
-            this.dispose();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "No Projects Were Added!", "Add Project First", JOptionPane.ERROR_MESSAGE);
-            //this.dispose();
-        }
-        
-        
+        LPF.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_LogBtnActionPerformed
 
     private void AddTaskBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AddTaskBtnActionPerformed
@@ -422,10 +418,12 @@ public class ManagerForm extends javax.swing.JFrame
     private javax.swing.JButton AddResourceBtn;
     private javax.swing.JButton AddTaskBtn;
     private javax.swing.JButton LogBtn;
+    public static javax.swing.JTextField NameTxt;
     private javax.swing.JButton PrintTaskBtn;
     private javax.swing.JButton UD_DepartmentBtn;
     private javax.swing.JButton UD_ProjectBtn;
     private javax.swing.JButton UD_ResourceBtn;
     private javax.swing.JButton UD_TaskBtn;
+    private javax.swing.JLabel WelcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import project.management.system.Resource;
 import project.management.system.WriteFile;
+import project.management.system.EditFile;
 
 public class UD_ResourcesForm extends javax.swing.JFrame
 {
@@ -54,15 +55,15 @@ public class UD_ResourcesForm extends javax.swing.JFrame
 
         jLabel1.setText("Resource Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(380, 190, 100, 16);
+        jLabel1.setBounds(320, 160, 100, 16);
 
         jLabel2.setText("Resource ID:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(180, 190, 80, 16);
+        jLabel2.setBounds(150, 160, 80, 16);
         getContentPane().add(ResourceNameTxt);
-        ResourceNameTxt.setBounds(380, 240, 90, 24);
+        ResourceNameTxt.setBounds(320, 210, 90, 24);
         getContentPane().add(ResourceIdTxt);
-        ResourceIdTxt.setBounds(190, 240, 90, 24);
+        ResourceIdTxt.setBounds(150, 210, 90, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -73,7 +74,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(380, 330, 100, 32);
+        SaveBtn.setBounds(320, 280, 100, 32);
 
         BackBtn.setText("Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -102,7 +103,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(DeleteBtn);
-        DeleteBtn.setBounds(190, 330, 100, 32);
+        DeleteBtn.setBounds(150, 280, 100, 32);
 
         ViewBtn.setText("View");
         ViewBtn.addActionListener(new java.awt.event.ActionListener()
@@ -122,8 +123,8 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_SaveBtnActionPerformed
         String ID = ResourceIdTxt.getText().toString();
         String Name = ResourceNameTxt.getText().toString();
-        
-        if (ResourceIdTxt.getText().toString().isEmpty())
+        String Used = "0";
+        if (ID.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
@@ -131,16 +132,43 @@ public class UD_ResourcesForm extends javax.swing.JFrame
         {
             for (int i = 0; i < ReadFile.ResourceNums; i++)
             {
+                if (Integer.parseInt(ID) ==  ReadFile.RESOURCE.get(i).getID())
+                {
+                    try
+                    {//+2 (File Description Line + Indexing from zero)
+                        EditFile.deleteResource(i + 2);
+                        JOptionPane.showMessageDialog(this, "congratulations Resource Updated Successfully", "Updated", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    } 
+                    catch (IOException ex)
+                    {
+                        //Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            /*for (int i = 0; i < ReadFile.ResourceNums; i++)
+            {
                 if (Integer.parseInt(ID) == ReadFile.RESOURCE.get(i).getID())
                 {
                     JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Resouce ID is already saved", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
+            }*/
+            try
+            {
+                WriteFile.getInstance().writeResource(ID, Name, Used);
+            } 
+            catch (IOException ex)
+            {
             }
             //other logic
+            ResourceIdTxt.setEditable(false);
+            ResourceIdTxt.setText(null);
+            ResourceNameTxt.setEditable(false);
+            ResourceNameTxt.setText(null);
+            MF.setVisible(true);
+            this.dispose();
         }
-        
-        
         
         
     }//GEN-LAST:event_SaveBtnActionPerformed
@@ -157,14 +185,37 @@ public class UD_ResourcesForm extends javax.swing.JFrame
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
     {//GEN-HEADEREND:event_DeleteBtnActionPerformed
+        String ID = ResourceIdTxt.getText().toString();
         
-        if (ResourceIdTxt.getText().toString().isEmpty())
+        if (ID.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
         } 
         else
         {
+            for (int i = 0; i < ReadFile.ResourceNums; i++)
+            {
+                if (Integer.parseInt(ID) ==  ReadFile.RESOURCE.get(i).getID())
+                {
+                    try
+                    {//+2 (File Description Line + Indexing from zero)
+                        EditFile.deleteResource(i + 2);
+                        JOptionPane.showMessageDialog(this, "congratulations Resource Deleted Successfully", "Deleted", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    } 
+                    catch (IOException ex)
+                    {
+                        //Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
             //other logic
+            ResourceIdTxt.setEditable(false);
+            ResourceIdTxt.setText(null);
+            ResourceNameTxt.setEditable(false);
+            ResourceNameTxt.setText(null);
+            MF.setVisible(true);
+            this.dispose();
         }
         
         

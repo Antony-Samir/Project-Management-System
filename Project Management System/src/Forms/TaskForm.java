@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import project.management.system.EditFile;
 
 public class TaskForm extends javax.swing.JFrame
 {
@@ -47,9 +48,13 @@ public class TaskForm extends javax.swing.JFrame
         }
         for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
         {//Load Resources into CheckBoxes
-            boxResources[i] = new JCheckBox();
-            boxResources[i].setText(String.valueOf(ReadFile.getInstance().RESOURCE.get(i).getID()));
-            ResourcePanel.add( boxResources[i] );
+            if (ReadFile.RESOURCE.get(i).getUsed() == 0)
+            {
+                boxResources[i] = new JCheckBox();
+                boxResources[i].setText(String.valueOf(ReadFile.getInstance().RESOURCE.get(i).getID()));
+                ResourcePanel.add( boxResources[i] );
+            }
+            
         }
         
         
@@ -204,14 +209,28 @@ public class TaskForm extends javax.swing.JFrame
             }
             for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
             {//For Resources
-                if (boxResources[i].isSelected() == true)
+                if (ReadFile.RESOURCE.get(i).getUsed() == 0)
                 {
-                    resources[i] = boxResources[i].getText().toString();
-                    ResCount++;
-                    Res = true;
-                }
-                else
-                {
+                    if (boxResources[i].isSelected() == true)
+                    {
+                        resources[i] = boxResources[i].getText().toString();
+                        ResCount++;
+                        Res = true;
+                        try
+                        {
+                            EditFile.deleteTask(i + 2);
+                            //WriteFile.getInstance().writeResource(String.valueOf(ReadFile.RESOURCE.get(i).getID()), ReadFile.RESOURCE.get(i).getName(), "1");
+                            //continue;
+                        }
+                        catch (IOException ex)
+                        {
+                        }
+                        
+                        
+                    }
+                    else
+                    {
+                    }
                 }
             }
             if (Mem == false || Res == false)

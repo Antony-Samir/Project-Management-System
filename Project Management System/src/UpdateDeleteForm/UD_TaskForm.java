@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import project.management.system.EditFile;
 
 public class UD_TaskForm extends javax.swing.JFrame
 {
@@ -185,6 +186,13 @@ public class UD_TaskForm extends javax.swing.JFrame
         jComboBox1.setBounds(600, 70, 100, 26);
 
         DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(DeleteBtn);
         DeleteBtn.setBounds(590, 340, 100, 32);
 
@@ -204,7 +212,15 @@ public class UD_TaskForm extends javax.swing.JFrame
 
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
     {//GEN-HEADEREND:event_SaveBtnActionPerformed
-       
+       String ID = TaskID.getText().toString();
+       if (ID.isEmpty())
+       {
+           JOptionPane.showMessageDialog(this, "Select Project!", "Field not entered", JOptionPane.WARNING_MESSAGE);
+       } 
+       else
+       {
+           //other logic
+       }
        
     }//GEN-LAST:event_SaveBtnActionPerformed
 
@@ -242,6 +258,45 @@ public class UD_TaskForm extends javax.swing.JFrame
             }
         }
     }//GEN-LAST:event_ViewBtnActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
+    {//GEN-HEADEREND:event_DeleteBtnActionPerformed
+        String ID = TaskID.getText().toString();
+        
+        if (ID.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Select Department!", "Field not entered", JOptionPane.WARNING_MESSAGE);
+        } 
+        else
+        {
+            for (int i = 0; i < ReadFile.TaskNums; i++)
+            {
+                if (Integer.parseInt(ID) ==  ReadFile.TASK.get(i).getID())
+                {
+                    try
+                    {//+2 (File Description Line + Indexing from zero)
+                        EditFile.deleteTask(i + 2);
+                        JOptionPane.showMessageDialog(this, "congratulations Task Deleted Successfully", "Deleted", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    } 
+                    catch (IOException ex)
+                    {
+                        //Logger.getLogger(UD_ResourcesForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            SaveBtn.setVisible(true);
+            TaskID.setEditable(false);
+            TaskID.setText(null);
+            TaskTitle.setEditable(false);
+            TaskTitle.setText(null);
+            FromDateChooser.setEnabled(false);
+            ToDateChooser.setEnabled(false);
+            MF.setVisible(true);
+            this.dispose();
+            //other logic
+        }
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
