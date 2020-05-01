@@ -22,12 +22,11 @@ public class LogProgressForm extends javax.swing.JFrame
         
         
         
-        /*String[] tblHead = {"Item Name","Price","Qty"};
-        DefaultTableModel dtm = new DefaultTableModel(tblHead,0);
-        //JTable tbl = new JTable(dtm);
-        jTable1 = new JTable(dtm);
-        String[] item={"A","B","C","D"};
-        dtm.addRow(item);*/
+        /*String[] columns = {"Emplotee ID","Name","Address","City","Salary"};
+
+        //Table that already have 4 empty rows
+        DefaultTableModel model = new DefaultTableModel(columns,4); 
+        jTable1 = new JTable(model);*/
         
     }
 
