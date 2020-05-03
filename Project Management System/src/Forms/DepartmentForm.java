@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import project.management.system.Department;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 
@@ -107,7 +106,7 @@ public class DepartmentForm extends javax.swing.JFrame
             }
             try
             {
-                WriteFile.getInstance().writeDepartment(ID, Name);
+                WriteFile.writeDepartment(ID, Name);
                 ReadFile.clearAllClasses();
                 ReadFile.fileLines();
                 ReadFile.readAllClasses();

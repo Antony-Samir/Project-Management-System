@@ -180,9 +180,9 @@ public class EmployeeForm extends javax.swing.JFrame
         int TaskID = Integer.valueOf(jComboBox1.getSelectedItem().toString());
         
         
-        for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+        for (int i = 0; i < ReadFile.TaskNums; i++)
         {
-            if (ReadFile.getInstance().TASK.get(i).getID() == TaskID)
+            if (ReadFile.TASK.get(i).getID() == TaskID)
             {
                 ToDate.setText(ReadFile.getInstance().TASK.get(i).getToDate().toString());
                 break;

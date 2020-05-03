@@ -1,19 +1,12 @@
 package Forms;
 
-import java.io.IOException;
 import javax.swing.JCheckBox;
-import javax.swing.*;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import project.management.system.Task;
 import project.management.system.WriteFile;
 import project.management.system.ReadFile;
 import static project.management.system.ReadFile.MemberNums;
 import static project.management.system.ReadFile.ResourceNums;
 import java.io.IOException;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import project.management.system.EditFile;
 
 public class TaskForm extends javax.swing.JFrame
@@ -32,26 +25,26 @@ public class TaskForm extends javax.swing.JFrame
         TaskStatus.setEditable(false);
         
         
-        if (ReadFile.getInstance().ProjectNums != 0)
+        if (ReadFile.ProjectNums != 0)
         {//Load Departments into ComboBox
-            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+            for (int i = 0; i < ReadFile.ProjectNums; i++)
             {
-                ProjectID.addItem(String.valueOf(ReadFile.getInstance().PROJECT.get(i).getID()));
+                ProjectID.addItem(String.valueOf(ReadFile.PROJECT.get(i).getID()));
             }
         }
         
-        for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
+        for (int i = 0; i < ReadFile.MemberNums; i++)
         {//Load Members into CheckBoxes
             boxMembers[i] = new JCheckBox();
-            boxMembers[i].setText(String.valueOf(ReadFile.getInstance().MEMBERS.get(i).getID()));
+            boxMembers[i].setText(String.valueOf(ReadFile.MEMBERS.get(i).getID()));
             MemberPanel.add( boxMembers[i] );
         }
-        for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+        for (int i = 0; i < ReadFile.ResourceNums; i++)
         {//Load Resources into CheckBoxes
             if (ReadFile.RESOURCE.get(i).getUsed() == 0)
             {
                 boxResources[i] = new JCheckBox();
-                boxResources[i].setText(String.valueOf(ReadFile.getInstance().RESOURCE.get(i).getID()));
+                boxResources[i].setText(String.valueOf(ReadFile.RESOURCE.get(i).getID()));
                 ResourcePanel.add( boxResources[i] );
             }
             
@@ -195,7 +188,7 @@ public class TaskForm extends javax.swing.JFrame
         } 
         else
         {
-            for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
+            for (int i = 0; i < ReadFile.MemberNums; i++)
             {//For Members
                 if (boxMembers[i].isSelected() == true)
                 {
@@ -207,7 +200,7 @@ public class TaskForm extends javax.swing.JFrame
                 {
                 }
             }
-            for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+            for (int i = 0; i < ReadFile.ResourceNums; i++)
             {//For Resources
                 if (ReadFile.RESOURCE.get(i).getUsed() == 0)
                 {
@@ -241,7 +234,7 @@ public class TaskForm extends javax.swing.JFrame
             {
                try
                {
-                   WriteFile.getInstance().writeTask(TaskId, ProjectId, Title, FromDate, ToDate, members, resources, Status);
+                   WriteFile.writeTask(TaskId, ProjectId, Title, FromDate, ToDate, members, resources, Status);
                    ReadFile.clearAllClasses();
                    ReadFile.fileLines();
                    ReadFile.readAllClasses();

@@ -1,21 +1,12 @@
 package UpdateDeleteForm;
 
 import Forms.ManagerForm;
-import static UpdateDeleteForm.UD_ResourcesForm.MF;
-import java.io.IOException;
 import javax.swing.JCheckBox;
-import javax.swing.*;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import project.management.system.Task;
-import project.management.system.WriteFile;
 import project.management.system.ReadFile;
 import static project.management.system.ReadFile.MemberNums;
 import static project.management.system.ReadFile.ResourceNums;
 import java.io.IOException;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import project.management.system.EditFile;
 
 public class UD_TaskForm extends javax.swing.JFrame
@@ -41,16 +32,16 @@ public class UD_TaskForm extends javax.swing.JFrame
         
         TaskStatus.setEditable(false);
         
-        for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
+        for (int i = 0; i < ReadFile.MemberNums; i++)
         {//Load Members into CheckBoxes
             boxMembers[i] = new JCheckBox();
-            boxMembers[i].setText(String.valueOf(ReadFile.getInstance().MEMBERS.get(i).getID()));
+            boxMembers[i].setText(String.valueOf(ReadFile.MEMBERS.get(i).getID()));
             MemberPanel.add( boxMembers[i] );
         }
-        for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+        for (int i = 0; i < ReadFile.ResourceNums; i++)
         {//Load Resources into CheckBoxes
             boxResources[i] = new JCheckBox();
-            boxResources[i].setText(String.valueOf(ReadFile.getInstance().RESOURCE.get(i).getID()));
+            boxResources[i].setText(String.valueOf(ReadFile.RESOURCE.get(i).getID()));
             ResourcePanel.add( boxResources[i] );
         }
         
@@ -246,15 +237,15 @@ public class UD_TaskForm extends javax.swing.JFrame
 
         int SelectedResource  = Integer.parseInt(jComboBox1.getSelectedItem().toString());
 
-        for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+        for (int i = 0; i < ReadFile.TaskNums; i++)
         {
             
             if (ReadFile.TASK.get(i).getID() == SelectedResource)
             {
-                TaskID.setText(String.valueOf(ReadFile.getInstance().TASK.get(i).getID()));
-                TaskTitle.setText(ReadFile.getInstance().TASK.get(i).getTitle());
-                FromDateChooser.setText(ReadFile.getInstance().TASK.get(i).getFromDate());
-                ToDateChooser.setText(ReadFile.getInstance().TASK.get(i).getToDate());
+                TaskID.setText(String.valueOf(ReadFile.TASK.get(i).getID()));
+                TaskTitle.setText(ReadFile.TASK.get(i).getTitle());
+                FromDateChooser.setText(ReadFile.TASK.get(i).getFromDate());
+                ToDateChooser.setText(ReadFile.TASK.get(i).getToDate());
                 ProjectIdTxt.setText(String.valueOf(ReadFile.TASK.get(i).ProjectID));
                 break;
             }

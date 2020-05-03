@@ -1,14 +1,10 @@
 package UpdateDeleteForm;
 import Forms.ManagerForm;
-import static UpdateDeleteForm.UD_ProjectForm.MF;
 import project.management.system.ReadFile;
 
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import project.management.system.Resource;
 import project.management.system.WriteFile;
 import project.management.system.EditFile;
 
@@ -223,12 +219,12 @@ public class UD_ResourcesForm extends javax.swing.JFrame
 
         String SelectedResource  = jComboBox1.getSelectedItem().toString();
 
-        for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+        for (int i = 0; i < ReadFile.ResourceNums; i++)
         {
-            if (ReadFile.getInstance().RESOURCE.get(i).getName() == SelectedResource)
+            if (ReadFile.RESOURCE.get(i).getName() == SelectedResource)
             {
-                ResourceIdTxt.setText(String.valueOf(ReadFile.getInstance().RESOURCE.get(i).getID()));
-                ResourceNameTxt.setText(ReadFile.getInstance().RESOURCE.get(i).getName());
+                ResourceIdTxt.setText(String.valueOf(ReadFile.RESOURCE.get(i).getID()));
+                ResourceNameTxt.setText(ReadFile.RESOURCE.get(i).getName());
                 break;
             }
         }

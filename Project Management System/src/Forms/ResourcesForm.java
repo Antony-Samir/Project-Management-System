@@ -1,10 +1,7 @@
 package Forms;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import project.management.system.ReadFile;
-import project.management.system.Resource;
 import project.management.system.WriteFile;
 
 public class ResourcesForm extends javax.swing.JFrame
@@ -100,7 +97,7 @@ public class ResourcesForm extends javax.swing.JFrame
             }
             try
             {
-                WriteFile.getInstance().writeResource(ID, Name, Used);
+                WriteFile.writeResource(ID, Name, Used);
                 ReadFile.clearAllClasses();
                 ReadFile.fileLines();
                 ReadFile.readAllClasses();

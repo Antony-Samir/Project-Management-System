@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import project.management.system.Department;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 import project.management.system.EditFile;
@@ -218,12 +217,12 @@ public class UD_DepartmentForm extends javax.swing.JFrame
 
         String SelectedDepartment  = jComboBox1.getSelectedItem().toString();
 
-        for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
+        for (int i = 0; i < ReadFile.DepartmentNums; i++)
         {
-            if (ReadFile.getInstance().DEPARTMENT.get(i).getName() == SelectedDepartment)
+            if (ReadFile.DEPARTMENT.get(i).getName() == SelectedDepartment)
             {
-                DepartmentIdTxt.setText(String.valueOf(ReadFile.getInstance().DEPARTMENT.get(i).getID()));
-                DepartmentNameTxt.setText(ReadFile.getInstance().DEPARTMENT.get(i).getName());
+                DepartmentIdTxt.setText(String.valueOf(ReadFile.DEPARTMENT.get(i).getID()));
+                DepartmentNameTxt.setText(ReadFile.DEPARTMENT.get(i).getName());
                 break;
             }
         }

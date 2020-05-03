@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import project.management.system.Project;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 
@@ -17,11 +16,11 @@ public class ProjectForm extends javax.swing.JFrame
     {
         initComponents();
         
-        if (ReadFile.getInstance().DepartmentNums != 0)
+        if (ReadFile.DepartmentNums != 0)
         {
-           for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
+           for (int i = 0; i < ReadFile.DepartmentNums; i++)
             {
-                jComboBox1.addItem(String.valueOf(ReadFile.getInstance().DEPARTMENT.get(i).getID()));
+                jComboBox1.addItem(String.valueOf(ReadFile.DEPARTMENT.get(i).getID()));
             }
         }
         
@@ -132,7 +131,7 @@ public class ProjectForm extends javax.swing.JFrame
             }
             try
             {
-                WriteFile.getInstance().writeProject(ID, Name, DepartmentID);
+                WriteFile.writeProject(ID, Name, DepartmentID);
                 ReadFile.clearAllClasses();
                 ReadFile.fileLines();
                 ReadFile.readAllClasses();

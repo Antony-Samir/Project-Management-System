@@ -1,14 +1,10 @@
 package Forms;
 
-import project.management.system.Employee;
 import project.management.system.TeamMember;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 
 import java.io.IOException;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
  
 public class SignUpForm extends javax.swing.JFrame 

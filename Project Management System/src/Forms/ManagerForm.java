@@ -1,6 +1,4 @@
 package Forms;
-import static Forms.LogProgressForm.MF;
-import static Forms.PrintTaskForm.MF;
 import UpdateDeleteForm.*;
 import javax.swing.JOptionPane;
 import project.management.system.ReadFile;
@@ -280,13 +278,13 @@ public class ManagerForm extends javax.swing.JFrame
 
     private void UD_TaskBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_UD_TaskBtnActionPerformed
     {//GEN-HEADEREND:event_UD_TaskBtnActionPerformed
-        if (ReadFile.getInstance().TaskNums == 0)
+        if (ReadFile.TaskNums == 0)
         {
             JOptionPane.showMessageDialog(null, "No Tasks Were Added!", "Add Task First", JOptionPane.ERROR_MESSAGE);
         }
         else
         {   
-            for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+            for (int i = 0; i < ReadFile.TaskNums; i++)
             {
                 UDTF.jComboBox1.addItem(String.valueOf(ReadFile.getInstance().TASK.get(i).getID()));
             }
@@ -298,15 +296,15 @@ public class ManagerForm extends javax.swing.JFrame
 
     private void UD_ResourceBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_UD_ResourceBtnActionPerformed
     {//GEN-HEADEREND:event_UD_ResourceBtnActionPerformed
-        if (ReadFile.getInstance().ResourceNums == 0)
+        if (ReadFile.ResourceNums == 0)
         {
             JOptionPane.showMessageDialog(null, "No Resources Were Added!", "Add Resource First", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
-            for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+            for (int i = 0; i < ReadFile.ResourceNums; i++)
             {
-                UDRF.jComboBox1.addItem(ReadFile.getInstance().RESOURCE.get(i).getName().toString());
+                UDRF.jComboBox1.addItem(ReadFile.RESOURCE.get(i).getName().toString());
             }
             UDRF.setVisible(true);
             this.dispose();
@@ -316,15 +314,15 @@ public class ManagerForm extends javax.swing.JFrame
 
     private void UD_DepartmentBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_UD_DepartmentBtnActionPerformed
     {//GEN-HEADEREND:event_UD_DepartmentBtnActionPerformed
-        if (ReadFile.getInstance().DepartmentNums == 0)
+        if (ReadFile.DepartmentNums == 0)
         {
             JOptionPane.showMessageDialog(null, "No Departments Were Added!", "Add Department First", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
-            for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
+            for (int i = 0; i < ReadFile.DepartmentNums; i++)
             {
-                UDDF.jComboBox1.addItem(ReadFile.getInstance().DEPARTMENT.get(i).getName().toString());
+                UDDF.jComboBox1.addItem(ReadFile.DEPARTMENT.get(i).getName().toString());
             }
             UDDF.setVisible(true);
             this.dispose();
@@ -334,11 +332,11 @@ public class ManagerForm extends javax.swing.JFrame
     private void UD_ProjectBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_UD_ProjectBtnActionPerformed
     {//GEN-HEADEREND:event_UD_ProjectBtnActionPerformed
         
-        if (ReadFile.getInstance().ProjectNums != 0)
+        if (ReadFile.ProjectNums != 0)
         {
-            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+            for (int i = 0; i < ReadFile.ProjectNums; i++)
             {
-                 UDPF.jComboBox1.addItem(ReadFile.getInstance().PROJECT.get(i).getName().toString());
+                 UDPF.jComboBox1.addItem(ReadFile.PROJECT.get(i).getName().toString());
             }
             UDPF.setVisible(true);
             this.dispose();
@@ -351,11 +349,11 @@ public class ManagerForm extends javax.swing.JFrame
 
     private void PrintTaskBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_PrintTaskBtnActionPerformed
     {//GEN-HEADEREND:event_PrintTaskBtnActionPerformed
-        if (ReadFile.getInstance().TaskNums != 0)
+        if (ReadFile.TaskNums != 0)
         {
-           for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+           for (int i = 0; i < ReadFile.TaskNums; i++)
            {
-                PrintTaskForm.jComboBox1.addItem(ReadFile.getInstance().TASK.get(i).getID());
+                PrintTaskForm.jComboBox1.addItem(ReadFile.TASK.get(i).getID());
            }
            PTF.setVisible(true);
            this.dispose();

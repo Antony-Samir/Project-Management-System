@@ -241,12 +241,12 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
         String SelectedProject  = jComboBox1.getSelectedItem().toString();
 
-        for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+        for (int i = 0; i < ReadFile.ProjectNums; i++)
         {
-            if (ReadFile.getInstance().PROJECT.get(i).getName() == SelectedProject)
+            if (ReadFile.PROJECT.get(i).getName() == SelectedProject)
             {
-                ProjectIdTxt.setText(String.valueOf(ReadFile.getInstance().PROJECT.get(i).getID()));
-                ProjectNameTxt.setText(ReadFile.getInstance().PROJECT.get(i).getName());
+                ProjectIdTxt.setText(String.valueOf(ReadFile.PROJECT.get(i).getID()));
+                ProjectNameTxt.setText(ReadFile.PROJECT.get(i).getName());
                 DepartmentTxt.setText(String.valueOf(ReadFile.PROJECT.get(i).getDepartmentID()));
                 break;
             }

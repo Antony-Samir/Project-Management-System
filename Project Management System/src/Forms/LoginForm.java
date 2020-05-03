@@ -1,6 +1,5 @@
 package Forms;
 
-import static Forms.EmployeeForm.jComboBox1;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -130,13 +129,13 @@ public class LoginForm extends javax.swing.JFrame
         }
         else
         {//Check If Employee
-            for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
+            for (int i = 0; i < ReadFile.MemberNums; i++)
             {
-                if (Name.equals(ReadFile.getInstance().MEMBERS.get(i).getEmail()) && Password.equals(ReadFile.getInstance().MEMBERS.get(i).getPassword()))
+                if (Name.equals(ReadFile.MEMBERS.get(i).getEmail()) && Password.equals(ReadFile.MEMBERS.get(i).getPassword()))
                 {
                     accFound = true;
-                    accFoundID = ReadFile.getInstance().MEMBERS.get(i).getID();
-                    EF.NameTxt.setText(ReadFile.getInstance().MEMBERS.get(i).getName().toUpperCase());
+                    accFoundID = ReadFile.MEMBERS.get(i).getID();
+                    EmployeeForm.NameTxt.setText(ReadFile.MEMBERS.get(i).getName().toUpperCase());
                     EF.setVisible(true);
                     this.dispose();
                     
@@ -153,28 +152,28 @@ public class LoginForm extends javax.swing.JFrame
                 }                
             }
             
-            for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+            for (int i = 0; i < ReadFile.TaskNums; i++)
             {//For Loading Task ID's in Employee's Form
-                for (int j = 0; j < ReadFile.getInstance().MemberNums; j++)
+                for (int j = 0; j < ReadFile.MemberNums; j++)
                 {
-                    if (ReadFile.getInstance().TASK.get(i).MemberID[j] == LoginForm.accFoundID)
+                    if (ReadFile.TASK.get(i).MemberID[j] == LoginForm.accFoundID)
                     {
-                        System.out.println(ReadFile.getInstance().TASK.get(i).getID());
-                        EmployeeForm.jComboBox1.addItem(String.valueOf(ReadFile.getInstance().TASK.get(i).getID()));
+                        System.out.println(ReadFile.TASK.get(i).getID());
+                        EmployeeForm.jComboBox1.addItem(String.valueOf(ReadFile.TASK.get(i).getID()));
                         break;
                     }
                 }
             }
             
-            for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
+            for (int i = 0; i < ReadFile.TaskNums; i++)
             {//For Loading Projects in Employee's Form
-                for (int j = 0; j < ReadFile.getInstance().MemberNums; j++)
+                for (int j = 0; j < ReadFile.MemberNums; j++)
                 {
-                    if (ReadFile.getInstance().TASK.get(i).MemberID[j] == LoginForm.accFoundID)
+                    if (ReadFile.TASK.get(i).MemberID[j] == LoginForm.accFoundID)
                     {
                         for (int k = 0; k < ReadFile.ProjectNums; k++)
                         {
-                            if (ReadFile.getInstance().TASK.get(i).getProjectID() == ReadFile.PROJECT.get(k).getID())
+                            if (ReadFile.TASK.get(i).getProjectID() == ReadFile.PROJECT.get(k).getID())
                             {
                                 System.out.println(ReadFile.PROJECT.get(k).getName());
                                 EmployeeForm.jComboBox2.addItem(ReadFile.PROJECT.get(k).getName());
