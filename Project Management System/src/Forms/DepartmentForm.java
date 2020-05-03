@@ -108,6 +108,9 @@ public class DepartmentForm extends javax.swing.JFrame
             try
             {
                 WriteFile.getInstance().writeDepartment(ID, Name);
+                ReadFile.clearAllClasses();
+                ReadFile.fileLines();
+                ReadFile.readAllClasses();
             } 
             catch (IOException ex)
             {

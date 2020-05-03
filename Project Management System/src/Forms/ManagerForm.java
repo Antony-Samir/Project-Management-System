@@ -336,12 +336,12 @@ public class ManagerForm extends javax.swing.JFrame
         
         if (ReadFile.getInstance().ProjectNums != 0)
         {
-           for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
-           {
-                UDPF.jComboBox2.addItem(ReadFile.getInstance().PROJECT.get(i).getName().toString());
-           }
-           UDPF.setVisible(true);
-           this.dispose();
+            for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
+            {
+                 UDPF.jComboBox1.addItem(ReadFile.getInstance().PROJECT.get(i).getName().toString());
+            }
+            UDPF.setVisible(true);
+            this.dispose();
         }
         else
         {

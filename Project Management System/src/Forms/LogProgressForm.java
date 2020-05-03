@@ -1,10 +1,14 @@
 package Forms;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import project.management.system.*;
 
 public class LogProgressForm extends javax.swing.JFrame
@@ -20,7 +24,29 @@ public class LogProgressForm extends javax.swing.JFrame
         
         this.setLocationRelativeTo(null);
         
+        /*List<String> columns = new ArrayList<String>();
+        List<String> values = null;
+
         
+        
+        columns.add("Name");
+        columns.add("Year");
+        columns.add("Title");
+        try
+        {
+ 
+            values.add(new String[] {"test1", "test2", "test3"});
+            TableModel tableModel = new DefaultTableModel(values.toArray(new Object[][]{}), columns.toArray());
+            jTable1.setModel(tableModel);
+        } 
+        catch (IOException ex)
+        {
+            System.out.println("testoo");
+        }
+        String str = "test";
+        values.add("er");
+        TableModel tableModel = new DefaultTableModel(values.toArray(new Object[][]{}), columns.toArray());
+        jTable1.setModel(tableModel);*/
         
         /*String[] columns = {"Emplotee ID","Name","Address","City","Salary"};
 

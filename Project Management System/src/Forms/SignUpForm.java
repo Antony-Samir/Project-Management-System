@@ -184,9 +184,23 @@ public class SignUpForm extends javax.swing.JFrame
         } 
         else
         {
+            try 
+            {
+                Integer.parseInt(Phone);
+                //System.out.println("An integer");
+            }
+            catch (NumberFormatException e)
+            {
+                //System.out.println("Not integer");
+                JOptionPane.showMessageDialog(this, "Enter phone number format correctly", "Phone Isn't Integer", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             try
             {
-                WriteFile.getInstance().writeMember(ID, Name, Address, Phone, Email, Password);
+                WriteFile.writeMember(ID, Name, Address, Phone, Email, Password);
+                ReadFile.clearAllClasses();
+                ReadFile.fileLines();
+                ReadFile.readAllClasses();
             } 
             catch (IOException ex)
             {

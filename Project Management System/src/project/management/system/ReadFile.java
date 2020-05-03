@@ -26,6 +26,63 @@ public class ReadFile
     }
     
     
+    public static void readAllClasses() throws IOException
+    {
+        readDepartments();
+        readProjects();
+        readMembers();
+        readResources();
+        readTasks();
+        readLog();
+    }
+    
+    public static void clearAllClasses() throws IOException
+    {
+        int i = 0;
+        
+        while(!DEPARTMENT.isEmpty())
+        {
+            i = 0;
+            DEPARTMENT.remove(i);
+            i++;
+        }
+        while(!PROJECT.isEmpty())
+        {
+            i = 0;
+            PROJECT.remove(i);
+            i++;
+        }
+        while(!RESOURCE.isEmpty())
+        {
+            i = 0;
+            RESOURCE.remove(i);
+            i++;
+        }
+        while(!TASK.isEmpty())
+        {
+            i = 0;
+            TASK.remove(i);
+            i++;
+        }
+        System.out.println(DEPARTMENT.size());
+        System.out.println(PROJECT.size());
+        System.out.println(PROJECT.size());
+        System.out.println(TASK.size());
+        
+        DepartmentNums = 0;
+        ProjectNums = 0 ;
+        ResourceNums = 0;
+        TaskNums = 0;
+        //no need to remove or update members
+        //no need to remove or update logs
+    }
+    
+    
+    
+    
+    
+    
+    
     
     static FileReader FR;
     static BufferedReader BR;
@@ -153,6 +210,7 @@ public class ReadFile
                 System.out.println(DEPARTMENT.get(i).getName());
             }
         }*/
+        department = null;
     }
     
     
@@ -206,6 +264,7 @@ public class ReadFile
                 System.out.println(PROJECT.get(i).getDepartmentID());
             }
         }*/
+        project = null;
     }
     
     
@@ -265,6 +324,7 @@ public class ReadFile
                 System.out.println(MEMBERS.get(i).getPassword());
             }
         }*/
+        member = null;
     }
     
     
@@ -318,6 +378,7 @@ public class ReadFile
                 System.out.println(RESOURCE.get(i).getUsed());
             }
         }*/
+        resource = null;
     }
     
     
@@ -430,6 +491,7 @@ public class ReadFile
                 System.out.println();
             }
         }*/
+        task = null;
     }
     
     
@@ -485,6 +547,7 @@ public class ReadFile
                 System.out.println(LOG.get(i).getDate_time());
             }
         }*/
+        log = null;
     }
     
 }

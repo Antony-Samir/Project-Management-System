@@ -99,14 +99,14 @@
     <Component class="javax.swing.JTextField" name="emailTxt">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="220" width="140" height="-1"/>
+          <AbsoluteConstraints x="170" y="220" width="230" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="passwordTxt">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="260" width="140" height="-1"/>
+          <AbsoluteConstraints x="170" y="260" width="230" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

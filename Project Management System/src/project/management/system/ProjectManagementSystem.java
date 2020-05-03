@@ -6,7 +6,7 @@ import javax.swing.*;
 
 //import Forms.LoginForm;
 /**
- * @version 1.1
+ * @version 2.1
  * @author Antony Samir
  * @author Youssef Wael
  * @author Martino Sherien
@@ -19,36 +19,22 @@ public class ProjectManagementSystem
     public static void main(String[] args) throws IOException
     {
         
-        //ReadFile RF = new ReadFile();
-        ReadFile.getInstance().fileLines();
-        
+        ReadFile.fileLines();
+        ReadFile.readAllClasses();
         System.out.println("////////////////////////////////");
         System.out.println("////////////////////////////////");
         
-        ReadFile.getInstance().readDepartments();
-        //System.out.println("dep ok");
-        ReadFile.getInstance().readProjects();
-        //System.out.println("proj ok");
-        ReadFile.getInstance().readMembers();
-        //System.out.println("mem ok");
-        ReadFile.getInstance().readResources();
-        //System.out.println("res ok");
-        ReadFile.getInstance().readTasks();
-        //System.out.println("task ok");
-        
-        
-        ReadFile.getInstance().readLog();
-        //System.out.println("log ok");
         
         
         
-        //JCheckBox cb1 = new JCheckBox("Task 1");
         
+        
+        
+        
+                
         Forms.LoginForm Login = new  Forms.LoginForm();
         Login.setVisible(true);
         Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        //JOptionPane.showMessageDialog(null, "Thank you using our system", "Logout Successfully", JOptionPane.INFORMATION_MESSAGE);
         
         
     }

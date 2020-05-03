@@ -230,7 +230,42 @@ public class WriteFile
         }
     }
     
-    
+    //static Tasks newTask;
+    public static void writeDelayedTask(String taskID, String projectID, String Title, String fromDate, String toDate) throws IOException
+    {
+        try 
+        {
+            FW = new FileWriter("Tasks.txt", true);
+            PW = new PrintWriter(FW);
+            
+            PW.write(taskID);
+            PW.write(" # ");
+            PW.write(projectID);
+            PW.write(" # ");
+            PW.write(Title);
+            PW.write(" # ");
+            PW.write(fromDate);
+            PW.write(" # ");
+            PW.write(toDate);
+            
+            
+            PW.close();
+            
+            if (PW != null)
+            {
+                PW.close();
+            }
+            if (FW != null)
+            {
+                FW.close();
+            }
+            
+        }
+        catch (IOException ex)
+        {
+            System.out.println("File Doesn't exist!");
+        }
+    }
     
     
     

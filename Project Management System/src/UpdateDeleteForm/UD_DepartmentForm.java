@@ -17,7 +17,6 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     public UD_DepartmentForm()
     {
         initComponents();        
-        DepartmentIdTxt.setEditable(false);
         DepartmentNameTxt.setEditable(false);
         this.setLocationRelativeTo(null);
     }
@@ -78,6 +77,8 @@ public class UD_DepartmentForm extends javax.swing.JFrame
         jLabel2.setBounds(190, 190, 120, 16);
         getContentPane().add(DepartmentNameTxt);
         DepartmentNameTxt.setBounds(370, 240, 110, 24);
+
+        DepartmentIdTxt.setEditable(false);
         getContentPane().add(DepartmentIdTxt);
         DepartmentIdTxt.setBounds(190, 240, 110, 24);
 
@@ -115,7 +116,7 @@ public class UD_DepartmentForm extends javax.swing.JFrame
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        DepartmentIdTxt.setEditable(false);
+        jComboBox1.removeAllItems();
         DepartmentIdTxt.setText(null);
         DepartmentNameTxt.setEditable(false);
         DepartmentNameTxt.setText(null);
@@ -138,11 +139,31 @@ public class UD_DepartmentForm extends javax.swing.JFrame
             {
                 if (Integer.parseInt(ID) == ReadFile.DEPARTMENT.get(i).getID())
                 {
-                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Department ID is already saved", JOptionPane.WARNING_MESSAGE);
+                    
+                    try
+                    {
+                        EditFile.deleteDepartment(i+2);
+                        WriteFile.writeDepartment(ID, Name);
+                        ReadFile.clearAllClasses();
+                        ReadFile.fileLines();
+                        ReadFile.readAllClasses();
+                        JOptionPane.showMessageDialog(this, "congratulations Department Updated Successfully", "Updated", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+
+                    } catch (IOException ex)
+                    {
+                        Logger.getLogger(UD_DepartmentForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
                     return;
                 }
             }
-            //other logic
+            jComboBox1.removeAllItems();
+            DepartmentIdTxt.setText(null);
+            DepartmentNameTxt.setEditable(false);
+            DepartmentNameTxt.setText(null);
+            MF.setVisible(true);
+            this.dispose();
         }
         
         
@@ -166,6 +187,9 @@ public class UD_DepartmentForm extends javax.swing.JFrame
                     try
                     {//+2 (File Description Line + Indexing from zero)
                         EditFile.deleteDepartment(i + 2);
+                        ReadFile.clearAllClasses();
+                        ReadFile.fileLines();
+                        ReadFile.readAllClasses();
                         JOptionPane.showMessageDialog(this, "congratulations Department Deleted Successfully", "Deleted", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     } 
@@ -175,7 +199,7 @@ public class UD_DepartmentForm extends javax.swing.JFrame
                     }
                 }
             }
-            DepartmentIdTxt.setEditable(false);
+            jComboBox1.removeAllItems();
             DepartmentIdTxt.setText(null);
             DepartmentNameTxt.setEditable(false);
             DepartmentNameTxt.setText(null);
@@ -190,7 +214,6 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
     {//GEN-HEADEREND:event_ViewBtnActionPerformed
         
-        DepartmentIdTxt.setEditable(true);
         DepartmentNameTxt.setEditable(true);
 
         String SelectedDepartment  = jComboBox1.getSelectedItem().toString();

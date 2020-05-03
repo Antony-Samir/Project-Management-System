@@ -242,6 +242,9 @@ public class TaskForm extends javax.swing.JFrame
                try
                {
                    WriteFile.getInstance().writeTask(TaskId, ProjectId, Title, FromDate, ToDate, members, resources, Status);
+                   ReadFile.clearAllClasses();
+                   ReadFile.fileLines();
+                   ReadFile.readAllClasses();
                } 
                catch (IOException ex)
                {

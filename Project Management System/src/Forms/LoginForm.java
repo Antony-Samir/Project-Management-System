@@ -84,9 +84,9 @@ public class LoginForm extends javax.swing.JFrame
         getContentPane().add(SignUpBtn);
         SignUpBtn.setBounds(570, 20, 110, 35);
         getContentPane().add(emailTxt);
-        emailTxt.setBounds(170, 220, 140, 24);
+        emailTxt.setBounds(170, 220, 230, 24);
         getContentPane().add(passwordTxt);
-        passwordTxt.setBounds(170, 260, 140, 24);
+        passwordTxt.setBounds(170, 260, 230, 24);
 
         BackGroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login background.png"))); // NOI18N
         getContentPane().add(BackGroundLabel);
@@ -167,7 +167,7 @@ public class LoginForm extends javax.swing.JFrame
             }
             
             for (int i = 0; i < ReadFile.getInstance().TaskNums; i++)
-            {//For Loading Task ID's in Employee's Form
+            {//For Loading Projects in Employee's Form
                 for (int j = 0; j < ReadFile.getInstance().MemberNums; j++)
                 {
                     if (ReadFile.getInstance().TASK.get(i).MemberID[j] == LoginForm.accFoundID)
@@ -178,9 +178,10 @@ public class LoginForm extends javax.swing.JFrame
                             {
                                 System.out.println(ReadFile.PROJECT.get(k).getName());
                                 EmployeeForm.jComboBox2.addItem(ReadFile.PROJECT.get(k).getName());
+                                break;
                             }
                         }
-                        
+                        break;
                     }
                 }
             }

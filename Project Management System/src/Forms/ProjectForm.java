@@ -133,6 +133,9 @@ public class ProjectForm extends javax.swing.JFrame
             try
             {
                 WriteFile.getInstance().writeProject(ID, Name, DepartmentID);
+                ReadFile.clearAllClasses();
+                ReadFile.fileLines();
+                ReadFile.readAllClasses();
             } 
             catch (IOException ex)
             {

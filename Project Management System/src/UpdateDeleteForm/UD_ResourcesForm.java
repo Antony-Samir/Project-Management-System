@@ -22,8 +22,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     
     public UD_ResourcesForm()
     {
-        initComponents();        
-        ResourceIdTxt.setEditable(false);
+        initComponents();
         ResourceNameTxt.setEditable(false);
         this.setLocationRelativeTo(null);   
     }
@@ -61,9 +60,11 @@ public class UD_ResourcesForm extends javax.swing.JFrame
         getContentPane().add(jLabel2);
         jLabel2.setBounds(150, 160, 80, 16);
         getContentPane().add(ResourceNameTxt);
-        ResourceNameTxt.setBounds(320, 210, 90, 24);
+        ResourceNameTxt.setBounds(320, 210, 100, 24);
+
+        ResourceIdTxt.setEditable(false);
         getContentPane().add(ResourceIdTxt);
-        ResourceIdTxt.setBounds(150, 210, 90, 24);
+        ResourceIdTxt.setBounds(150, 210, 100, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -137,6 +138,10 @@ public class UD_ResourcesForm extends javax.swing.JFrame
                     try
                     {//+2 (File Description Line + Indexing from zero)
                         EditFile.deleteResource(i + 2);
+                        WriteFile.writeResource(ID, Name, Used);
+                        ReadFile.clearAllClasses();
+                        ReadFile.fileLines();
+                        ReadFile.readAllClasses();
                         JOptionPane.showMessageDialog(this, "congratulations Resource Updated Successfully", "Updated", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     } 
@@ -146,23 +151,9 @@ public class UD_ResourcesForm extends javax.swing.JFrame
                     }
                 }
             }
-            /*for (int i = 0; i < ReadFile.ResourceNums; i++)
-            {
-                if (Integer.parseInt(ID) == ReadFile.RESOURCE.get(i).getID())
-                {
-                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Resouce ID is already saved", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-            }*/
-            try
-            {
-                WriteFile.getInstance().writeResource(ID, Name, Used);
-            } 
-            catch (IOException ex)
-            {
-            }
+            
             //other logic
-            ResourceIdTxt.setEditable(false);
+            jComboBox1.removeAllItems();
             ResourceIdTxt.setText(null);
             ResourceNameTxt.setEditable(false);
             ResourceNameTxt.setText(null);
@@ -175,7 +166,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        ResourceIdTxt.setEditable(false);
+        jComboBox1.removeAllItems();
         ResourceIdTxt.setText(null);
         ResourceNameTxt.setEditable(false);
         ResourceNameTxt.setText(null);
@@ -200,6 +191,9 @@ public class UD_ResourcesForm extends javax.swing.JFrame
                     try
                     {//+2 (File Description Line + Indexing from zero)
                         EditFile.deleteResource(i + 2);
+                        ReadFile.clearAllClasses();
+                        ReadFile.fileLines();
+                        ReadFile.readAllClasses();
                         JOptionPane.showMessageDialog(this, "congratulations Resource Deleted Successfully", "Deleted", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     } 
@@ -210,7 +204,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
                 }
             }
             //other logic
-            ResourceIdTxt.setEditable(false);
+            jComboBox1.removeAllItems();
             ResourceIdTxt.setText(null);
             ResourceNameTxt.setEditable(false);
             ResourceNameTxt.setText(null);
@@ -225,7 +219,6 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
     {//GEN-HEADEREND:event_ViewBtnActionPerformed
         
-        ResourceIdTxt.setEditable(true);
         ResourceNameTxt.setEditable(true);
 
         String SelectedResource  = jComboBox1.getSelectedItem().toString();

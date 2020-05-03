@@ -1,7 +1,11 @@
 package Forms;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import project.management.system.ReadFile;
+import project.management.system.WriteFile;
 
 /**
  *
@@ -41,7 +45,7 @@ public class PrintTaskForm extends javax.swing.JFrame
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        SelectedTaskBtn.setText("Print Task");
+        SelectedTaskBtn.setText("View Task");
         SelectedTaskBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -60,6 +64,13 @@ public class PrintTaskForm extends javax.swing.JFrame
         jLabel1.setBounds(280, 40, 170, 16);
 
         DelayedTasksBtn.setText("Print All Delayed Tasks?");
+        DelayedTasksBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                DelayedTasksBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(DelayedTasksBtn);
         DelayedTasksBtn.setBounds(80, 70, 200, 32);
 
@@ -77,14 +88,14 @@ public class PrintTaskForm extends javax.swing.JFrame
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String []
             {
-                "Task ID", "Project ID", "Title", "From Date", "To Date", "Members", "Resources", "Status"
+                "Task ID", "Project ID", "Title", "From Date", "To Date"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -106,6 +117,28 @@ public class PrintTaskForm extends javax.swing.JFrame
         MF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void DelayedTasksBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DelayedTasksBtnActionPerformed
+    {//GEN-HEADEREND:event_DelayedTasksBtnActionPerformed
+        for (int i = 0; i < ReadFile.TaskNums; i++)
+        {
+            if (ReadFile.TASK.get(i).getStatus() == "In Progress")
+            {
+                try
+                {
+                    WriteFile.writeDelayedTask(String.valueOf(ReadFile.TASK.get(i).getID()), String.valueOf(ReadFile.TASK.get(i).getProjectID()), ReadFile.TASK.get(i).getTitle(), ReadFile.TASK.get(i).getFromDate(), ReadFile.TASK.get(i).getToDate());
+                } catch (IOException ex)
+                {
+                    Logger.getLogger(PrintTaskForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_DelayedTasksBtnActionPerformed
 
     /**
      * @param args the command line arguments

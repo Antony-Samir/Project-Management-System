@@ -101,6 +101,9 @@ public class ResourcesForm extends javax.swing.JFrame
             try
             {
                 WriteFile.getInstance().writeResource(ID, Name, Used);
+                ReadFile.clearAllClasses();
+                ReadFile.fileLines();
+                ReadFile.readAllClasses();
             } 
             catch (IOException ex)
             {
@@ -111,7 +114,6 @@ public class ResourcesForm extends javax.swing.JFrame
             ResourceNameTxt.setEditable(false);
             SaveBtn.setVisible(false);
         }
-        
     }//GEN-LAST:event_SaveBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed

@@ -17,16 +17,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
     public UD_ProjectForm() 
     {
         initComponents();
-        
-        if (ReadFile.getInstance().DepartmentNums != 0)
-        {
-           for (int i = 0; i < ReadFile.getInstance().DepartmentNums; i++)
-            {
-                jComboBox1.addItem(ReadFile.getInstance().DEPARTMENT.get(i).getID());
-            }
-        }
-        
-        ProjectIdTxt.setEditable(false);
+
         ProjectNameTxt.setEditable(false);
         
         this.setLocationRelativeTo(null);
@@ -47,14 +38,14 @@ public class UD_ProjectForm extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
         ProjectIdTxt = new javax.swing.JTextField();
         ProjectNameTxt = new javax.swing.JTextField();
         SaveBtn = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox();
+        jComboBox1 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         DeleteBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
+        DepartmentTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -83,8 +74,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
         getContentPane().add(jLabel3);
         jLabel3.setBounds(430, 160, 90, 16);
 
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(430, 200, 100, 26);
+        ProjectIdTxt.setEditable(false);
         getContentPane().add(ProjectIdTxt);
         ProjectIdTxt.setBounds(100, 200, 100, 24);
 
@@ -109,8 +99,8 @@ public class UD_ProjectForm extends javax.swing.JFrame
         getContentPane().add(SaveBtn);
         SaveBtn.setBounds(270, 290, 100, 32);
 
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(575, 100, 100, 26);
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(575, 100, 100, 26);
 
         jLabel4.setText("Select Project  you want to Update or Delete");
         getContentPane().add(jLabel4);
@@ -138,12 +128,17 @@ public class UD_ProjectForm extends javax.swing.JFrame
         getContentPane().add(ViewBtn);
         ViewBtn.setBounds(577, 150, 100, 32);
 
+        DepartmentTxt.setEditable(false);
+        getContentPane().add(DepartmentTxt);
+        DepartmentTxt.setBounds(430, 200, 100, 24);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
-        ProjectIdTxt.setEditable(false);
+        jComboBox1.removeAllItems();
+        DepartmentTxt.setText(null);
         ProjectIdTxt.setText(null);
         ProjectNameTxt.setEditable(false);
         ProjectNameTxt.setText(null);
@@ -156,8 +151,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
         String ID = ProjectIdTxt.getText().toString();
         String Name = ProjectNameTxt.getText().toString();
         
-        String DepartmentID;
-        DepartmentID = jComboBox1.getSelectedItem().toString();
+        String DepartmentID = DepartmentTxt.getText().toString();
         
         if (ProjectIdTxt.getText().toString().isEmpty())
         {
@@ -172,6 +166,10 @@ public class UD_ProjectForm extends javax.swing.JFrame
                     try
                     {//+2 (File Description Line + Indexing from zero)
                         EditFile.deleteProject(i + 2);
+                        WriteFile.writeProject(ID, Name, DepartmentID);
+                        ReadFile.clearAllClasses();
+                        ReadFile.fileLines();
+                        ReadFile.readAllClasses();
                         JOptionPane.showMessageDialog(this, "congratulations Project Updated Successfully", "Updated", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     } 
@@ -180,22 +178,8 @@ public class UD_ProjectForm extends javax.swing.JFrame
                     }
                 }
             }
-            /*for (int i = 0; i < ReadFile.ProjectNums; i++)
-            {
-                if (Integer.parseInt(ID) == ReadFile.PROJECT.get(i).getID())
-                {
-                    JOptionPane.showMessageDialog(this, "Enter Unique ID!", "Project ID is already saved", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-            }*/
-            try
-            {
-                WriteFile.getInstance().writeProject(ID, Name, DepartmentID);
-            } 
-            catch (IOException ex)
-            {
-            }
-            ProjectIdTxt.setEditable(false);
+           
+            jComboBox1.removeAllItems();
             ProjectIdTxt.setText(null);
             ProjectNameTxt.setEditable(false);
             ProjectNameTxt.setText(null);
@@ -230,6 +214,9 @@ public class UD_ProjectForm extends javax.swing.JFrame
                     try
                     {//+2 (File Description Line + Indexing from zero)
                         EditFile.deleteProject(i + 2);
+                        ReadFile.clearAllClasses();
+                        ReadFile.fileLines();
+                        ReadFile.readAllClasses();
                         JOptionPane.showMessageDialog(this, "congratulations Project Deleted Successfully", "Deleted", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     } 
@@ -239,7 +226,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
                     }
                 }                
             }
-            ProjectIdTxt.setEditable(false);
+            jComboBox1.removeAllItems();
             ProjectIdTxt.setText(null);
             ProjectNameTxt.setEditable(false);
             ProjectNameTxt.setText(null);
@@ -250,10 +237,9 @@ public class UD_ProjectForm extends javax.swing.JFrame
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
     {//GEN-HEADEREND:event_ViewBtnActionPerformed
-        ProjectIdTxt.setEditable(true);
         ProjectNameTxt.setEditable(true);
 
-        String SelectedProject  = jComboBox2.getSelectedItem().toString();
+        String SelectedProject  = jComboBox1.getSelectedItem().toString();
 
         for (int i = 0; i < ReadFile.getInstance().ProjectNums; i++)
         {
@@ -261,6 +247,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
             {
                 ProjectIdTxt.setText(String.valueOf(ReadFile.getInstance().PROJECT.get(i).getID()));
                 ProjectNameTxt.setText(ReadFile.getInstance().PROJECT.get(i).getName());
+                DepartmentTxt.setText(String.valueOf(ReadFile.PROJECT.get(i).getDepartmentID()));
                 break;
             }
         }
@@ -315,12 +302,12 @@ public class UD_ProjectForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton DeleteBtn;
+    private javax.swing.JTextField DepartmentTxt;
     private javax.swing.JTextField ProjectIdTxt;
     private javax.swing.JTextField ProjectNameTxt;
     private javax.swing.JButton SaveBtn;
     private javax.swing.JButton ViewBtn;
-    private javax.swing.JComboBox jComboBox1;
-    public static javax.swing.JComboBox jComboBox2;
+    public static javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
