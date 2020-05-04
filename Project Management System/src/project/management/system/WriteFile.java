@@ -235,7 +235,7 @@ public class WriteFile
     {
         try 
         {
-            FW = new FileWriter("Tasks.txt", true);
+            FW = new FileWriter("DelayedTasks.txt", true);
             PW = new PrintWriter(FW);
             
             PW.write(taskID);
@@ -246,7 +246,7 @@ public class WriteFile
             PW.write(" # ");
             PW.write(fromDate);
             PW.write(" # ");
-            PW.write(toDate);
+            PW.println(toDate);
             
             
             PW.close();

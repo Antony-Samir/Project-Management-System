@@ -3,6 +3,7 @@ package Forms;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
 
@@ -31,7 +32,7 @@ public class PrintTaskForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        SelectedTaskBtn = new javax.swing.JButton();
+        SelectBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         DelayedTasksBtn = new javax.swing.JButton();
@@ -44,19 +45,26 @@ public class PrintTaskForm extends javax.swing.JFrame
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
-        SelectedTaskBtn.setText("View Task");
-        SelectedTaskBtn.addActionListener(new java.awt.event.ActionListener()
+        SelectBtn.setText("View Project Tasks");
+        SelectBtn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                SelectedTaskBtnActionPerformed(evt);
+                SelectBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(SelectedTaskBtn);
-        SelectedTaskBtn.setBounds(580, 70, 120, 32);
+        getContentPane().add(SelectBtn);
+        SelectBtn.setBounds(540, 70, 160, 32);
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(450, 70, 110, 26);
+        jComboBox1.setBounds(410, 70, 110, 26);
 
         jLabel1.setText("OR, Select A Specific Project?");
         getContentPane().add(jLabel1);
@@ -87,10 +95,7 @@ public class PrintTaskForm extends javax.swing.JFrame
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String []
             {
@@ -100,16 +105,61 @@ public class PrintTaskForm extends javax.swing.JFrame
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(70, 140, 580, 310);
+        jScrollPane1.setBounds(70, 140, 580, 280);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SelectedTaskBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SelectedTaskBtnActionPerformed
-    {//GEN-HEADEREND:event_SelectedTaskBtnActionPerformed
+    private void SelectBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SelectBtnActionPerformed
+    {//GEN-HEADEREND:event_SelectBtnActionPerformed
 
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        String selectedProject = jComboBox1.getSelectedItem().toString();
+        int selectedProjectID = 0;
+        for (int i = 0; i < ReadFile.ProjectNums; i++)
+        {
+            if (ReadFile.PROJECT.get(i).getName() == selectedProject)
+            {
+                selectedProjectID = ReadFile.PROJECT.get(i).getID();
+                break;
+            }
+        }
+        
+        System.out.println(selectedProjectID);
+        
+        
+        String taskID = null;
+        String projectID = null;
+        String taskTitle = null;
+        String fromDate = null;
+        String toDate = null;
+        
+        for (int i = 0; i < ReadFile.TaskNums; i++)
+        {
+           // System.out.println(ReadFile.TASK.get(i).getStatus());
+            if (ReadFile.TASK.get(i).getStatus().equals("In Progress"))
+            {
+                
+                if (ReadFile.TASK.get(i).getProjectID() == selectedProjectID)
+                {
+                    taskID = String.valueOf(ReadFile.TASK.get(i).getID());
+                    projectID = String.valueOf(selectedProjectID);
+                    taskTitle = ReadFile.TASK.get(i).getTitle();
+                    fromDate = ReadFile.TASK.get(i).getFromDate();
+                    toDate = ReadFile.TASK.get(i).getToDate();
+                    Object[] row = { taskID, projectID, taskTitle, fromDate, toDate };
 
-    }//GEN-LAST:event_SelectedTaskBtnActionPerformed
+                    model = (DefaultTableModel) jTable1.getModel();
+                    model.addRow(row);
+                }
+            }
+        }
+         
+            
+            
+        
+    }//GEN-LAST:event_SelectBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackBtnActionPerformed
     {//GEN-HEADEREND:event_BackBtnActionPerformed
@@ -121,7 +171,7 @@ public class PrintTaskForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_DelayedTasksBtnActionPerformed
         for (int i = 0; i < ReadFile.TaskNums; i++)
         {
-            if (ReadFile.TASK.get(i).getStatus() == "In Progress")
+            if (ReadFile.TASK.get(i).getStatus().equals("In Progress"))
             {
                 try
                 {
@@ -138,6 +188,11 @@ public class PrintTaskForm extends javax.swing.JFrame
         
         
     }//GEN-LAST:event_DelayedTasksBtnActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox1ActionPerformed
+    {//GEN-HEADEREND:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,7 +257,7 @@ public class PrintTaskForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton DelayedTasksBtn;
-    private javax.swing.JButton SelectedTaskBtn;
+    private javax.swing.JButton SelectBtn;
     public static javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

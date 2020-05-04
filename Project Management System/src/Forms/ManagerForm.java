@@ -351,9 +351,9 @@ public class ManagerForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_PrintTaskBtnActionPerformed
         if (ReadFile.TaskNums != 0)
         {
-           for (int i = 0; i < ReadFile.TaskNums; i++)
+           for (int i = 0; i < ReadFile.ProjectNums; i++)
            {
-                PrintTaskForm.jComboBox1.addItem(ReadFile.TASK.get(i).getID());
+                PrintTaskForm.jComboBox1.addItem(ReadFile.PROJECT.get(i).getName());
            }
            PTF.setVisible(true);
            this.dispose();

@@ -201,7 +201,7 @@ public class TaskForm extends javax.swing.JFrame
                 }
             }
             for (int i = 0; i < ReadFile.ResourceNums; i++)
-            {//For Resources
+            {//For Consuming Resources
                 if (ReadFile.RESOURCE.get(i).getUsed() == 0)
                 {
                     if (boxResources[i].isSelected() == true)
@@ -209,7 +209,7 @@ public class TaskForm extends javax.swing.JFrame
                         resources[i] = boxResources[i].getText().toString();
                         ResCount++;
                         Res = true;
-                        try
+                        /*try
                         {
                             EditFile.deleteTask(i + 2);
                             //WriteFile.getInstance().writeResource(String.valueOf(ReadFile.RESOURCE.get(i).getID()), ReadFile.RESOURCE.get(i).getName(), "1");
@@ -218,7 +218,7 @@ public class TaskForm extends javax.swing.JFrame
                         catch (IOException ex)
                         {
                         }
-                        
+                        */
                         
                     }
                     else
