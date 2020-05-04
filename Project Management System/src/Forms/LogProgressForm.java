@@ -24,35 +24,22 @@ public class LogProgressForm extends javax.swing.JFrame
         
         this.setLocationRelativeTo(null);
         
-        /*List<String> columns = new ArrayList<String>();
-        List<String> values = null;
+        
+        String memberID = null;
+        String memberName = null;
+        String timeANDdate = null;
+        for (int i = 0; i < ReadFile.LogNums; i++)
+        {
+            memberID = String.valueOf(ReadFile.LOG.get(i).getMemberID());
+            memberName = ReadFile.LOG.get(i).getMemberName();
+            timeANDdate = ReadFile.LOG.get(i).getDate_time();
 
-        
-        
-        columns.add("Name");
-        columns.add("Year");
-        columns.add("Title");
-        try
-        {
- 
-            values.add(new String[] {"test1", "test2", "test3"});
-            TableModel tableModel = new DefaultTableModel(values.toArray(new Object[][]{}), columns.toArray());
-            jTable1.setModel(tableModel);
-        } 
-        catch (IOException ex)
-        {
-            System.out.println("testoo");
+            Object[] row = { memberID, memberName, timeANDdate };
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(row);
         }
-        String str = "test";
-        values.add("er");
-        TableModel tableModel = new DefaultTableModel(values.toArray(new Object[][]{}), columns.toArray());
-        jTable1.setModel(tableModel);*/
         
-        /*String[] columns = {"Emplotee ID","Name","Address","City","Salary"};
-
-        //Table that already have 4 empty rows
-        DefaultTableModel model = new DefaultTableModel(columns,4); 
-        jTable1 = new JTable(model);*/
         
     }
 
@@ -69,7 +56,6 @@ public class LogProgressForm extends javax.swing.JFrame
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        ViewBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -86,16 +72,13 @@ public class LogProgressForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(10, 10, 100, 32);
+        BackBtn.setBounds(30, 20, 100, 32);
         BackBtn.getAccessibleContext().setAccessibleName("");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String []
             {
@@ -105,12 +88,7 @@ public class LogProgressForm extends javax.swing.JFrame
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 70, 580, 360);
-
-        ViewBtn.setText("View Log");
-        getContentPane().add(ViewBtn);
-        ViewBtn.setBounds(610, 90, 100, 32);
-        ViewBtn.getAccessibleContext().setAccessibleName("");
+        jScrollPane1.setBounds(60, 70, 580, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,7 +143,6 @@ public class LogProgressForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JButton ViewBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
