@@ -1,5 +1,11 @@
 package Forms;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import project.management.system.ReadFile;
 
@@ -11,12 +17,7 @@ public class EmployeeForm extends javax.swing.JFrame
     public EmployeeForm()
     {
         initComponents();
-        
-        //System.out.println(LoginForm.accFoundID);
-        
-        
         this.setLocationRelativeTo(null);
-
     }
 
     /**
@@ -29,7 +30,6 @@ public class EmployeeForm extends javax.swing.JFrame
     private void initComponents()
     {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         ViewTaskBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
@@ -37,7 +37,7 @@ public class EmployeeForm extends javax.swing.JFrame
         jComboBox2 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ProjectIdTxt = new javax.swing.JTextField();
+        ProjectIdTxtProject = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         DepartmentIdTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -47,10 +47,12 @@ public class EmployeeForm extends javax.swing.JFrame
         jLabel9 = new javax.swing.JLabel();
         WelcomeLabel = new javax.swing.JLabel();
         NameTxt = new javax.swing.JTextField();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
         SaveBtn = new javax.swing.JButton();
-        ToDate = new datechooser.beans.DateChooserCombo();
+        TaskStatus = new javax.swing.JCheckBox();
+        ToDateTxt = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        ProjectIdTxtTask = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -66,7 +68,7 @@ public class EmployeeForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(ViewTaskBtn);
-        ViewTaskBtn.setBounds(270, 200, 80, 40);
+        ViewTaskBtn.setBounds(170, 150, 110, 40);
 
         ViewBtn.setText("View Project");
         ViewBtn.setPreferredSize(new java.awt.Dimension(90, 40));
@@ -78,37 +80,41 @@ public class EmployeeForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(ViewBtn);
-        ViewBtn.setBounds(480, 320, 130, 40);
+        ViewBtn.setBounds(560, 150, 110, 40);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(270, 150, 80, 26);
+        jComboBox1.setBounds(50, 150, 80, 26);
 
-        jLabel1.setText("Task ID:");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("All in Progress Task IDs:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(260, 110, 50, 16);
+        jLabel1.setBounds(100, 100, 140, 20);
 
         getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(620, 150, 80, 26);
+        jComboBox2.setBounds(430, 150, 80, 26);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Task Status:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(120, 150, 80, 16);
+        jLabel2.setBounds(250, 240, 100, 16);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Project ID:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(410, 150, 70, 16);
+        jLabel3.setBounds(410, 240, 100, 16);
 
-        ProjectIdTxt.setEditable(false);
-        getContentPane().add(ProjectIdTxt);
-        ProjectIdTxt.setBounds(400, 200, 100, 24);
+        ProjectIdTxtProject.setEditable(false);
+        getContentPane().add(ProjectIdTxtProject);
+        ProjectIdTxtProject.setBounds(410, 290, 100, 24);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Department ID:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(520, 150, 90, 16);
+        jLabel4.setBounds(570, 240, 100, 16);
 
         DepartmentIdTxt.setEditable(false);
         getContentPane().add(DepartmentIdTxt);
-        DepartmentIdTxt.setBounds(520, 200, 100, 24);
+        DepartmentIdTxt.setBounds(570, 290, 100, 24);
 
         jLabel5.setForeground(new java.awt.Color(255, 153, 153));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login background.png"))); // NOI18N
@@ -116,48 +122,34 @@ public class EmployeeForm extends javax.swing.JFrame
         getContentPane().add(jLabel5);
         jLabel5.setBounds(360, 0, 20, 480);
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel6.setForeground(new java.awt.Color(153, 0, 51));
         jLabel6.setText("Manage Tasks");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(110, 60, 83, 16);
+        jLabel6.setBounds(270, 10, 83, 16);
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel7.setForeground(new java.awt.Color(153, 0, 51));
         jLabel7.setText("View Projects");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(500, 60, 79, 16);
+        jLabel7.setBounds(630, 10, 79, 16);
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("To Date:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 150, 50, 16);
+        jLabel8.setBounds(20, 240, 80, 16);
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Project Name:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(610, 110, 80, 16);
+        jLabel9.setBounds(510, 100, 80, 16);
 
+        WelcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
         WelcomeLabel.setText("Welcome,");
         getContentPane().add(WelcomeLabel);
         WelcomeLabel.setBounds(10, 20, 70, 16);
 
         NameTxt.setEditable(false);
         getContentPane().add(NameTxt);
-        NameTxt.setBounds(70, 20, 110, 24);
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("In Progress");
-        getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(120, 220, 98, 28);
-
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Done");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(130, 190, 61, 28);
+        NameTxt.setBounds(80, 20, 110, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -168,9 +160,28 @@ public class EmployeeForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(100, 320, 130, 32);
-        getContentPane().add(ToDate);
-        ToDate.setBounds(10, 200, 100, 20);
+        SaveBtn.setBounds(110, 380, 130, 32);
+
+        TaskStatus.setText("Is It Done?");
+        getContentPane().add(TaskStatus);
+        TaskStatus.setBounds(250, 290, 87, 24);
+
+        ToDateTxt.setEditable(false);
+        getContentPane().add(ToDateTxt);
+        ToDateTxt.setBounds(10, 290, 100, 24);
+
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Project ID:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(140, 240, 70, 16);
+
+        ProjectIdTxtTask.setEditable(false);
+        getContentPane().add(ProjectIdTxtTask);
+        ProjectIdTxtTask.setBounds(130, 290, 100, 24);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gradient-4.jpg"))); // NOI18N
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(-2, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,21 +190,15 @@ public class EmployeeForm extends javax.swing.JFrame
     {//GEN-HEADEREND:event_ViewTaskBtnActionPerformed
         int TaskID = Integer.valueOf(jComboBox1.getSelectedItem().toString());
         
-        
         for (int i = 0; i < ReadFile.TaskNums; i++)
         {
             if (ReadFile.TASK.get(i).getID() == TaskID)
             {
-                ToDate.setText(ReadFile.getInstance().TASK.get(i).getToDate().toString());
+                ProjectIdTxtTask.setText(String.valueOf(ReadFile.TASK.get(i).getProjectID()));
+                ToDateTxt.setText(ReadFile.TASK.get(i).getToDate().toString());
                 break;
             }
-        }
-        
-        
-        
-        
-        
-        
+        }       
     }//GEN-LAST:event_ViewTaskBtnActionPerformed
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ViewBtnActionPerformed
@@ -207,7 +212,7 @@ public class EmployeeForm extends javax.swing.JFrame
         {
             if (ProjectName == ReadFile.PROJECT.get(i).getName())
             {
-                ProjectIdTxt.setText(String.valueOf(ReadFile.PROJECT.get(i).getID()));
+                ProjectIdTxtProject.setText(String.valueOf(ReadFile.PROJECT.get(i).getID()));
                 DepartmentIdTxt.setText(String.valueOf(ReadFile.PROJECT.get(i).getDepartmentID()));
                 break;
             }
@@ -218,16 +223,11 @@ public class EmployeeForm extends javax.swing.JFrame
         
     }//GEN-LAST:event_ViewBtnActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jRadioButton1ActionPerformed
-    {//GEN-HEADEREND:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SaveBtnActionPerformed
     {//GEN-HEADEREND:event_SaveBtnActionPerformed
         String done = "Done";
         String inProgress = "In Progress";
-        if (!jRadioButton1.isSelected() && !jRadioButton2.isSelected())
+        /*if (!jRadioButton1.isSelected() && !jRadioButton2.isSelected())
         {
             JOptionPane.showMessageDialog(this, "You Have To Select At Lease One", "Select One", JOptionPane.WARNING_MESSAGE);
         }
@@ -244,7 +244,7 @@ public class EmployeeForm extends javax.swing.JFrame
             }
             
         
-        }
+        }*/
         
         
         
@@ -309,16 +309,19 @@ public class EmployeeForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DepartmentIdTxt;
     public static javax.swing.JTextField NameTxt;
-    private javax.swing.JTextField ProjectIdTxt;
+    private javax.swing.JTextField ProjectIdTxtProject;
+    private javax.swing.JTextField ProjectIdTxtTask;
     private javax.swing.JButton SaveBtn;
-    private datechooser.beans.DateChooserCombo ToDate;
+    private javax.swing.JCheckBox TaskStatus;
+    private javax.swing.JTextField ToDateTxt;
     private javax.swing.JButton ViewBtn;
     private javax.swing.JButton ViewTaskBtn;
     private javax.swing.JLabel WelcomeLabel;
-    private javax.swing.ButtonGroup buttonGroup1;
     public static javax.swing.JComboBox jComboBox1;
     public static javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -327,7 +330,5 @@ public class EmployeeForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration//GEN-END:variables
 }

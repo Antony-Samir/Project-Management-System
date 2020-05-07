@@ -186,7 +186,7 @@ public class WriteFile
             
             
             //PW.write(memberID);
-            for (int i = 0; i < ReadFile.getInstance().MemberNums; i++)
+            for (int i = 0; i < ReadFile.MemberNums; i++)
             {//For Members
                 if (memberID[i] != null)
                 {
@@ -199,7 +199,7 @@ public class WriteFile
             
             
             //PW.write(Resources);
-            for (int i = 0; i < ReadFile.getInstance().ResourceNums; i++)
+            for (int i = 0; i < ReadFile.ResourceNums; i++)
             {//For Members
                 if (Resources[i] != null)
                 {
@@ -307,10 +307,11 @@ public class WriteFile
     
     
     
-    
-    
-    
-    
-    
-    
+     public static void clearDelayedFile() throws IOException
+     {
+        PrintWriter pw = new PrintWriter("DelayedTasks.txt");
+        pw.println("Task ID # Project ID # Title # From Date # To Date");
+        pw.close();
+        
+     }
 }

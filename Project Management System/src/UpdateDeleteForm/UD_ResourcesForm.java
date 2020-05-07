@@ -1,5 +1,5 @@
 package UpdateDeleteForm;
-import Forms.ManagerForm;
+import Forms.AdminForm;
 import project.management.system.ReadFile;
 
 
@@ -11,7 +11,7 @@ import project.management.system.EditFile;
 public class UD_ResourcesForm extends javax.swing.JFrame
 {
 
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
     
     
     
@@ -43,24 +43,27 @@ public class UD_ResourcesForm extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         DeleteBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Resource Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 160, 100, 16);
+        jLabel1.setBounds(160, 140, 100, 16);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Resource ID:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(150, 160, 80, 16);
+        jLabel2.setBounds(30, 140, 80, 16);
         getContentPane().add(ResourceNameTxt);
-        ResourceNameTxt.setBounds(320, 210, 100, 24);
+        ResourceNameTxt.setBounds(170, 180, 100, 24);
 
         ResourceIdTxt.setEditable(false);
         getContentPane().add(ResourceIdTxt);
-        ResourceIdTxt.setBounds(150, 210, 100, 24);
+        ResourceIdTxt.setBounds(40, 180, 100, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -71,7 +74,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(320, 280, 100, 32);
+        SaveBtn.setBounds(390, 310, 100, 32);
 
         BackBtn.setText("Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener()
@@ -82,14 +85,15 @@ public class UD_ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(40, 30, 100, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(570, 110, 100, 26);
+        jComboBox1.setBounds(540, 70, 100, 26);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Select Resource  you want to Update or Delete");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(380, 70, 280, 16);
+        jLabel3.setBounds(420, 30, 280, 16);
 
         DeleteBtn.setText("Delete");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener()
@@ -100,7 +104,7 @@ public class UD_ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(DeleteBtn);
-        DeleteBtn.setBounds(150, 280, 100, 32);
+        DeleteBtn.setBounds(250, 310, 100, 32);
 
         ViewBtn.setText("View");
         ViewBtn.addActionListener(new java.awt.event.ActionListener()
@@ -111,7 +115,11 @@ public class UD_ResourcesForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(ViewBtn);
-        ViewBtn.setBounds(570, 160, 100, 32);
+        ViewBtn.setBounds(540, 190, 100, 32);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Resource Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(1, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -293,5 +301,6 @@ public class UD_ResourcesForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

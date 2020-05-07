@@ -14,7 +14,7 @@ import project.management.system.*;
 public class LogProgressForm extends javax.swing.JFrame
 {
 
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
     
     public LogProgressForm() 
     {
@@ -56,6 +56,7 @@ public class LogProgressForm extends javax.swing.JFrame
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -72,7 +73,7 @@ public class LogProgressForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(30, 20, 100, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
         BackBtn.getAccessibleContext().setAccessibleName("");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -88,7 +89,11 @@ public class LogProgressForm extends javax.swing.JFrame
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(60, 70, 580, 360);
+        jScrollPane1.setBounds(70, 70, 580, 360);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Log Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(1, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -143,6 +148,7 @@ public class LogProgressForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

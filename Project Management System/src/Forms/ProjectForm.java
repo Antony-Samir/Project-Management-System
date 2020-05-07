@@ -10,7 +10,7 @@ import project.management.system.WriteFile;
 public class ProjectForm extends javax.swing.JFrame 
 {
 
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
     
     public ProjectForm() 
     {
@@ -45,6 +45,7 @@ public class ProjectForm extends javax.swing.JFrame
         ProjectIdTxt = new javax.swing.JTextField();
         ProjectNameTxt = new javax.swing.JTextField();
         SaveBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -61,26 +62,29 @@ public class ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(20, 20, 100, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Project ID:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(140, 120, 90, 16);
+        jLabel1.setBounds(30, 140, 90, 16);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Project Name:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(320, 120, 90, 16);
+        jLabel2.setBounds(160, 140, 90, 16);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Department ID:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(490, 120, 120, 16);
+        jLabel3.setBounds(290, 140, 100, 16);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(520, 160, 100, 26);
+        jComboBox1.setBounds(300, 180, 100, 26);
         getContentPane().add(ProjectIdTxt);
-        ProjectIdTxt.setBounds(140, 160, 100, 24);
+        ProjectIdTxt.setBounds(40, 180, 100, 24);
         getContentPane().add(ProjectNameTxt);
-        ProjectNameTxt.setBounds(330, 160, 100, 24);
+        ProjectNameTxt.setBounds(170, 180, 100, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -91,7 +95,11 @@ public class ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(550, 340, 100, 32);
+        SaveBtn.setBounds(390, 310, 100, 32);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Project Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(1, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -197,5 +205,6 @@ public class ProjectForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

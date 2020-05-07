@@ -1,9 +1,7 @@
 package UpdateDeleteForm;
 
-import Forms.ManagerForm;
+import Forms.AdminForm;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import project.management.system.*;
 import project.management.system.EditFile;
@@ -11,7 +9,7 @@ import project.management.system.EditFile;
 public class UD_ProjectForm extends javax.swing.JFrame 
 {
 
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
     
     
     public UD_ProjectForm() 
@@ -46,6 +44,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
         DeleteBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
         DepartmentTxt = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -60,23 +59,26 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(20, 30, 100, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Project ID:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 160, 90, 16);
+        jLabel1.setBounds(30, 140, 90, 16);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Project Name:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(270, 160, 90, 16);
+        jLabel2.setBounds(160, 140, 90, 16);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Department ID:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(430, 160, 90, 16);
+        jLabel3.setBounds(290, 140, 90, 16);
 
         ProjectIdTxt.setEditable(false);
         getContentPane().add(ProjectIdTxt);
-        ProjectIdTxt.setBounds(100, 200, 100, 24);
+        ProjectIdTxt.setBounds(40, 180, 100, 24);
 
         ProjectNameTxt.addActionListener(new java.awt.event.ActionListener()
         {
@@ -86,7 +88,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(ProjectNameTxt);
-        ProjectNameTxt.setBounds(270, 200, 100, 24);
+        ProjectNameTxt.setBounds(170, 180, 100, 24);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -97,14 +99,15 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(270, 290, 100, 32);
+        SaveBtn.setBounds(390, 310, 100, 32);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(575, 100, 100, 26);
+        jComboBox1.setBounds(540, 70, 100, 26);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Select Project  you want to Update or Delete");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(400, 50, 260, 16);
+        jLabel4.setBounds(420, 30, 260, 16);
 
         DeleteBtn.setText("Delete");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener()
@@ -115,7 +118,7 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(DeleteBtn);
-        DeleteBtn.setBounds(100, 290, 100, 32);
+        DeleteBtn.setBounds(250, 310, 100, 32);
 
         ViewBtn.setText("View");
         ViewBtn.addActionListener(new java.awt.event.ActionListener()
@@ -126,11 +129,15 @@ public class UD_ProjectForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(ViewBtn);
-        ViewBtn.setBounds(577, 150, 100, 32);
+        ViewBtn.setBounds(540, 190, 100, 32);
 
         DepartmentTxt.setEditable(false);
         getContentPane().add(DepartmentTxt);
-        DepartmentTxt.setBounds(430, 200, 100, 24);
+        DepartmentTxt.setBounds(300, 180, 100, 24);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Project Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(1, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -312,5 +319,6 @@ public class UD_ProjectForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

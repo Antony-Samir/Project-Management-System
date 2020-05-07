@@ -1,5 +1,5 @@
 package UpdateDeleteForm;
-import Forms.ManagerForm;
+import Forms.AdminForm;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,7 +10,7 @@ import project.management.system.EditFile;
 
 public class UD_DepartmentForm extends javax.swing.JFrame
 {
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
     
     
     public UD_DepartmentForm()
@@ -40,6 +40,7 @@ public class UD_DepartmentForm extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         DeleteBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -54,7 +55,7 @@ public class UD_DepartmentForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(40, 40, 100, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -65,28 +66,31 @@ public class UD_DepartmentForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(380, 330, 100, 32);
+        SaveBtn.setBounds(390, 310, 100, 32);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Department Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(370, 190, 120, 16);
+        jLabel1.setBounds(160, 140, 120, 16);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Department ID:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(190, 190, 120, 16);
+        jLabel2.setBounds(30, 140, 110, 16);
         getContentPane().add(DepartmentNameTxt);
-        DepartmentNameTxt.setBounds(370, 240, 110, 24);
+        DepartmentNameTxt.setBounds(170, 180, 110, 24);
 
         DepartmentIdTxt.setEditable(false);
         getContentPane().add(DepartmentIdTxt);
-        DepartmentIdTxt.setBounds(190, 240, 110, 24);
+        DepartmentIdTxt.setBounds(40, 180, 110, 24);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(570, 110, 100, 26);
+        jComboBox1.setBounds(540, 70, 100, 26);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Select Department you want to Update or Delete");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(390, 70, 280, 16);
+        jLabel3.setBounds(420, 30, 280, 16);
 
         DeleteBtn.setText("Delete");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener()
@@ -97,7 +101,7 @@ public class UD_DepartmentForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(DeleteBtn);
-        DeleteBtn.setBounds(190, 330, 100, 32);
+        DeleteBtn.setBounds(250, 310, 100, 32);
 
         ViewBtn.setText("View");
         ViewBtn.addActionListener(new java.awt.event.ActionListener()
@@ -108,7 +112,11 @@ public class UD_DepartmentForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(ViewBtn);
-        ViewBtn.setBounds(567, 160, 100, 32);
+        ViewBtn.setBounds(540, 190, 100, 32);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Department Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(1, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -281,5 +289,6 @@ public class UD_DepartmentForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

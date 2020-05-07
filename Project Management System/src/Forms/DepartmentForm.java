@@ -8,7 +8,7 @@ import project.management.system.WriteFile;
 
 public class DepartmentForm extends javax.swing.JFrame
 {
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
     
     public DepartmentForm()
     {
@@ -32,6 +32,7 @@ public class DepartmentForm extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         DepartmentNameTxt = new javax.swing.JTextField();
         DepartmentIdTxt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -46,7 +47,7 @@ public class DepartmentForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(40, 20, 90, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
 
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener()
@@ -57,19 +58,25 @@ public class DepartmentForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(570, 350, 90, 32);
+        SaveBtn.setBounds(390, 310, 100, 32);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Department Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(420, 110, 120, 16);
+        jLabel1.setBounds(160, 140, 120, 16);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Department ID:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(200, 110, 120, 16);
+        jLabel2.setBounds(30, 140, 110, 16);
         getContentPane().add(DepartmentNameTxt);
-        DepartmentNameTxt.setBounds(420, 170, 110, 24);
+        DepartmentNameTxt.setBounds(170, 180, 110, 24);
         getContentPane().add(DepartmentIdTxt);
-        DepartmentIdTxt.setBounds(200, 170, 110, 24);
+        DepartmentIdTxt.setBounds(40, 180, 110, 24);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Department Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(1, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -168,5 +175,6 @@ public class DepartmentForm extends javax.swing.JFrame
     private javax.swing.JButton SaveBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

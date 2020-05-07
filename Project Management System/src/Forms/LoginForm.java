@@ -14,7 +14,7 @@ public class LoginForm extends javax.swing.JFrame
 {
     static SignUpForm SignObj = new SignUpForm();
     static EmployeeForm EF = new EmployeeForm();
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
     static public int accFoundID;
     
     public LoginForm()
@@ -119,13 +119,14 @@ public class LoginForm extends javax.swing.JFrame
         if (Name.isEmpty() || Password.isEmpty())
         {//Check If Empty
             JOptionPane.showMessageDialog(this, "Enter Username OR Password", "Field Not Entered", JOptionPane.WARNING_MESSAGE);
+            return;
         }
         else if (Name.equals("Admin") && Password.equals("123"))
         {//Check If Admin || Manager
             accFound = true;
             MF.setVisible(true);
             this.dispose();
-            //this.setVisible(false);  
+            return;
         }
         else
         {//Check If Employee
@@ -151,9 +152,29 @@ public class LoginForm extends javax.swing.JFrame
                     break;
                 }                
             }
-            
-            for (int i = 0; i < ReadFile.TaskNums; i++)
-            {//For Loading Task ID's in Employee's Form
+        }
+        
+        if (accFound == false)
+        {
+            InvalidPasswordException.InvalidCount--;
+            if (InvalidPasswordException.getInvalidCount() >= 1)
+            {
+                //throw new InvalidPasswordException("Username or Password Invalid");
+                JOptionPane.showMessageDialog(this, "Please Try Again", "Username or Password Invalid", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            else if (InvalidPasswordException.getInvalidCount() == 0)
+            {
+                JOptionPane.showMessageDialog(this, "You exceeded the allowed limit, Program will terminate", "Invalid Email or Password", JOptionPane.WARNING_MESSAGE);
+                this.dispose();
+                System.exit(0);
+            }
+        }
+        
+        for (int i = 0; i < ReadFile.TaskNums; i++)
+        {//For Loading Task ID's in Employee's Form
+            if (ReadFile.TASK.get(i).getStatus().equals("In Progress"))
+            {
                 for (int j = 0; j < ReadFile.MemberNums; j++)
                 {
                     if (ReadFile.TASK.get(i).MemberID[j] == LoginForm.accFoundID)
@@ -164,9 +185,12 @@ public class LoginForm extends javax.swing.JFrame
                     }
                 }
             }
-            
-            for (int i = 0; i < ReadFile.TaskNums; i++)
-            {//For Loading Projects in Employee's Form
+        }
+
+        for (int i = 0; i < ReadFile.TaskNums; i++)
+        {//For Loading Projects in Employee's Form
+            if (ReadFile.TASK.get(i).getStatus().equals("In Progress"))
+            {
                 for (int j = 0; j < ReadFile.MemberNums; j++)
                 {
                     if (ReadFile.TASK.get(i).MemberID[j] == LoginForm.accFoundID)
@@ -185,23 +209,6 @@ public class LoginForm extends javax.swing.JFrame
                 }
             }
         }
-        
-        if (accFound == false)
-        {
-            InvalidPasswordException.InvalidCount--;
-            if (InvalidPasswordException.getInvalidCount() >= 1)
-            {
-                //throw new InvalidPasswordException("Username or Password Invalid");
-                JOptionPane.showMessageDialog(this, "Please Try Again", "Username or Password Invalid", JOptionPane.WARNING_MESSAGE);
-            }
-            else if (InvalidPasswordException.getInvalidCount() == 0)
-            {
-                JOptionPane.showMessageDialog(this, "You exceeded the allowed limit, Program will terminate", "Invalid Email or Password", JOptionPane.WARNING_MESSAGE);
-                this.dispose();
-                System.exit(0);
-            }
-        }
-        
     }//GEN-LAST:event_SignInBtnActionPerformed
 
     

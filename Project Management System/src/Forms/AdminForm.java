@@ -3,7 +3,7 @@ import UpdateDeleteForm.*;
 import javax.swing.JOptionPane;
 import project.management.system.ReadFile;
 
-public class ManagerForm extends javax.swing.JFrame
+public class AdminForm extends javax.swing.JFrame
 {
 
     static PrintTaskForm PTF = new PrintTaskForm();
@@ -19,7 +19,7 @@ public class ManagerForm extends javax.swing.JFrame
     static UD_TaskForm UDTF = new UD_TaskForm();
     
     
-    public ManagerForm()
+    public AdminForm()
     {
         initComponents();
         NameTxt.setText("ADMIN");
@@ -48,6 +48,7 @@ public class ManagerForm extends javax.swing.JFrame
         UD_ProjectBtn = new javax.swing.JButton();
         WelcomeLabel = new javax.swing.JLabel();
         NameTxt = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -211,13 +212,19 @@ public class ManagerForm extends javax.swing.JFrame
         getContentPane().add(UD_ProjectBtn);
         UD_ProjectBtn.setBounds(440, 360, 200, 35);
 
+        WelcomeLabel.setBackground(new java.awt.Color(255, 255, 255));
+        WelcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
         WelcomeLabel.setText("Welcome,");
         getContentPane().add(WelcomeLabel);
         WelcomeLabel.setBounds(10, 20, 70, 16);
 
         NameTxt.setEditable(false);
         getContentPane().add(NameTxt);
-        NameTxt.setBounds(70, 20, 110, 24);
+        NameTxt.setBounds(80, 20, 110, 24);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Admin Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(1, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -387,16 +394,16 @@ public class ManagerForm extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(ManagerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(ManagerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(ManagerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(ManagerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -405,7 +412,7 @@ public class ManagerForm extends javax.swing.JFrame
         {
             public void run()
             {
-                new ManagerForm().setVisible(true);
+                new AdminForm().setVisible(true);
             }
         });
     }
@@ -423,5 +430,6 @@ public class ManagerForm extends javax.swing.JFrame
     private javax.swing.JButton UD_ResourceBtn;
     private javax.swing.JButton UD_TaskBtn;
     private javax.swing.JLabel WelcomeLabel;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

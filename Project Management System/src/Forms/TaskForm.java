@@ -14,7 +14,7 @@ public class TaskForm extends javax.swing.JFrame
     static public int MemCount = 0; //To Know How Many Members Where Selected
     static public int ResCount = 0; //To Know How Many Resources Where Selected
         
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
 
     JCheckBox[] boxMembers = new JCheckBox[MemberNums];
     JCheckBox[] boxResources = new JCheckBox[ResourceNums];
@@ -82,6 +82,7 @@ public class TaskForm extends javax.swing.JFrame
         ProjectID = new javax.swing.JComboBox();
         FromDateChooser = new datechooser.beans.DateChooserCombo();
         ToDateChooser = new datechooser.beans.DateChooserCombo();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(720, 480));
@@ -97,7 +98,7 @@ public class TaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(30, 30, 100, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
         getContentPane().add(TaskID);
         TaskID.setBounds(150, 100, 100, 24);
 
@@ -110,7 +111,7 @@ public class TaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(SaveBtn);
-        SaveBtn.setBounds(580, 350, 100, 32);
+        SaveBtn.setBounds(590, 350, 100, 32);
         getContentPane().add(TaskTitle);
         TaskTitle.setBounds(150, 160, 100, 24);
 
@@ -119,34 +120,42 @@ public class TaskForm extends javax.swing.JFrame
         getContentPane().add(TaskStatus);
         TaskStatus.setBounds(440, 160, 100, 24);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Task ID:");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(60, 100, 45, 16);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("From Date:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(60, 220, 61, 16);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Title:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(60, 160, 27, 16);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Members:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(60, 280, 57, 16);
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Project ID:");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(320, 100, 58, 16);
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("To Date:");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(320, 220, 46, 16);
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Status:");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(320, 160, 40, 16);
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Resources:");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(320, 280, 65, 16);
@@ -161,6 +170,10 @@ public class TaskForm extends javax.swing.JFrame
         FromDateChooser.setBounds(150, 220, 100, 20);
         getContentPane().add(ToDateChooser);
         ToDateChooser.setBounds(440, 220, 100, 20);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Task Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(1, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -321,5 +334,6 @@ public class TaskForm extends javax.swing.JFrame
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

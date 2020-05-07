@@ -3,6 +3,7 @@ package Forms;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import project.management.system.ReadFile;
 import project.management.system.WriteFile;
@@ -14,7 +15,7 @@ import project.management.system.WriteFile;
 public class PrintTaskForm extends javax.swing.JFrame
 {
 
-   static ManagerForm MF = new ManagerForm();
+   static AdminForm MF = new AdminForm();
     
     public PrintTaskForm()
     {
@@ -90,7 +91,7 @@ public class PrintTaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(20, 20, 100, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
@@ -126,7 +127,7 @@ public class PrintTaskForm extends javax.swing.JFrame
             }
         }
         
-        System.out.println(selectedProjectID);
+        //System.out.println(selectedProjectID);
         
         
         String taskID = null;
@@ -169,6 +170,13 @@ public class PrintTaskForm extends javax.swing.JFrame
 
     private void DelayedTasksBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DelayedTasksBtnActionPerformed
     {//GEN-HEADEREND:event_DelayedTasksBtnActionPerformed
+       try
+       {
+           WriteFile.clearDelayedFile();
+       } catch (IOException ex)
+       {
+           Logger.getLogger(PrintTaskForm.class.getName()).log(Level.SEVERE, null, ex);
+       }
         for (int i = 0; i < ReadFile.TaskNums; i++)
         {
             if (ReadFile.TASK.get(i).getStatus().equals("In Progress"))
@@ -183,7 +191,8 @@ public class PrintTaskForm extends javax.swing.JFrame
             }
         }
         
-        
+        JOptionPane.showMessageDialog(this, "Open DelayedTasks File.", "Printed Delayed Tasks Successfully", JOptionPane.INFORMATION_MESSAGE);
+
         
         
         

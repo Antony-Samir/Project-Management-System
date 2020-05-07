@@ -1,6 +1,6 @@
 package UpdateDeleteForm;
 
-import Forms.ManagerForm;
+import Forms.AdminForm;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import project.management.system.ReadFile;
@@ -14,7 +14,7 @@ public class UD_TaskForm extends javax.swing.JFrame
     static public int MemCount = 0; //To Know How Many Members Where Selected
     static public int ResCount = 0; //To Know How Many Resources Where Selected
         
-    static ManagerForm MF = new ManagerForm();
+    static AdminForm MF = new AdminForm();
 
     JCheckBox[] boxMembers = new JCheckBox[MemberNums];
     JCheckBox[] boxResources = new JCheckBox[ResourceNums];
@@ -83,6 +83,7 @@ public class UD_TaskForm extends javax.swing.JFrame
         ViewBtn = new javax.swing.JButton();
         ProjectIdTxt = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -97,7 +98,7 @@ public class UD_TaskForm extends javax.swing.JFrame
             }
         });
         getContentPane().add(BackBtn);
-        BackBtn.setBounds(30, 30, 100, 32);
+        BackBtn.setBounds(40, 20, 100, 32);
         getContentPane().add(TaskID);
         TaskID.setBounds(110, 100, 100, 24);
 
@@ -119,34 +120,42 @@ public class UD_TaskForm extends javax.swing.JFrame
         getContentPane().add(TaskStatus);
         TaskStatus.setBounds(400, 160, 100, 24);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Task ID:");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 100, 45, 16);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("From Date:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 220, 61, 16);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Title:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 160, 27, 16);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Members:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 280, 57, 16);
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Project ID:");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(280, 100, 58, 16);
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("To Date:");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(280, 220, 46, 16);
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Status:");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(280, 160, 40, 16);
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Resources:");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(280, 280, 65, 16);
@@ -159,6 +168,7 @@ public class UD_TaskForm extends javax.swing.JFrame
         getContentPane().add(ToDateChooser);
         ToDateChooser.setBounds(400, 220, 100, 20);
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Select Task You Want To Change:");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(420, 40, 190, 16);
@@ -195,6 +205,10 @@ public class UD_TaskForm extends javax.swing.JFrame
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(640, 70, 65, 26);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Task Background.jpg"))); // NOI18N
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(-2, 0, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -354,6 +368,7 @@ public class UD_TaskForm extends javax.swing.JFrame
     public static javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
