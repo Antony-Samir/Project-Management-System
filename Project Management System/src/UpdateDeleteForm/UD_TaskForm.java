@@ -75,14 +75,14 @@ public class UD_TaskForm extends javax.swing.JFrame
         jLabel8 = new javax.swing.JLabel();
         MemberPanel = new javax.swing.JPanel();
         ResourcePanel = new javax.swing.JPanel();
-        FromDateChooser = new datechooser.beans.DateChooserCombo();
-        ToDateChooser = new datechooser.beans.DateChooserCombo();
         jLabel9 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         DeleteBtn = new javax.swing.JButton();
         ViewBtn = new javax.swing.JButton();
         ProjectIdTxt = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox();
+        FromDateChooser = new datechooser.beans.DateChooserCombo();
+        ToDateChooser = new datechooser.beans.DateChooserCombo();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -163,10 +163,6 @@ public class UD_TaskForm extends javax.swing.JFrame
         MemberPanel.setBounds(90, 270, 170, 200);
         getContentPane().add(ResourcePanel);
         ResourcePanel.setBounds(350, 270, 170, 200);
-        getContentPane().add(FromDateChooser);
-        FromDateChooser.setBounds(110, 220, 100, 20);
-        getContentPane().add(ToDateChooser);
-        ToDateChooser.setBounds(400, 220, 100, 20);
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Select Task You Want To Change:");
@@ -205,6 +201,10 @@ public class UD_TaskForm extends javax.swing.JFrame
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(640, 70, 65, 26);
+        getContentPane().add(FromDateChooser);
+        FromDateChooser.setBounds(100, 220, 155, 20);
+        getContentPane().add(ToDateChooser);
+        ToDateChooser.setBounds(370, 210, 155, 20);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Task Background.jpg"))); // NOI18N
         getContentPane().add(jLabel10);

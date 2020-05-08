@@ -1,14 +1,9 @@
 package Forms;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import project.management.system.InvalidPasswordException;
+import project.management.system.LogViewer;
 import project.management.system.ReadFile;
-import project.management.system.WriteFile;
 
 public class LoginForm extends javax.swing.JFrame
 {
@@ -16,6 +11,8 @@ public class LoginForm extends javax.swing.JFrame
     static EmployeeForm EF = new EmployeeForm();
     static AdminForm MF = new AdminForm();
     static public int accFoundID;
+    
+    public LogViewer logViewer = new LogViewer();
     
     public LoginForm()
     {
@@ -103,11 +100,7 @@ public class LoginForm extends javax.swing.JFrame
 
     private void SignInBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SignInBtnActionPerformed
     {//GEN-HEADEREND:event_SignInBtnActionPerformed
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ss:mm:HH dd/MM/yyyy");  
-        LocalDateTime now = LocalDateTime.now();  
-        //System.out.println(dtf.format(now));
-        
-        
+       
         Boolean accFound = false;
         
         String Name = emailTxt.getText().toString();
@@ -140,14 +133,7 @@ public class LoginForm extends javax.swing.JFrame
                     EF.setVisible(true);
                     this.dispose();
                     
-                    try
-                    {
-                        WriteFile.writeLog(String.valueOf(ReadFile.MEMBERS.get(i).getID()), ReadFile.MEMBERS.get(i).getName(), dtf.format(now));
-                    } 
-                    catch (IOException ex)
-                    {
-                        Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    logViewer.updateLog(i);
                     
                     break;
                 }                

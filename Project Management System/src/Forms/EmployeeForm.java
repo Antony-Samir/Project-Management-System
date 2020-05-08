@@ -125,12 +125,12 @@ public class EmployeeForm extends javax.swing.JFrame
         jLabel6.setForeground(new java.awt.Color(153, 0, 51));
         jLabel6.setText("Manage Tasks");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(270, 10, 83, 16);
+        jLabel6.setBounds(260, 10, 83, 16);
 
         jLabel7.setForeground(new java.awt.Color(153, 0, 51));
         jLabel7.setText("View Projects");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(630, 10, 79, 16);
+        jLabel7.setBounds(620, 10, 79, 16);
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("To Date:");
