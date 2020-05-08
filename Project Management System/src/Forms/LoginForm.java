@@ -12,7 +12,7 @@ public class LoginForm extends javax.swing.JFrame
     static AdminForm MF = new AdminForm();
     static public int accFoundID;
     
-    public LogViewer logViewer = new LogViewer();
+   
     
     public LoginForm()
     {
@@ -133,7 +133,7 @@ public class LoginForm extends javax.swing.JFrame
                     EF.setVisible(true);
                     this.dispose();
                     
-                    logViewer.updateLog(i);
+                    LogViewer.getInstance().updateLog(i);
                     
                     break;
                 }                

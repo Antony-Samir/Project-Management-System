@@ -9,6 +9,24 @@ import java.util.logging.Logger;
 
 public class LogViewer implements Observer
 {
+    
+    private static LogViewer uniqueLV = null;
+    
+    private LogViewer()
+    {
+        //Using Singleton Design Pattern    
+    }
+    
+    public static LogViewer getInstance()
+    {
+        if (uniqueLV == null)
+        {
+            uniqueLV = new LogViewer();
+        }
+        return uniqueLV;
+    }
+    
+    
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ss:mm:HH dd/MM/yyyy");  
     LocalDateTime now = LocalDateTime.now();
     
