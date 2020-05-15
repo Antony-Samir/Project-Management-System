@@ -1,6 +1,6 @@
 package project.management.system;
 
-public class Manager extends TeamMember
+public class Admin extends TeamMember
 {
     
 }

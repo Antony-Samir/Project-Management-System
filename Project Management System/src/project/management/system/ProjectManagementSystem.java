@@ -27,10 +27,6 @@ public class ProjectManagementSystem
         
         
         
-        
-        
-        
-        
                 
         Forms.LoginForm Login = new  Forms.LoginForm();
         Login.setVisible(true);
